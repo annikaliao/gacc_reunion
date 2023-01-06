@@ -1,4 +1,4 @@
-## Manifesto
+## Agile Manifesto
 
 ![](images/gaccgroup.jpg)
 

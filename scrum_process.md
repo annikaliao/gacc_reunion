@@ -1,1 +1,1 @@
-[](https://i.imgur.com/JHIOZLb.png)
+[link to our scrum process](https://i.imgur.com/JHIOZLb.png)

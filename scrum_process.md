@@ -1,1 +1,1 @@
-![Scrum Process](https://i.imgur.com/JHIOZLb.png)
+[](https://i.imgur.com/JHIOZLb.png)

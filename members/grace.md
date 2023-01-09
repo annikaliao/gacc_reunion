@@ -16,6 +16,7 @@ p {
   </div>
   <div class="column">
     <p>Hello! My name is Grace Wang and I am a junior at Del Norte High School. I am the <b>Scrum Master</b> of our project.</p>
+    <p>My GitHub: <a href="https://github.com/gwang1224">link</a></p>
   </div>
 </div>
 

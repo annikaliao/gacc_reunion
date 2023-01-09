@@ -1,1 +1,1 @@
-![scrumboard](https://i.imgur.com/JHIOZLb.png)
+![Scrum Process](https://i.imgur.com/JHIOZLb.png)

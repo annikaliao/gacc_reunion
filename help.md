@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <style media="screen">
-        body {
+        /* body {
             background-image: linear-gradient(
                 to right, white, pink);
-        }
+        } */
     </style>
 </head>
   

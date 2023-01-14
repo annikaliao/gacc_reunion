@@ -70,11 +70,22 @@
    }  
 </script>
 
+<a href="#Trouble_Sleeping">Trouble Sleeping</a>
+<br><a href="#Acne">Acne</a>
+<br><a href="#Joint_Pain">Joint Pain</a>
+<br><a href="#Lower_Back_Pain">Lower Back Pain</a>
+<br><a href="#Fatigue">Fatigue</a>
+<br><a href="#Bloating">Bloating</a>
+<br><a href="#Headaches">Headaches</a>
+<br><a href="#Tender_Breasts">Tender Breasts</a>
+<br><a href="#Muscle_Aches">Muscle Aches</a>
+<br><a href="#Diarrhea_or_Constipation">Diarrhea or Constipation</a>
+
 <p>To better take care of yourself during your period, keep in mind the symptoms you may face and know when you should go see a doctor. <p>
 
 <div class="row">
   <div class="column">
-    <h2>Trouble Sleeping</h2>
+    <h2><a id="Trouble_Sleeping">Trouble Sleeping</a></h2>
     <p>...</p>
   </div>
   <div class="column">
@@ -85,7 +96,7 @@
 
 <div class="row">
   <div class="column">
-    <h2>Acne</h2>
+    <h2><a id="Acne">Acne</a></h2>
     <p>...</p>
   </div>
   <div class="column">
@@ -96,7 +107,7 @@
 
 <div class="row">
   <div class="column">
-    <h2>Joint Pain</h2>
+    <h2><a id="Joint_Pain">Joint Pain</a></h2>
     <p>...</p>
   </div>
   <div class="column">
@@ -107,7 +118,7 @@
 
 <div class="row">
   <div class="column">
-    <h2>Lower back pain</h2>
+    <h2><a id="Lower_Back_Pain">Lower Back pain</a></h2>
     <p>...</p>
   </div>
   <div class="column">
@@ -118,7 +129,7 @@
 
 <div class="row">
   <div class="column">
-    <h2>Fatigue</h2>
+    <h2><a id="Fatigue">Fatigue</a></h2>
     <p>...</p>
   </div>
   <div class="column">
@@ -129,7 +140,7 @@
 
 <div class="row">
   <div class="column">
-    <h2>Bloating</h2>
+    <h2><a id="Bloating">Bloating</a></h2>
     <p>...</p>
   </div>
   <div class="column">
@@ -140,7 +151,7 @@
 
 <div class="row">
   <div class="column">
-    <h2>Abdominal cramps</h2>
+    <h2><a id="Abdominal Cramps">Abdominal Cramps</a></h2>
     <p>...</p>
   </div>
   <div class="column" >
@@ -151,7 +162,7 @@
 
 <div class="row">
   <div class="column">
-    <h2>Headaches</h2>
+    <h2><a id="Headaches">Headaches</a></h2>
     <p>...</p>
   </div>
   <div class="column">
@@ -161,7 +172,7 @@
 </div>
 <div class="row">
   <div class="column">
-    <h2>Tender breasts</h2>
+    <h2><a id="Tender_Breasts">Tender Breasts</a></h2>
     <p>...</p>
   </div>
   <div class="column">
@@ -171,7 +182,7 @@
 </div>
 <div class="row">
   <div class="column">
-    <h2>Muscle aches</h2>
+    <h2><a id="Muscle_Aches">Muscle Aches</a></h2>
     <p>...</p>
   </div>
   <div class="column">
@@ -181,7 +192,7 @@
 </div>
 <div class="row">
   <div class="column">
-    <h2>Diarrhea or constipation</h2>
+    <h2><a id="Diarrhea or Constipation">Diarrhea or Constipation</a></h2>
     <p>...</p>
   </div>
   <div class="column">

@@ -4,7 +4,6 @@
 <style>
 * {box-sizing: border-box;}
 ul {list-style-type: none;}
-body {font-family: Verdana, sans-serif;}
 
 .month {
   padding: 60px 25px;

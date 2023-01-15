@@ -31,6 +31,10 @@
         <div id="title">
           <h1><a href={{ site.gitorg }}>{{ site.title | default: site.github.repository_name }}</a></h1>
           <p>{{ site.description | default: site.github.project_tagline }}</p>
+          {% include login.html %}
+          <button action="javascript:" onclick="openForm()" style="color: darkred; background-color: #ffffff00; border: none; background-color: clear; position: fixed; top:5.5%; right:7%; font-size: 20px; font-weight: bold;">
+            Sign in
+          </button>
           <hr>
           {% include home.html %}
         </div>

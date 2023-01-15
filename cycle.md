@@ -6,9 +6,6 @@
 ul {
   list-style-type: none;
   }
-body {
-  font-family: Verdana, sans-serif;
-  }
 button {
   padding: 10px;
   background-color: darkred;
@@ -26,7 +23,7 @@ input {
   color: white;
   font-size: 20px;
 }
-.tracker form {
+.tracker {
   background-color: pink;
 }
 .month {
@@ -102,9 +99,9 @@ input {
 
 <h1>Cycle Tracker</h1>
 
-<div class="tracker">
+<div>
   <form class="tracker">
-    <table>
+    <table align="center">
       <tr id="q">
         <td>When was the first day of your last period?</td>
         <td>How many days did it last?</td>

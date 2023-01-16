@@ -21,65 +21,62 @@
 <body>
 <form>
 <p>What are your symptoms:</p>
-<input type="checkbox" name="symptoms" id="sym1" value="trouble_sleeping" onclick="return ValidateSelection();">
-<label for="sym1">Trouble Sleeping</label>
+
+<input type="checkbox" id = "chk1" name="symptoms" value="trouble_sleeping" onclick="fDisplay();"> Trouble Sleeping
 <br>
-<input form="myForm" type="checkbox" name="symptoms" id="sym2"  value="acne" onclick="return ValidateSelection();"> 
-<label for="sym2">Acne</label>
+<input type="checkbox" id = "chk2" name="symptoms" value="acne" onclick="fDisplay();"> Acne
 <br>
-<input form="myForm" type="checkbox" name="symptoms" id="sym3"  value="joint_pain" onclick="return ValidateSelection();"> 
-<label for="sym3">Joint Pain</label>
+<input type="checkbox" id = "chk3" name="symptoms" value="joint_pain" onclick="fDisplay();"> Joint Pain
 <br>
-<input type="checkbox" name="symptoms" id="sym4" value="lower_back_pain" onclick="return ValidateSelection();"> 
-<label for="sym4">Lower Back Pain</label>
+<input type="checkbox" id = "chk4" name="symptoms" value="lower_back_pain" onclick="fDisplay();"> Lower Back Pain
 <br>
-<input type="checkbox" name="symptoms" id="sym5" value="fatigue" onclick="return ValidateSelection();"> 
-<label for="sym4">Fatigue</label>
+<input type="checkbox" id = "chk5" name="symptoms" value="fatigue" onclick="fDisplay();"> Fatigue
 <br>
-<input type="checkbox" name="symptoms" id="sym6" value="bloating" onclick="return ValidateSelection();"> 
-<label for="sym4">Bloating</label>
+<input type="checkbox" id = "chk6" name="symptoms" value="bloating" onclick="fDisplay();"> Bloating
 <br>
-<input type="checkbox" name="symptoms" id="sym7" value="abdominal pain" onclick="return ValidateSelection();">
-<label for="sym4">Abdominal Pain</label>
+<input type="checkbox" id = "chk7" name="symptoms" value="abdominal pain" onclick="fDisplay();"> Abdominal Pain
 <br>
-<input type="checkbox" name="symptoms" id="sym8" value="headaches" onclick="return ValidateSelection();"> 
-<label for="sym4">Headaches</label>
+<input type="checkbox" id = "chk8" name="symptoms" value="headaches" onclick="fDisplay();"> Headaches 
 <br>
-<input type="checkbox" name="symptoms" id="sym9" value="tender_breasts" onclick="return ValidateSelection();">
-<label for="sym4">Tender Breasts</label>
+<input type="checkbox" id = "chk9" name="symptoms" value="tender_breasts" onclick="fDisplay();"> Tender Breasts
 <br>
-<input type="checkbox" name="symptoms" id="sym10" value="muscle_aches" onclick="return ValidateSelection();">
-<label for="sym4">Muscle Aches</label>
+<input type="checkbox" id = "chk10" name="symptoms" value="muscle_aches" onclick="fDisplay();"> Muscle Aches
 <br>
-<input type="checkbox" name="symptoms" id="sym11" value="diarrhea_or_constipation" onclick="return ValidateSelection();">
-<label for="sym4">Diarrhea or Constipation</label>
+<input type="checkbox" id = "chk11" name="symptoms" value="diarrhea_or_constipation" onclick="fDisplay();"> Diarrhea or Constipation
 </form>
 
-<p><input type="submit" value="Submit"></p>
-    
-<script type="text/javascript">  
-   function ValidateSelection()  
-   {  
-       var check_box = document.getElementsByName("symptoms");  
-       var CheckedItems = 0; 
-       for(var i = 0; i < check_box.length; i++)  
-       {  
-           if(check_box[i].checked)  
-               CheckedItems++;  
-       }   
-   }  
-</script>
+<button type="button" onclick ="fDisplay()">See Remedies</button>
+<br><a id = "s1" href="#Trouble_Sleeping">Trouble Sleeping</a>
+<br><a id = "s2" href="#Acne">Acne</a>
+<br><a id = "s3" href="#Joint_Pain">Joint Pain</a>
+<br><a id = "s4" href="#Lower_Back_Pain">Lower Back Pain</a>
+<br><a id = "s5" href="#Fatigue">Fatigue</a>
+<br><a id = "s6" href="#Bloating">Bloating</a>
+<br><a id = "s7" href="#Abdominal_Pain">Abdominal Pain</a>
+<br><a id = "s8" href="#Headaches">Headaches</a>
+<br><a id = "s9" href="#Tender_Breasts">Tender Breasts</a>
+<br><a id = "s10" href="#Muscle_Aches">Muscle Aches</a>
+<br><a id = "s11" href="#Diarrhea_or_Constipation">Diarrhea or Constipation</a>
 
-<a href="#Trouble_Sleeping">Trouble Sleeping</a>
-<br><a href="#Acne">Acne</a>
-<br><a href="#Joint_Pain">Joint Pain</a>
-<br><a href="#Lower_Back_Pain">Lower Back Pain</a>
-<br><a href="#Fatigue">Fatigue</a>
-<br><a href="#Bloating">Bloating</a>
-<br><a href="#Headaches">Headaches</a>
-<br><a href="#Tender_Breasts">Tender Breasts</a>
-<br><a href="#Muscle_Aches">Muscle Aches</a>
-<br><a href="#Diarrhea_or_Constipation">Diarrhea or Constipation</a>
+<script>
+fHide();
+    function fHide()
+   {
+    for (var i =1; i <12;i++){
+      document.getElementById("s"+ i).style.visibility = "hidden";
+      }
+   } 
+   function fDisplay()
+   {
+    for (var i =1; i <12;i++)
+      if (document.getElementById("chk"+ i).checked==true){
+        document.getElementById("s"+ i).style.visibility = "";
+      }
+    else{
+      document.getElementById =("s"+ i).style.visibility = "hidden";
+      }
+   }
+</script>
 
 <p>To better take care of yourself during your period, keep in mind the symptoms you may face and know when you should go see a doctor. <p>
 
@@ -200,3 +197,4 @@
     <p>...</p>
   </div>
 </div>
+</body>

@@ -108,14 +108,14 @@ input {
         <td>How long is your usual menstrual cycle?</td>
       </tr>
       <tr id="input">
-        <td><input type="date" id="last_period" required></td>
-        <td><input type="number" step="1" min="1" max="10" required></td>
-        <td><input type="number" step="1" min="10" max="50" required></td>
+        <td><input type="date" id="lastPeriod" required></td>
+        <td><input type="number" id="periodLength" step="1" min="1" max="10" required/></td>
+        <td><input type="number" id="cycleLength" step="1" min="10" max="50" required/></td>
       </tr>
       <tr>
         <td></td>
         <td>
-          <button>
+          <button id="track" onclick="printdate()">
             TRACK
           </button>
         </td>
@@ -124,9 +124,20 @@ input {
     </table>
   </form>
 </div>
+<p id="d"></p>
+<script>
+  var input = document.getElementById("cycleLength").value;
+  let d = new Date();
+  d.setDate(d.getDate() + input);
+  function printdate() {
+    document.getElementById("d").innerHTML = d;
+  }
+</script>
+
 <br>
   <h1 style="text-align: center; color: darkred;" >&#65086;</h1>
 <br>
+
 <div class="month">      
   <ul>
     <li class="prev">&#10094;</li>

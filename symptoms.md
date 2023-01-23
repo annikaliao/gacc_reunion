@@ -1,4 +1,24 @@
 <style>
+#myBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: white; /* Set a background color */
+  color: red; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+  font-size: 18px; /* Increase font size */
+}
+
+#myBtn:hover {
+  background-color: #555; /* Add a dark-grey background on hover */
+}
+
 * {
   box-sizing: border-box;
 }
@@ -22,42 +42,44 @@
 <form>
 <p>What are your symptoms:</p>
 
-<input type="checkbox" id = "chk1" name="symptoms" value="trouble_sleeping" onclick="fDisplay();"> Trouble Sleeping
+<input type="checkbox" id = "chk1" name="symptoms" value="trouble_sleeping"> Trouble Sleeping
 <br>
-<input type="checkbox" id = "chk2" name="symptoms" value="acne" onclick="fDisplay();"> Acne
+<input type="checkbox" id = "chk2" name="symptoms" value="acne"> Acne
 <br>
-<input type="checkbox" id = "chk3" name="symptoms" value="joint_pain" onclick="fDisplay();"> Joint Pain
+<input type="checkbox" id = "chk3" name="symptoms" value="joint_pain"> Joint Pain
 <br>
-<input type="checkbox" id = "chk4" name="symptoms" value="lower_back_pain" onclick="fDisplay();"> Lower Back Pain
+<input type="checkbox" id = "chk4" name="symptoms" value="lower_back_pain"> Lower Back Pain
 <br>
-<input type="checkbox" id = "chk5" name="symptoms" value="fatigue" onclick="fDisplay();"> Fatigue
+<input type="checkbox" id = "chk5" name="symptoms" value="fatigue"> Fatigue
 <br>
-<input type="checkbox" id = "chk6" name="symptoms" value="bloating" onclick="fDisplay();"> Bloating
+<input type="checkbox" id = "chk6" name="symptoms" value="bloating"> Bloating
 <br>
-<input type="checkbox" id = "chk7" name="symptoms" value="abdominal pain" onclick="fDisplay();"> Abdominal Pain
+<input type="checkbox" id = "chk7" name="symptoms" value="Abdominal_Cramps"> Abdominal Cramps
 <br>
-<input type="checkbox" id = "chk8" name="symptoms" value="headaches" onclick="fDisplay();"> Headaches 
+<input type="checkbox" id = "chk8" name="symptoms" value="headaches"> Headaches 
 <br>
-<input type="checkbox" id = "chk9" name="symptoms" value="tender_breasts" onclick="fDisplay();"> Tender Breasts
+<input type="checkbox" id = "chk9" name="symptoms" value="tender_breasts"> Tender Breasts
 <br>
-<input type="checkbox" id = "chk10" name="symptoms" value="muscle_aches" onclick="fDisplay();"> Muscle Aches
+<input type="checkbox" id = "chk10" name="symptoms" value="muscle_aches"> Muscle Aches
 <br>
-<input type="checkbox" id = "chk11" name="symptoms" value="diarrhea_or_constipation" onclick="fDisplay();"> Diarrhea or Constipation
+<input type="checkbox" id = "chk11" name="symptoms" value="diarrhea_or_constipation"> Diarrhea or Constipation
 </form>
 
-<button type="button" onclick ="fDisplay()">See Remedies</button>
+<button type="button" onclick ="fDisplay()">See Remedies To...</button>
+
 <br><a id = "s1" href="#Trouble_Sleeping">Trouble Sleeping</a>
 <br><a id = "s2" href="#Acne">Acne</a>
 <br><a id = "s3" href="#Joint_Pain">Joint Pain</a>
 <br><a id = "s4" href="#Lower_Back_Pain">Lower Back Pain</a>
 <br><a id = "s5" href="#Fatigue">Fatigue</a>
 <br><a id = "s6" href="#Bloating">Bloating</a>
-<br><a id = "s7" href="#Abdominal_Pain">Abdominal Pain</a>
+<br><a id = "s7" href="#Abdominal_Cramps">Abdominal Cramps</a>
 <br><a id = "s8" href="#Headaches">Headaches</a>
 <br><a id = "s9" href="#Tender_Breasts">Tender Breasts</a>
 <br><a id = "s10" href="#Muscle_Aches">Muscle Aches</a>
 <br><a id = "s11" href="#Diarrhea_or_Constipation">Diarrhea or Constipation</a>
 
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 <script>
 fHide();
     function fHide()
@@ -73,9 +95,22 @@ fHide();
         document.getElementById("s"+ i).style.visibility = "";
       }
     else{
-      document.getElementById =("s"+ i).style.visibility = "hidden";
+        document.getElementById("s"+ i).style.visibility = "hidden";
       }
    }
+let mybutton = document.getElementById("myBtn");
+window.onscroll = function() {scrollFunction()};
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+function topFunction() {
+  document.body.scrollTop = 0; 
+  document.documentElement.scrollTop = 0; 
+}
 </script>
 
 <p>To better take care of yourself during your period, keep in mind the symptoms you may face and know when you should go see a doctor. <p>
@@ -83,118 +118,156 @@ fHide();
 <div class="row">
   <div class="column">
     <h2><a id="Trouble_Sleeping">Trouble Sleeping</a></h2>
-    <p>...</p>
+    <p>- heating pad<br>
+    - hot tea/water<br>
+    - maintain a healthy and balanced diet<br>
+    - cut down on alcohol and caffeine</p>
   </div>
   <div class="column">
-    <h2>...</h2>
-    <p>...</p>
+    <h2></h2>
+    <p></p>
   </div>
 </div>
 
 <div class="row">
   <div class="column">
     <h2><a id="Acne">Acne</a></h2>
-    <p>...</p>
+    <p>- don't touch your face<br>
+    - salicylic acid<br>
+    - birth control(consult a doctor)<br>
+    - drink a sufficient amount of water<br>
+    acne is normal, so don't feel too bad about having it:)</p>
   </div>
   <div class="column">
-    <h2>...</h2>
-    <p>...</p>
+    <h2></h2>
+    <p></p>
   </div>
 </div>
 
 <div class="row">
   <div class="column">
     <h2><a id="Joint_Pain">Joint Pain</a></h2>
-    <p>...</p>
+    <p>Make sure you are not deficient in:<br>
+    - Vitamin D<br>
+    - Magnesium<br>
+    but, if immediate relief is needed, magnesium gel or pain medication could help as well.</p>
   </div>
   <div class="column">
-    <h2>...</h2>
-    <p>...</p>
+    <h2></h2>
+    <p></p>
   </div>
 </div>
 
 <div class="row">
   <div class="column">
     <h2><a id="Lower_Back_Pain">Lower Back pain</a></h2>
-    <p>...</p>
-  </div>
+    <p>- heating pad<br>
+    - hot shower or bath<br>
+    - mild exercise/ stretching<br>
+    - massage
+    <p>
   <div class="column">
-    <h2>...</h2>
-    <p>...</p>
-  </div>
-</div>
+    <h2></h2>
+    <p></p>
 
 <div class="row">
   <div class="column">
     <h2><a id="Fatigue">Fatigue</a></h2>
-    <p>...</p>
+    <p>- increase iron in your diet<br>
+    - drink more water<br>
+    - make sure you're getting a good night of sleep</p>
   </div>
   <div class="column">
-    <h2>...</h2>
-    <p>...</p>
+    <h2></h2>
+    <p></p>
   </div>
 </div>
 
 <div class="row">
   <div class="column">
     <h2><a id="Bloating">Bloating</a></h2>
-    <p>...</p>
+    <p>- eat more whole foods<br>
+    - exercise regularly<br>
+    - birth control (consult a doctor)</p>
   </div>
   <div class="column">
-    <h2>...</h2>
-    <p>...</p>
+    <h2></h2>
+    <p></p>
   </div>
 </div>
 
 <div class="row">
   <div class="column">
-    <h2><a id="Abdominal Cramps">Abdominal Cramps</a></h2>
-    <p>...</p>
+    <h2><a id="Abdominal_Cramps">Abdominal Cramps</a></h2>
+    <p>- heating pad<br>
+    - herbal tea<br>
+    - pain medication<br>
+    - yoga<br>
+    - increase magnesium intake<br>
+    - birth control(consult doctor)<br>
+    if severe, go to the doctor to see if it might be:<br>
+      - endometriosis<br>
+      - uterine fibrosis<br>
+    etc.</p>
   </div>
   <div class="column" >
-    <h2>...</h2>
-    <p>...</p>
+    <h2></h2>
+    <p></p>
   </div>
 </div>
-
+<br>
+<br>
+<br>
+<br>
 <div class="row">
   <div class="column">
     <h2><a id="Headaches">Headaches</a></h2>
-    <p>...</p>
+    <p>- pain medication
+    - ice on forehead of neck<br>
+    - acupuncture<br>
+    - massage<br>
+    - hot tea or water<br>
+    - magnesium</p>
   </div>
   <div class="column">
-    <h2>...</h2>
-    <p>...</p>
+    <h2></h2>
+    <p></p>
   </div>
 </div>
 <div class="row">
   <div class="column">
     <h2><a id="Tender_Breasts">Tender Breasts</a></h2>
-    <p>...</p>
+    <p>- apply warm or cold compress<br>
+    - wear a comfortable bra<br>
+    - limit caffeine intake<br>
+    if severe, go to doctor to check if everything is ok</p>
   </div>
   <div class="column">
-    <h2>...</h2>
-    <p>...</p>
+    <h2></h2>
+    <p></p>
   </div>
 </div>
 <div class="row">
   <div class="column">
     <h2><a id="Muscle_Aches">Muscle Aches</a></h2>
-    <p>...</p>
+    <p>- exercise<br>
+    - have a balanced diet<br>
+    - get a good amount of sleep</p>
   </div>
   <div class="column">
-    <h2>...</h2>
-    <p>...</p>
+    <h2></h2>
+    <p></p>
   </div>
 </div>
 <div class="row">
   <div class="column">
-    <h2><a id="Diarrhea or Constipation">Diarrhea or Constipation</a></h2>
-    <p>...</p>
+    <h2><a id="Diarrhea_or_Constipation">Diarrhea or Constipation</a></h2>
+    <p>- have a fiber dense diet<br>
+    - drink water<br>
+    - avoid sugar and caffeine</p>
   </div>
   <div class="column">
-    <h2>...</h2>
-    <p>...</p>
+    <h2></h2>
+    <p></p>
   </div>
 </div>
-</body>

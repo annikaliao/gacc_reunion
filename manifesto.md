@@ -10,4 +10,4 @@
 - **Clear communication of group deadlines** to stay on top of things 
 - **Everyone's best interest!**
 
-<p style="text-align: center;">Annika Liao<br>Claire Chen<br>Claire Zhao<br>Grace Wang</p>
+<p style="text-align: center;">Annika Liao<br>Claire Chen<br>Claire Zhao<br>Grace Wang<br>Saavan Gade</p>

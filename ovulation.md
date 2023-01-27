@@ -69,6 +69,10 @@ ul {list-style-type: none;}
   color: white !important
 }
 
+.active .red{
+  color: #8B0000;
+}
+
 /* Add media queries for smaller screens */
 @media screen and (max-width:720px) {
   .weekdays li, .days li {width: 13.1%;}
@@ -134,7 +138,7 @@ ul {list-style-type: none;}
   <li><span class="active">24</span></li>
   <li><span class="active">25</span></li>
   <li><span class="active">26</span></li>
-  <li><span class="active">27</span></li>
+  <li><span class="active" style="color: #8B0000; ">27</span></li>
   <li><span class="active">28</span></li>
   <li>29</li>
   <li>30</li>

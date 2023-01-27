@@ -65,11 +65,10 @@ ul {list-style-type: none;}
 
 .days li .active {
   padding: 6px;
-  background: #ADD8E6;
-  color: white !important
+  background: #ADD8E6;s
 }
 
-.active .red{
+red{
   color: #8B0000;
 }
 
@@ -138,7 +137,7 @@ ul {list-style-type: none;}
   <li><span class="active">24</span></li>
   <li><span class="active">25</span></li>
   <li><span class="active">26</span></li>
-  <li><span class="active" style="color: #8B0000; ">27</span></li>
+  <li style="color:red"><span class="active">27</span></li>
   <li><span class="active">28</span></li>
   <li>29</li>
   <li>30</li>

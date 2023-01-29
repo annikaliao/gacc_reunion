@@ -8,7 +8,7 @@
   border: none; /* Remove borders */
   outline: none; /* Remove outline */
   background-color: white; /* Set a background color */
-  color: red; /* Text color */
+  color: DarkRed; /* Text color */
   cursor: pointer; /* Add a mouse pointer on hover */
   padding: 15px; /* Some padding */
   border-radius: 10px; /* Rounded corners */
@@ -37,35 +37,38 @@
   display: table;
   clear: both;
 }
+ input {
+  color: white;
+}  
 </style>
 <body>
 <form>
 <p>What are your symptoms:</p>
 
-<input type="checkbox" id = "chk1" name="symptoms" value="trouble_sleeping"> Trouble Sleeping
+<input type="checkbox" id = "chk1" name="symptoms" value="trouble_sleeping"><font color="#FFFFFF"> Trouble Sleeping</font>
 <br>
-<input type="checkbox" id = "chk2" name="symptoms" value="acne"> Acne
+<input type="checkbox" id = "chk2" name="symptoms" value="acne" style="color: white"><font color="#FFFFFF"> Acne</font>
 <br>
-<input type="checkbox" id = "chk3" name="symptoms" value="joint_pain"> Joint Pain
+<input type="checkbox" id = "chk3" name="symptoms" value="joint_pain" style="color: white"><font color="#FFFFFF"> Joint Pain</font>
 <br>
-<input type="checkbox" id = "chk4" name="symptoms" value="lower_back_pain"> Lower Back Pain
+<input type="checkbox" id = "chk4" name="symptoms" value="lower_back_pain" style="color: white"><font color="#FFFFFF"> Lower Back Pain</font> 
 <br>
-<input type="checkbox" id = "chk5" name="symptoms" value="fatigue"> Fatigue
+<input type="checkbox" id = "chk5" name="symptoms" value="fatigue" style="color: white"><font color="#FFFFFF"> Fatigue</font> 
 <br>
-<input type="checkbox" id = "chk6" name="symptoms" value="bloating"> Bloating
+<input type="checkbox" id = "chk6" name="symptoms" value="bloating" style="color: white"><font color="#FFFFFF"> Bloating</font> 
 <br>
-<input type="checkbox" id = "chk7" name="symptoms" value="Abdominal_Cramps"> Abdominal Cramps
+<input type="checkbox" id = "chk7" name="symptoms" value="Abdominal_Cramps" style="color: white"><font color="#FFFFFF"> Abdominal Cramps</font> 
 <br>
-<input type="checkbox" id = "chk8" name="symptoms" value="headaches"> Headaches 
+<input type="checkbox" id = "chk8" name="symptoms" value="headaches" style="color: white"><font color="#FFFFFF"> Headaches</font> 
 <br>
-<input type="checkbox" id = "chk9" name="symptoms" value="tender_breasts"> Tender Breasts
+<input type="checkbox" id = "chk9" name="symptoms" value="tender_breasts" style="color: white"><font color="#FFFFFF"> Tender Breasts</font> 
 <br>
-<input type="checkbox" id = "chk10" name="symptoms" value="muscle_aches"> Muscle Aches
+<input type="checkbox" id = "chk10" name="symptoms" value="muscle_aches" style="color: white"><font color="#FFFFFF"> Muscle Aches</font> 
 <br>
-<input type="checkbox" id = "chk11" name="symptoms" value="diarrhea_or_constipation"> Diarrhea or Constipation
+<input type="checkbox" id = "chk11" name="symptoms" value="diarrhea_or_constipation" style="color: white"><font color="#FFFFFF"> Diarrhea or Constipation</font> 
 </form>
 
-<button type="button" onclick ="fDisplay()">See Remedies To...</button>
+<button type="button" onclick ="fDisplay()" style = "color: white">See Remedies To:</button>
 
 <br><a id = "s1" href="#Trouble_Sleeping">Trouble Sleeping</a>
 <br><a id = "s2" href="#Acne">Acne</a>

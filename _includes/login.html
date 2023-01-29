@@ -1,21 +1,23 @@
+<!-- https://codepen.io/FlorinPop17/pen/vPKWjd -->
+
 <style>
     #login {
         display: none;
-        color: darkred;
-        width: 60%;
+        color: white;
+        width: 40%;
         height: 80%;
-        padding: 5%;
+        padding: 10%;
         padding-top: 5px;
-        background-color: #f8f8f8;
+        background-color: darkred;
         position: fixed;
         left: 50%;
         top: 5%;
         transform: translate(-50%, 5%);
-        border: 3px solid #999999;
         z-index: 0;
+        border-radius: 20px;
     }
     label {
-        color: darkred;
+        color: white;
         font-size: 75%;
     }
     .cancel {
@@ -27,12 +29,33 @@
         font-weight: bold;
     }
     button {
-        background-color: darkred;
+	border-radius: 20px;
+	background-color: white;
+	color: darkred;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+button:active {
+	transform: scale(0.95);
+}
+
+button:focus {
+	outline: none;
+}
+
+    body {
+        font-size:larger;
     }
+
 </style>
 <body>
 <form onsubmit="create_User()" id="login">
-    <h1><label>Create an account to receive calender reminders!</label></h1>
+    <h1><label><center>Login</center></label></h1>
     <br>
     <p><label>
         Name:
@@ -62,11 +85,17 @@
     </label></p>
     <br>
     <p>
-        <button>Create</button>
+        <button>Sign in</button>
     </p>
-    <button type="button" class="cancel" onclick="closeForm()">x</button>
+    <p class="font-size: small"><u>Don't have an account? Sign up!</u></p>
+    <button type="button" class="cancel" style="color:white" onclick="closeForm()">x</button>
 </form>
 </body>
+
+
+
+
+
 <script>
     function openForm() {
         document.getElementById("login").style.display = "block";

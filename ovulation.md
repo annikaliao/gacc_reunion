@@ -1,4 +1,4 @@
-<p> Ovulation is the process in which a mature egg is released from the ovary. After it's released, the egg moves down the fallopian tube and stays there for 12 to 24 hours, where it can be fertilized. This period of time usually occurs 12-14 days before your next period. </p>
+<p> Ovulation is the process in which a mature egg is released from the ovary. After it's released, the egg moves down the fallopian tube and stays there for 12 to 24 hours, where it can be fertilized. This period of time usually occurs 12-14 days before your next period and typically lasts 6 days. </p>
 
 <head>
 <style>
@@ -65,8 +65,11 @@ ul {list-style-type: none;}
 
 .days li .active {
   padding: 6px;
-  background: red;
-  color: white !important
+  background: #ADD8E6;s
+}
+
+red{
+  color: #8B0000;
 }
 
 /* Add media queries for smaller screens */
@@ -116,7 +119,7 @@ ul {list-style-type: none;}
   <li>6</li>
   <li>7</li>
   <li>8</li>
-  <li><span class="active">9</span></li>
+  <li>9</li>
   <li>10</li>
   <li>11</li>
   <li>12</li>
@@ -130,12 +133,12 @@ ul {list-style-type: none;}
   <li>20</li>
   <li>21</li>
   <li>22</li>
-  <li>23</li>
-  <li>24</li>
-  <li>25</li>
-  <li>26</li>
-  <li>27</li>
-  <li>28</li>
+  <li><span class="active">23</span></li>
+  <li><span class="active">24</span></li>
+  <li><span class="active">25</span></li>
+  <li><span class="active">26</span></li>
+  <li style="color:red"><span class="active">27</span></li>
+  <li><span class="active">28</span></li>
   <li>29</li>
   <li>30</li>
   <li>31</li>

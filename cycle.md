@@ -12,6 +12,7 @@ button {
   border-radius: 10px;
   text-align: center;
   justify-content: center;
+  color: darkred;
 }
 input {
   color: black;
@@ -20,7 +21,7 @@ input {
   padding: 20px;
   width: 33.3%;
   text-align: center;
-  color: white;
+  color: darkred;
   font-size: 20px;
 }
 .tracker {
@@ -115,7 +116,7 @@ input {
       <tr>
         <td></td>
         <td>
-          <button id="track" onclick="printdate()">
+          <button class="track" onclick="printdate()">
             TRACK
           </button>
         </td>
@@ -126,7 +127,8 @@ input {
 </div>
 <p id="d"></p>
 <script>
-  var input = document.getElementById("cycleLength").value;
+  var cycleLenght = "cycleLength"
+  document.getElementById("cycleLength").value = cycleLength;
   let d = new Date();
   d.setDate(d.getDate() + input);
   function printdate() {
@@ -168,7 +170,7 @@ input {
   <li>6</li>
   <li>7</li>
   <li>8</li>
-  <li><span class="active">9</span></li>
+  <li>9</li>
   <li>10</li>
   <li>11</li>
   <li>12</li>
@@ -183,11 +185,11 @@ input {
   <li>21</li>
   <li>22</li>
   <li>23</li>
-  <li>24</li>
-  <li>25</li>
-  <li>26</li>
-  <li>27</li>
-  <li>28</li>
+  <li><span class="active">24</span></li>
+  <li><span class="active">25</span></li>
+  <li><span class="active">26</span></li>
+  <li><span class="active">27</span></li>
+  <li><span class="active">28</span></li>
   <li>29</li>
   <li>30</li>
   <li>31</li>
@@ -201,7 +203,7 @@ input {
 {% include login.html %}
 
 <button action="javascript:" onclick="openForm()">
-  <p style="color: white;">Get reminders through phone or email!</p>
+  <p style="color: darkred;">Get reminders through phone or email!</p>
 </button>
 
 </body>

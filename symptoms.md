@@ -40,6 +40,9 @@
  input {
   color: white;
 }  
+table, tr {
+  border:1px solid black;
+}
 </style>
 <body>
 <form>
@@ -68,7 +71,8 @@
 <input type="checkbox" id = "chk11" name="symptoms" value="diarrhea_or_constipation" style="color: white"><font color="#FFFFFF"> Diarrhea or Constipation</font> 
 </form>
 
-<button type="button" onclick ="fDisplay()" style = "color: white">See Remedies To:</button>
+<button type="button" onclick ="fDisplay()" style = "color: white"><font color="#000000"> See Remedies To:</font></button>
+
 
 <br><a id = "s1" href="#Trouble_Sleeping">Trouble Sleeping</a>
 <br><a id = "s2" href="#Acne">Acne</a>

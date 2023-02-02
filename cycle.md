@@ -6,6 +6,13 @@
 ul {
   list-style-type: none;
   }
+.none {
+  display: none;
+}
+span {
+  color: white;
+  font-size: 30px;
+}
 button {
   padding: 10px;
   background-color: darkred;
@@ -116,26 +123,49 @@ input {
       <tr>
         <td></td>
         <td>
-          <button class="track" onclick="printdate()">
+          <button class="track" type="button" onclick="printDate()">
             TRACK
           </button>
         </td>
-        <td></td>
       </tr>
     </table>
   </form>
 </div>
-<p id="d"></p>
+<div>
+  <p style="font-size: 30px; color: darkred;">Next Period:</p>
+  <table>
+    <tr>
+      <td>
+        <span id="year1"></span>
+        <span id="month1"></span>
+        <span id="date1"></span>
+      </td>
+      <td>
+        <p style="text-align: center; color: darkred; font-weight:bolder;">&#x2964;</p>
+      </td>
+      <td>
+        <span id="year2"></span>
+        <span id="month2"></span>
+        <span id="date2"></span>
+      </td>
+    </tr>
+  </table>
+</div>
 <script>
-  var cycleLenght = "cycleLength"
-  document.getElementById("cycleLength").value = cycleLength;
-  let d = new Date();
-  d.setDate(d.getDate() + input);
-  function printdate() {
-    document.getElementById("d").innerHTML = d;
-  }
+	function printDate() {
+	    const x = document.getElementById("lastPeriod").value;
+		var y = document.getElementById("cycleLength").value;
+    var z = document.getElementById("periodLength").value;
+		var resDate = new Date(x) 
+		resDate.setDate(resDate.getDate()+parseInt(y));
+		document.getElementById("year1").innerHTML = resDate.getUTCFullYear() + " /" ;
+		document.getElementById("month1").innerHTML = resDate.getUTCMonth()+1 + " /";
+    document.getElementById("year2").innerHTML = resDate.getUTCFullYear() + " /" ;
+		document.getElementById("month2").innerHTML = resDate.getUTCMonth()+1 + " /";
+		document.getElementById("date1").innerHTML = resDate.getUTCDate();
+    document.getElementById("date2").innerHTML = resDate.getUTCDate() + parseInt(z);
+    }
 </script>
-
 <br>
   <h1 style="text-align: center; color: darkred;" >&#65086;</h1>
 <br>

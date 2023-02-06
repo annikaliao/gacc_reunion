@@ -143,5 +143,28 @@ red{
   <li>30</li>
   <li>31</li>
 </ul>
+<br>
+
+<form id="commentbox">
+<div>
+<textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1em;">
+Leave a comment!
+</textarea>
+</div>
+<input type="submit" value="Submit">
+</form>
+
+<button action="javascript:" onclick="openComment()">
+  <p style="color: darkred;">Comments!</p>
+</button>
 
 </body>
+
+<script>
+  function openComment() {
+    document.getElementById("commentbox").style.display = "block";
+    }
+  function closeComment() {
+    document.getElementById("commentbox").style.display = "none";
+    }
+</script>

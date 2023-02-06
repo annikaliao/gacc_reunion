@@ -326,7 +326,7 @@ function topFunction() {
   </div>
   <div class="column">
     <h2><font color="#8B0000">Products and Other Resources</font></h2>
-    <p>-  <a href="https://www.amazon.com/Benefiber-Prebiotic-Supplement-Digestive-Taste-Free/dp/B01978FIZC/ref=sr_1_5?crid=2NH2N9FLFAB5I&keywords=fiber+supplement&qid=1675661200&s=hpc&sprefix=fiber%2Chpc%2C391&sr=1-5">More on muscle Aches</a>
+    <p>-  <a href="https://www.amazon.com/Benefiber-Prebiotic-Supplement-Digestive-Taste-Free/dp/B01978FIZC/ref=sr_1_5?crid=2NH2N9FLFAB5I&keywords=fiber+supplement&qid=1675661200&s=hpc&sprefix=fiber%2Chpc%2C391&sr=1-5">Fiber Supplements</a>
     <br></p>
   </div>
 </div>

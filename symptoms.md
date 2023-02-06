@@ -22,27 +22,20 @@
 * {
   box-sizing: border-box;
 }
-
+<!---->
 .column {
   float: left;
-  width: 50%;
+  width: 100%;
   padding: 10px;
   height: 300px; 
 }
-
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
 
- input {
-  color: darkred;
-}  
-
-table, tr {
-  border:1px solid black;
-}
+<!--commentbox-->
 #comment-box, #post {
     border: none;
     border-radius: 5px;
@@ -50,6 +43,9 @@ table, tr {
 body {
   color: darkred;
 }
+input {
+  color: darkred;
+}  
 </style>
 <head>
     <meta charset="UTF-8">
@@ -258,6 +254,7 @@ function topFunction() {
   <div class="column" >
     <h2><font color="#8B0000">Products and Other Resources</font></h2>
     <p>-  <a href="https://www.amazon.com/GENIANI-Electric-Heating-Cramps-Relief/dp/B08MV3Z3GK/ref=sr_1_2_sspa?c=ts&keywords=Heating+Pads&qid=1675656453&s=hpc&sr=1-2-spons&ts_id=3763871&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyWjZOVFVaUjI1Rlo5JmVuY3J5cHRlZElkPUEwNjI4NTI2MTVXTlhUTVNSSDlFSyZlbmNyeXB0ZWRBZElkPUEwNDY0ODA4MllKOUVQQUpBQVlRSCZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=">Heating Pad</a>
+    <img src="https://i.imgur.com/CU7QTYl.png">
     <br>
     -  <a href="https://www.healthline.com/nutrition/tea-for-cramps">Herbal Tea</a>
     <br>

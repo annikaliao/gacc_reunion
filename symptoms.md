@@ -1,50 +1,70 @@
 <style>
 #myBtn {
-  display: none; /* Hidden by default */
-  position: fixed; /* Fixed/sticky position */
-  bottom: 20px; /* Place the button at the bottom of the page */
-  right: 30px; /* Place the button 30px from the right */
-  z-index: 99; /* Make sure it does not overlap */
-  border: none; /* Remove borders */
-  outline: none; /* Remove outline */
-  background-color: white; /* Set a background color */
-  color: DarkRed; /* Text color */
-  cursor: pointer; /* Add a mouse pointer on hover */
-  padding: 15px; /* Some padding */
-  border-radius: 10px; /* Rounded corners */
-  font-size: 18px; /* Increase font size */
+  display: none; 
+  position: fixed; 
+  bottom: 20px; 
+  right: 30px; 
+  z-index: 99; 
+  border: none; 
+  outline: none; 
+  background-color: white; 
+  color: DarkRed; 
+  cursor: pointer; 
+  padding: 15px; 
+  border-radius: 10px; 
+  font-size: 18px; 
 }
 
 #myBtn:hover {
-  background-color: #555; /* Add a dark-grey background on hover */
+  background-color: #555; 
 }
 
 * {
   box-sizing: border-box;
 }
 
-/* Create two equal columns that floats next to each other */
 .column {
   float: left;
   width: 50%;
   padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
+  height: 300px; 
 }
 
-/* Clear floats after the columns */
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
+
  input {
-  color: white;
+  color: darkred;
 }  
+
 table, tr {
   border:1px solid black;
 }
+#comment-box, #post {
+    border: none;
+    border-radius: 5px;
+}
+body {
+  color: darkred;
+}
 </style>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comment Box</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
+<p>Add A Comment! What has Worked For You?</p>
+<input type="text" id="comment-box" placeholder="Enter comment">
+<button id="post">Post</button>
+<ul id="unordered">
+</ul>
+<script src="code.js"></script>
 <form>
 <p>What are your symptoms:</p>
 
@@ -73,7 +93,6 @@ table, tr {
 
 <button type="button" onclick ="fDisplay()" style = "color: white"><font color="#000000"> See Remedies To:</font></button>
 
-
 <br><a id = "s1" href="#Trouble_Sleeping">Trouble Sleeping</a>
 <br><a id = "s2" href="#Acne">Acne</a>
 <br><a id = "s3" href="#Joint_Pain">Joint Pain</a>
@@ -88,6 +107,14 @@ table, tr {
 
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 <script>
+var post= document.getElementById("post");
+post.addEventListener("click", function(){
+    var commentBoxValue= document.getElementById("comment-box").value;
+    var li = document.createElement("li");
+    var text = document.createTextNode(commentBoxValue);
+    li.appendChild(text);
+    document.getElementById("unordered").appendChild(li); 
+});
 fHide();
     function fHide()
    {
@@ -135,7 +162,6 @@ function topFunction() {
     <p></p>
   </div>
 </div>
-
 <div class="row">
   <div class="column">
     <h2><a id="Acne">Acne</a></h2>

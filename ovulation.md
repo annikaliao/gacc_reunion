@@ -137,7 +137,7 @@ red{
   <li><span class="active">24</span></li>
   <li><span class="active">25</span></li>
   <li><span class="active">26</span></li>
-  <li style="color:red"><span class="active">27</span></li>
+  <li><span class="active">27</span></li>
   <li><span class="active">28</span></li>
   <li>29</li>
   <li>30</li>

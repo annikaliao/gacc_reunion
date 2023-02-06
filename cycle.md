@@ -6,12 +6,20 @@
 ul {
   list-style-type: none;
   }
+.none {
+  display: none;
+}
+span {
+  color: white;
+  font-size: 30px;
+}
 button {
   padding: 10px;
   background-color: darkred;
   border-radius: 10px;
   text-align: center;
   justify-content: center;
+  color: darkred;
 }
 input {
   color: black;
@@ -20,11 +28,15 @@ input {
   padding: 20px;
   width: 33.3%;
   text-align: center;
-  color: white;
+  color: darkred;
   font-size: 20px;
 }
 .tracker {
   background-color: pink;
+}
+.date td {
+  padding: 20px;
+  width: 250px;;
 }
 .month {
   padding: 60px 25px;
@@ -82,16 +94,20 @@ input {
   color: white;
   font-weight: bold;
 }
-/* Add media queries for smaller screens */
-@media screen and (max-width:720px) {
-  .weekdays li, .days li {width: 13.1%;}
+.unhealthy {
+  display: inline-block;
+  font-size: 20px;
+  border-width: 10px;
+  border-color: darkred;
+  padding: 20px;
+  color: darkred;
+  border-radius: 10px;
 }
-@media screen and (max-width: 420px) {
-  .weekdays li, .days li {width: 12.5%;}
-  .days li .active {padding: 2px;}
+a {
+  color: black;
 }
-@media screen and (max-width: 290px) {
-  .weekdays li, .days li {width: 12.2%;}
+a.hover a.focus {
+  background: none;
 }
 </style>
 </head>
@@ -109,31 +125,60 @@ input {
       </tr>
       <tr id="input">
         <td><input type="date" id="lastPeriod" required></td>
-        <td><input type="number" id="periodLength" step="1" min="1" max="10" required/></td>
-        <td><input type="number" id="cycleLength" step="1" min="10" max="50" required/></td>
+        <td><input type="number" id="periodLength" step="1" min="1" max="10" placeholder="1-10" required/></td>
+        <td><input type="number" id="cycleLength" step="1" min="10" max="50" placeholder="10-50" required/></td>
       </tr>
       <tr>
         <td></td>
         <td>
-          <button id="track" onclick="printdate()">
+          <button class="track" type="button" onclick="printDate()">
             TRACK
           </button>
         </td>
-        <td></td>
       </tr>
     </table>
   </form>
 </div>
-<p id="d"></p>
+<div class="date">
+  <p style="font-size: 30px; color: darkred;">Next Period:</p>
+  <table>
+    <tr>
+      <td>
+        <span id="year1"></span>
+        <span id="month1"></span>
+        <span id="date1"></span>
+      </td>
+      <td>
+        <p style="text-align: center; color: darkred; font-weight:bolder; font-size: 20px;">&#x2964;</p>
+      </td>
+      <td>
+        <span id="year2"></span>
+        <span id="month2"></span>
+        <span id="date2"></span>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <span class="unhealthy" id="unhealthy"></span>
+</div>
 <script>
-  var input = document.getElementById("cycleLength").value;
-  let d = new Date();
-  d.setDate(d.getDate() + input);
-  function printdate() {
-    document.getElementById("d").innerHTML = d;
+	function printDate() {
+	  const x = document.getElementById("lastPeriod").value;
+		var y = document.getElementById("cycleLength").value;
+    const z = document.getElementById("periodLength").value;
+		var resDate = new Date();
+		resDate.setDate(resDate.getDate()+parseInt(y));
+		document.getElementById("year1").innerHTML = resDate.getUTCFullYear() + " /" ;
+		document.getElementById("month1").innerHTML = resDate.getUTCMonth()+1 + " /";
+    document.getElementById("year2").innerHTML = resDate.getUTCFullYear() + " /" ;
+		document.getElementById("month2").innerHTML = resDate.getUTCMonth()+1 + " /";
+		document.getElementById("date1").innerHTML = resDate.getUTCDate();
+    document.getElementById("date2").innerHTML = resDate.getUTCDate() + parseInt(z);
+    if(parseInt(z) <= 2) {
+      document.getElementById("unhealthy").innerHTML = "NOTICE: Your period is abnormally short. This may be a sign of some health concerns.   <a href=\"https://www.everydayhealth.com/pms/short-periods.aspx#:~:text=A%20short%20menstrual%20period%20might,even%20a%20serious%20medical%20problem.\">Learn More</a>" ;
+    } 
   }
 </script>
-
 <br>
   <h1 style="text-align: center; color: darkred;" >&#65086;</h1>
 <br>
@@ -168,7 +213,7 @@ input {
   <li>6</li>
   <li>7</li>
   <li>8</li>
-  <li><span class="active">9</span></li>
+  <li>9</li>
   <li>10</li>
   <li>11</li>
   <li>12</li>
@@ -183,11 +228,11 @@ input {
   <li>21</li>
   <li>22</li>
   <li>23</li>
-  <li>24</li>
-  <li>25</li>
-  <li>26</li>
-  <li>27</li>
-  <li>28</li>
+  <li><span class="active">24</span></li>
+  <li><span class="active">25</span></li>
+  <li><span class="active">26</span></li>
+  <li><span class="active">27</span></li>
+  <li><span class="active">28</span></li>
   <li>29</li>
   <li>30</li>
   <li>31</li>
@@ -201,7 +246,7 @@ input {
 {% include login.html %}
 
 <button action="javascript:" onclick="openForm()">
-  <p style="color: white;">Get reminders through phone or email!</p>
+  <p style="color: darkred;">Get reminders through phone or email!</p>
 </button>
 
 </body>

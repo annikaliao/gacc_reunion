@@ -153,18 +153,3 @@ Leave a comment!
 </div>
 <input type="submit" value="Submit">
 </form>
-
-<button action="javascript:" onclick="openComment()">
-  <p style="color: darkred;">Comments!</p>
-</button>
-
-</body>
-
-<script>
-  function openComment() {
-    document.getElementById("commentbox").style.display = "block";
-    }
-  function closeComment() {
-    document.getElementById("commentbox").style.display = "none";
-    }
-</script>

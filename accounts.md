@@ -10,42 +10,24 @@ td, th {
   color: white
 }
 </style>
-<body>
 
-<h2>Example of User Data</h2>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Phone</th>
-    <th>Action</th>
-  </tr>
-  <tr>
-    <td>Grace Wang</td>
-    <td>gracewang187@gmail.com</td>
-    <td>111-111-1111</td>
-    <td>Update, Delete</td>
-  </tr>
-  <tr>
-    <td>Claire Zhao</td>
-    <td>clairezhao@gmail.com</td>
-    <td>111-111-1111</td>
-    <td>Update, Delete</td>
-  </tr>
-  <tr>
-    <td>Annika Liao</td>
-    <td>annikaliao@gmail.com</td>
-    <td>111-111-1111</td>
-    <td>Update, Delete</td>
-  </tr>
-  <tr>
-    <td>Claire Chen</td>
-    <td>clairechen@gmail.com</td>
-    <td>111-111-1111</td>
-    <td>Update, Delete</td>
-  </tr>
-</table>
+<html>
+    <head>
+        <title>Sign UP</title>
+    </head>
+    <body>
+            <h1>Register</h1>
+            <form method="POST">
+                <br><br>
+                <input type="username" name="username" placeholder="Username"><br>
+                <input type="password" name="password" placeholder="Password"><br>
+                <input type="email" name="email" placeholder="Email"><br>
+                <input type="number" name="age" placeholder="Age"><br>
+                <br>
+                <input type="submit" value="Sign Up">
+            </form>
+    </body>
+</html>
 
 <!-- <script>
   // prepare HTML result container for new output

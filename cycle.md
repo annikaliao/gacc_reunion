@@ -34,6 +34,10 @@ input {
 .tracker {
   background-color: pink;
 }
+.date td {
+  padding: 20px;
+  width: 250px;;
+}
 .month {
   padding: 60px 25px;
   width: 100%;
@@ -90,16 +94,20 @@ input {
   color: white;
   font-weight: bold;
 }
-/* Add media queries for smaller screens */
-@media screen and (max-width:720px) {
-  .weekdays li, .days li {width: 13.1%;}
+.unhealthy {
+  display: inline-block;
+  font-size: 20px;
+  border-width: 10px;
+  border-color: darkred;
+  padding: 20px;
+  color: darkred;
+  border-radius: 10px;
 }
-@media screen and (max-width: 420px) {
-  .weekdays li, .days li {width: 12.5%;}
-  .days li .active {padding: 2px;}
+a {
+  color: black;
 }
-@media screen and (max-width: 290px) {
-  .weekdays li, .days li {width: 12.2%;}
+a.hover a.focus {
+  background: none;
 }
 </style>
 </head>
@@ -117,8 +125,8 @@ input {
       </tr>
       <tr id="input">
         <td><input type="date" id="lastPeriod" required></td>
-        <td><input type="number" id="periodLength" step="1" min="1" max="10" required/></td>
-        <td><input type="number" id="cycleLength" step="1" min="10" max="50" required/></td>
+        <td><input type="number" id="periodLength" step="1" min="1" max="10" placeholder="1-10" required/></td>
+        <td><input type="number" id="cycleLength" step="1" min="10" max="50" placeholder="10-50" required/></td>
       </tr>
       <tr>
         <td></td>
@@ -131,7 +139,7 @@ input {
     </table>
   </form>
 </div>
-<div>
+<div class="date">
   <p style="font-size: 30px; color: darkred;">Next Period:</p>
   <table>
     <tr>
@@ -141,7 +149,7 @@ input {
         <span id="date1"></span>
       </td>
       <td>
-        <p style="text-align: center; color: darkred; font-weight:bolder;">&#x2964;</p>
+        <p style="text-align: center; color: darkred; font-weight:bolder; font-size: 20px;">&#x2964;</p>
       </td>
       <td>
         <span id="year2"></span>
@@ -150,13 +158,15 @@ input {
       </td>
     </tr>
   </table>
+  <br>
+  <span class="unhealthy" id="unhealthy"></span>
 </div>
 <script>
 	function printDate() {
-	    const x = document.getElementById("lastPeriod").value;
+	  const x = document.getElementById("lastPeriod").value;
 		var y = document.getElementById("cycleLength").value;
-    var z = document.getElementById("periodLength").value;
-		var resDate = new Date(x) 
+    const z = document.getElementById("periodLength").value;
+		var resDate = new Date();
 		resDate.setDate(resDate.getDate()+parseInt(y));
 		document.getElementById("year1").innerHTML = resDate.getUTCFullYear() + " /" ;
 		document.getElementById("month1").innerHTML = resDate.getUTCMonth()+1 + " /";
@@ -164,7 +174,10 @@ input {
 		document.getElementById("month2").innerHTML = resDate.getUTCMonth()+1 + " /";
 		document.getElementById("date1").innerHTML = resDate.getUTCDate();
     document.getElementById("date2").innerHTML = resDate.getUTCDate() + parseInt(z);
-    }
+    if(parseInt(z) <= 2) {
+      document.getElementById("unhealthy").innerHTML = "NOTICE: Your period is abnormally short. This may be a sign of some health concerns.   <a href=\"https://www.everydayhealth.com/pms/short-periods.aspx#:~:text=A%20short%20menstrual%20period%20might,even%20a%20serious%20medical%20problem.\">Learn More</a>" ;
+    } 
+  }
 </script>
 <br>
   <h1 style="text-align: center; color: darkred;" >&#65086;</h1>

@@ -158,8 +158,10 @@ function topFunction() {
     - cut down on alcohol and caffeine</p>
   </div>
   <div class="column">
-    <h2></h2>
-    <p></p>
+    <h2><font color="#8B0000">Products and Other Resources</font></h2>
+    <p>-  <a href="https://www.amazon.com/GENIANI-Electric-Heating-Cramps-Relief/dp/B08MV3Z3GK/ref=sr_1_2_sspa?c=ts&keywords=Heating+Pads&qid=1675656453&s=hpc&sr=1-2-spons&ts_id=3763871&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyWjZOVFVaUjI1Rlo5JmVuY3J5cHRlZElkPUEwNjI4NTI2MTVXTlhUTVNSSDlFSyZlbmNyeXB0ZWRBZElkPUEwNDY0ODA4MllKOUVQQUpBQVlRSCZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=">Heating Pad</a>
+    <br>
+    -  <a href="https://thesleepdoctor.com/women/how-to-sleep-better-during-period/">How To Sleep Better On Your Period</a></p>
   </div>
 </div>
 <div class="row">
@@ -172,8 +174,10 @@ function topFunction() {
     acne is normal, so don't feel too bad about having it:)</p>
   </div>
   <div class="column">
-    <h2></h2>
-    <p></p>
+    <h2><font color="#8B0000">Products and Other Resources</font></h2>
+    <p>-  <a href="https://www.mayoclinic.org/diseases-conditions/acne/in-depth/acne-treatments/art-20045814">Skincare Ingredients for Acne</a>
+    <br>
+    -  <a href="https://www.healthline.com/health/skin/best-acne-treatment#our-picks">Skincare Products for Acne</a></p>
   </div>
 </div>
 
@@ -186,22 +190,29 @@ function topFunction() {
     but, if immediate relief is needed, magnesium gel or pain medication could help as well.</p>
   </div>
   <div class="column">
-    <h2></h2>
-    <p></p>
+    <h2><font color="#8B0000">Products and Other Resources</font></h2>
+    <p>-  <a href="https://www.amazon.com/Nature-Made-Strength-Softgels-Packaging/dp/B0828JGTXB/ref=sr_1_6?keywords=vitamin+D&qid=1675657135&s=hpc&sr=1-6">Vitamin D Supplements</a>
+    <br>
+    -  <a href="https://www.amazon.com/Nature-Made-Potency-Magnesium-Softgels/dp/B07CDWT8WM/ref=sr_1_5?crid=3A23V8L7FQYP8&keywords=magnesium&qid=1675657214&s=hpc&sprefix=Magne%2Chpc%2C182&sr=1-5">Magnesium Supplements</a>
+    <br>
+    -  <a href="https://www.amazon.com/NAOMI-Activated-Vitamin-Balanced-Function/dp/B08L3YC3X9/ref=sr_1_1_sspa?crid=17CK9OWRMXU1P&keywords=magnesium+and+vitamin+d&qid=1675657261&s=hpc&sprefix=magnesium+and+vitamin%2Chpc%2C185&sr=1-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyTlhYMUcyTzhYMVkyJmVuY3J5cHRlZElkPUEwNDIyODEyRFZIMENMTTgyTkFDJmVuY3J5cHRlZEFkSWQ9QTA3MDA5NTNONE1TSUJVU0RaUk4md2lkZ2V0TmFtZT1zcF9hdGYmYWN0aW9uPWNsaWNrUmVkaXJlY3QmZG9Ob3RMb2dDbGljaz10cnVl">Magnesium and Vitamin D Supplements</a></p>
   </div>
 </div>
-
 <div class="row">
   <div class="column">
     <h2><a id="Lower_Back_Pain">Lower Back pain</a></h2>
     <p>- heating pad<br>
     - hot shower or bath<br>
     - mild exercise/ stretching<br>
-    - massage
-    <p>
+    - massage</p>
+  </div>
   <div class="column">
-    <h2></h2>
-    <p></p>
+    <h2><font color="#8B0000">Products and Other Resources</font></h2>
+    <p>-  <a href="https://www.amazon.com/GENIANI-Electric-Heating-Cramps-Relief/dp/B08MV3Z3GK/ref=sr_1_2_sspa?c=ts&keywords=Heating+Pads&qid=1675656453&s=hpc&sr=1-2-spons&ts_id=3763871&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyWjZOVFVaUjI1Rlo5JmVuY3J5cHRlZElkPUEwNjI4NTI2MTVXTlhUTVNSSDlFSyZlbmNyeXB0ZWRBZElkPUEwNDY0ODA4MllKOUVQQUpBQVlRSCZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=">Heating Pad</a>
+    <br>
+    -  <a href="https://www.bing.com/videos/search?q=period+exercise&&view=detail&mid=C215C7B58F0D380AF5D3C215C7B58F0D380AF5D3&&FORM=VRDGAR&ru=%2Fvideos%2Fsearch%3Fq%3Dperiod%2Bexercise%26FORM%3DHDRSC3">Gentle Period Yoga</a></p>
+  </div>
+</div>
 
 <div class="row">
   <div class="column">
@@ -211,8 +222,9 @@ function topFunction() {
     - make sure you're getting a good night of sleep</p>
   </div>
   <div class="column">
-    <h2></h2>
-    <p></p>
+    <h2><font color="#8B0000">Products and Other Resources</font></h2>
+    <p>-  <a href="https://www.amazon.com/Nature-Made-Ferrous-Sulfate-Tablets/dp/B003PGJLRO/ref=sr_1_4?crid=21W7PCJE8UCPZ&keywords=iron+supplement&qid=1675659803&s=hpc&sprefix=iron+%2Chpc%2C196&sr=1-4">Iron Supplements</a>
+    </p>
   </div>
 </div>
 
@@ -224,8 +236,8 @@ function topFunction() {
     - birth control (consult a doctor)</p>
   </div>
   <div class="column">
-    <h2></h2>
-    <p></p>
+    <h2><font color="#8B0000">Products and Other Resources</font></h2>
+    <p>-  <a href="https://www.everydayhealth.com/diet-nutrition/whole-foods-diet/">Whole Foods</a></p>
   </div>
 </div>
 
@@ -244,8 +256,17 @@ function topFunction() {
     etc.</p>
   </div>
   <div class="column" >
-    <h2></h2>
-    <p></p>
+    <h2><font color="#8B0000">Products and Other Resources</font></h2>
+    <p>-  <a href="https://www.amazon.com/GENIANI-Electric-Heating-Cramps-Relief/dp/B08MV3Z3GK/ref=sr_1_2_sspa?c=ts&keywords=Heating+Pads&qid=1675656453&s=hpc&sr=1-2-spons&ts_id=3763871&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyWjZOVFVaUjI1Rlo5JmVuY3J5cHRlZElkPUEwNjI4NTI2MTVXTlhUTVNSSDlFSyZlbmNyeXB0ZWRBZElkPUEwNDY0ODA4MllKOUVQQUpBQVlRSCZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=">Heating Pad</a>
+    <br>
+    -  <a href="https://www.healthline.com/nutrition/tea-for-cramps">Herbal Tea</a>
+    <br>
+    -  <a href="https://www.amazon.com/Nature-Made-Potency-Magnesium-Softgels/dp/B07CDWT8WM/ref=sr_1_5?crid=3A23V8L7FQYP8&keywords=magnesium&qid=1675657214&s=hpc&sprefix=Magne%2Chpc%2C182&sr=1-5">Magnesium Supplements</a>
+    <br>
+    -  <a href="https://www.mayoclinic.org/diseases-conditions/endometriosis/symptoms-causes/syc-20354656">Endometriosis Symptoms and Causes</a>
+    <br>
+    -  <a href="https://www.mayoclinic.org/diseases-conditions/uterine-fibroids/symptoms-causes/syc-20354288">Uterine Fibrosis Symptoms and Causes</a>
+    <br></p>
   </div>
 </div>
 <br>
@@ -256,15 +277,17 @@ function topFunction() {
   <div class="column">
     <h2><a id="Headaches">Headaches</a></h2>
     <p>- pain medication
-    - ice on forehead of neck<br>
+    - ice on forehead or neck<br>
     - acupuncture<br>
     - massage<br>
     - hot tea or water<br>
     - magnesium</p>
   </div>
   <div class="column">
-    <h2></h2>
-    <p></p>
+    <h2><font color="#8B0000">Products and Other Resources</font></h2>
+    <p>-  <a href="https://www.amazon.com/Nature-Made-Potency-Magnesium-Softgels/dp/B07CDWT8WM/ref=sr_1_5?crid=3A23V8L7FQYP8&keywords=magnesium&qid=1675657214&s=hpc&sprefix=Magne%2Chpc%2C182&sr=1-5">Magnesium Supplements</a>
+    <br>
+    </p>
   </div>
 </div>
 <div class="row">
@@ -276,8 +299,9 @@ function topFunction() {
     if severe, go to doctor to check if everything is ok</p>
   </div>
   <div class="column">
-    <h2></h2>
-    <p></p>
+    <h2><font color="#8B0000">Products and Other Resources</font></h2>
+    <p>-  <a href="https://www.amazon.com/GENIANI-Electric-Heating-Cramps-Relief/dp/B08MV3Z3GK/ref=sr_1_2_sspa?c=ts&keywords=Heating+Pads&qid=1675656453&s=hpc&sr=1-2-spons&ts_id=3763871&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyWjZOVFVaUjI1Rlo5JmVuY3J5cHRlZElkPUEwNjI4NTI2MTVXTlhUTVNSSDlFSyZlbmNyeXB0ZWRBZElkPUEwNDY0ODA4MllKOUVQQUpBQVlRSCZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=">Heating Pad</a>
+    <br></p>
   </div>
 </div>
 <div class="row">
@@ -288,8 +312,9 @@ function topFunction() {
     - get a good amount of sleep</p>
   </div>
   <div class="column">
-    <h2></h2>
-    <p></p>
+    <h2><font color="#8B0000">Products and Other Resources</font></h2>
+    <p>-  <a href="https://www.healthline.com/health/muscle-aches">More on muscle Aches</a>
+    <br></p>
   </div>
 </div>
 <div class="row">
@@ -300,7 +325,8 @@ function topFunction() {
     - avoid sugar and caffeine</p>
   </div>
   <div class="column">
-    <h2></h2>
-    <p></p>
+    <h2><font color="#8B0000">Products and Other Resources</font></h2>
+    <p>-  <a href="https://www.amazon.com/Benefiber-Prebiotic-Supplement-Digestive-Taste-Free/dp/B01978FIZC/ref=sr_1_5?crid=2NH2N9FLFAB5I&keywords=fiber+supplement&qid=1675661200&s=hpc&sprefix=fiber%2Chpc%2C391&sr=1-5">More on muscle Aches</a>
+    <br></p>
   </div>
 </div>

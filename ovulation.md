@@ -1,6 +1,11 @@
 <p> Ovulation is the process in which a mature egg is released from the ovary. After it's released, the egg moves down the fallopian tube and stays there for 12 to 24 hours, where it can be fertilized. This period of time usually occurs 12-14 days before your next period and typically lasts 6 days. </p>
 
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comment Box</title>
+    <link rel="stylesheet" href="style.css">
 <style>
 * {box-sizing: border-box;}
 ul {list-style-type: none;}
@@ -88,7 +93,15 @@ red{
 </style>
 </head>
 <body>
-
+<p>Leave a comment!</p>
+    <input type="text" id="comment-box" placeholder="Enter comment">
+    <button id="post">Enter</button>
+    <ul id="unordered">
+       
+   </ul>
+   
+  <script src="code.js"></script>
+  
 <div class="month">      
   <ul>
     <li class="prev">&#10094;</li>
@@ -143,13 +156,14 @@ red{
   <li>30</li>
   <li>31</li>
 </ul>
-<br>
 
-<form id="commentbox">
-<div>
-<textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1em;">
-Leave a comment!
-</textarea>
-</div>
-<input type="submit" value="Submit">
-</form>
+<script>
+  var post= document.getElementById("post");
+post.addEventListener("click", function(){
+    var commentBoxValue= document.getElementById("comment-box").value;
+    var li = document.createElement("li");
+    var text = document.createTextNode(commentBoxValue);
+    li.appendChild(text);
+    document.getElementById("unordered").appendChild(li); 
+});
+</script>

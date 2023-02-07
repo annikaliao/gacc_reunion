@@ -239,10 +239,6 @@ a.hover a.focus {
 </ul>
 <br>
 
-<script>
-
-</script>
-
 {% include login.html %}
 
 <button action="javascript:" onclick="openForm()">

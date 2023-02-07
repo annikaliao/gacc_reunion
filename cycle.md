@@ -166,13 +166,13 @@ a.hover a.focus {
 	  const x = document.getElementById("lastPeriod").value;
 		var y = document.getElementById("cycleLength").value;
     const z = document.getElementById("periodLength").value;
-		var resDate = new Date();
-		resDate.setDate(resDate.getDate()+parseInt(y));
+		var resDate = new Date(x);
+		resDate.setDate(resDate.getDate() + parseInt(y));
 		document.getElementById("year1").innerHTML = resDate.getUTCFullYear() + " /" ;
-		document.getElementById("month1").innerHTML = resDate.getUTCMonth()+1 + " /";
+		document.getElementById("month1").innerHTML = resDate.getUTCMonth() + 1 + " /";
+    document.getElementById("date1").innerHTML = resDate.getUTCDate();
     document.getElementById("year2").innerHTML = resDate.getUTCFullYear() + " /" ;
 		document.getElementById("month2").innerHTML = resDate.getUTCMonth()+1 + " /";
-		document.getElementById("date1").innerHTML = resDate.getUTCDate();
     document.getElementById("date2").innerHTML = resDate.getUTCDate() + parseInt(z);
     if(parseInt(z) <= 2) {
       document.getElementById("unhealthy").innerHTML = "NOTICE: Your period is abnormally short. This may be a sign of some health concerns.   <a href=\"https://www.everydayhealth.com/pms/short-periods.aspx#:~:text=A%20short%20menstrual%20period%20might,even%20a%20serious%20medical%20problem.\">Learn More</a>" ;

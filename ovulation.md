@@ -91,9 +91,14 @@ red{
   .weekdays li, .days li {width: 12.2%;}
 }
 </style>
+
+<button action="javascript:" onclick="openComment()" id="comment">
+  <p style="color: darkred;">Leave a Comment!</p>
+</button>
+
 </head>
+<br>
 <body>
-<p>Leave a comment!</p>
     <input type="text" id="comment-box" placeholder="Enter comment">
     <button id="post">Enter</button>
     <ul id="unordered">
@@ -167,3 +172,10 @@ post.addEventListener("click", function(){
     document.getElementById("unordered").appendChild(li); 
 });
 </script>
+<script>
+    function openComment() {
+        document.getElementById("comment").style.display = "block";
+    }
+    function closeComment() {
+        document.getElementById("comment").style.display = "none";
+    }

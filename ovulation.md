@@ -106,7 +106,25 @@ red{
    </ul>
    
   <script src="code.js"></script>
-  
+
+<p> You will be ovulated from: </p>
+
+<script>
+function printOvulation() {
+	  const x = document.getElementById("lastPeriod").value;
+		var y = document.getElementById("cycleLength").value;
+    const z = document.getElementById("periodLength").value;
+		var resDate = new Date();
+		resDate.setDate(resDate.getDate()+parseInt(y));
+		document.getElementById("year1").innerHTML = resDate.getUTCFullYear() + " /" ;
+		document.getElementById("month1").innerHTML = resDate.getUTCMonth()+1 + " /";
+    document.getElementById("year2").innerHTML = resDate.getUTCFullYear() + " /" ;
+		document.getElementById("month2").innerHTML = resDate.getUTCMonth()+1 + " /";
+		document.getElementById("date1").innerHTML = resDate.getUTCDate() + z - 13;
+    document.getElementById("date2").innerHTML = resDate.getUTCDate() + z - 7;
+    }
+</script>
+
 <div class="month">      
   <ul>
     <li class="prev">&#10094;</li>

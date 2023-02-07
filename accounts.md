@@ -1,40 +1,11 @@
-<style>
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-  color: white
-}
-</style>
+<p>Database API</p>
 
-<html>
-    <head>
-        <title>Sign UP</title>
-    </head>
-    <body>
-            <h1>Register</h1>
-            <form method="POST">
-                <br><br>
-                <input type="username" name="username" placeholder="Username"><br>
-                <input type="password" name="password" placeholder="Password"><br>
-                <input type="email" name="email" placeholder="Email"><br>
-                <input type="number" name="age" placeholder="Age"><br>
-                <br>
-                <input type="submit" value="Sign Up">
-            </form>
-    </body>
-</html>
-
-<!-- <script>
+<script>
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("result");
 
   // prepare fetch options
-  const url = "https://csp.nighthawkcodingsociety.com/crud_api/read/";
+  const url = "http://127.0.0.1:8086/api/users/";
   const options = {
     method: 'GET', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
@@ -88,4 +59,17 @@ td, th {
     tr.appendChild(td);
     resultContainer.appendChild(tr);
   });
-</script> -->
+</script>
+
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>ID</th>
+  </tr>
+  </thead>
+  <tbody id="result">
+    <!-- javascript generated data -->
+  </tbody>
+</table>

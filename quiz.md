@@ -1,3 +1,9 @@
+<!-- Notes:
+- Run backend using python3 main.py
+- css
+- obtain score and input into a table
+- change quiz format -->
+
 <html>
 <body>
 <h1>How much do you know about your period?</h1>

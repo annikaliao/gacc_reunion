@@ -1,247 +1,211 @@
-<!-- Notes:
-- Run backend using python3 main.py
-- css
-- obtain score and input into a table
-- change quiz format -->
-
-<html>
-<body>
-<h1>How much do you know about your period?</h1>
-<div id="quiz"></div>
-<button id="submit">Get Results</button>
-<div id="results"></div>
-</body>
-
 <style>
-body{
-	font-size: 20px;
-	font-family: sans-serif;
-	color: #333;
-}
-.question{
-	font-weight: 600;
-}
-.answers {
-    margin-bottom: 20px;
-}
-#submit{
-	font-family: sans-serif;
-	font-size: 20px;
-	background-color: red;
-	color: white;
-	border: 0px;
-	border-radius: 5px;
+div.container h1 {
 	padding: 20px;
-	cursor: pointer;
-	margin-bottom: 20px;
-}
-#submit:hover{
+	font-size: 50px;
+	font-style: normal;
+	text-align: center;
+	font-weight: normal;
+	text-transform: none;
+	color: #ffffff;
 	background-color: pink;
+	}
+
+div.container p {
+	text-align: center;
+	}
+
+
+body {
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
 }
+
+[id=container] {
+  width: 50 ;
+  background: white;
+  color: #000;
+  margin: 20px auto;
+  overflow: auto;
+  padding: 2.6rem;
+  border: 2px solid pink;
+  border-radius: 10px
+}
+
+header {
+  text-align: center;
+  border-bottom: pink dashed 1px;
+}
+
+header h1 {
+  margin: 0;
+  padding: 0;
+}
+
+header p {
+  padding: 0;
+  margin-top: 5px;
+  color: #000;
+}
+
+input[type="submit"] {
+  background: pink;
+  border: 0;
+  color: #fff;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+[id=results] {
+  margin-top: 1rem;
+}
+
+[id=results] h3 {
+  background: pink;
+  padding: 10px;
+  margin: 10px 0;
+  color: #000;
+}
+
+ input[type='radio'] { 
+     transform: scale(1.5); 
+
 </style>
 
+<div class="container" style="background-color: pink;">
+	<h1>How much do you know about periods?</h1>
+</div>
+
+
+
+<div id="container">
+	<header>
+	</header>
+	<section>
+		<form name="quizForm" >
+	<h3>1. Which of the following would be considered an abnormal length of time for a period to last?</h3>
+		<input type="radio" name="q1" value="a" id="q1a"> 2 days <br>
+		<input type="radio" name="q1" value="b" id="q1b"> 4 days <br>
+		<input type="radio" name="q1" value="c" id="q1c"> 6 days <br>
+		<input type="radio" name="q1" value="d" id="q1d"> 8 days <br>
+	<h3>2. __________is the time when the woman is most fertile.</h3>
+		<input type="radio" name="q2" value="a" id="q2a"> Ovulation<br>
+		<input type="radio" name="q2" value="b" id="q2b"> Period<br>
+		<input type="radio" name="q2" value="c" id="q2c"> Amenorrhea<br>
+		<input type="radio" name="q2" value="d" id="q2d"> Pregnancy <br>
+	<h3>3. How long is the average menstrual cycle?</h3>
+		<input type="radio" name="q3" value="a" id="q3a"> 26 days<br>
+		<input type="radio" name="q3" value="b" id="q3b"> 28 days <br>
+		<input type="radio" name="q3" value="c" id="q3c"> 30 days<br>
+		<input type="radio" name="q3" value="d" id="q3d"> 35 days<br>
+	<h3>4. What is the most environmentally friendly period product?</h3>
+		<input type="radio" name="q4" value="a" id="q4a"> Diva Cups<br>
+		<input type="radio" name="q4" value="b" id="q4b"> Tampon<br>
+		<input type="radio" name="q4" value="c" id="q4c"> Pad<br>
+	<h3>5. When fully saturated, how much blood can a regular tampon or daytime pad hold?",
+		answers</h3>
+		<input type="radio" name="q5" value="a" id="q5a"> 2 milliliters <br>
+		<input type="radio" name="q5" value="b" id="q5b"> 5 milliliters <br>
+		<input type="radio" name="q5" value="c" id="q5c"> 7 milliliters <br>
+		<input type="radio" name="q5" value="d" id="q5d"> 10 milliliters <br>
+	<h3>6. How many tablespoons of blood does the average person lose during a period?</h3>
+		<input type="radio" name="q6" value="a" id="q6a"> 11-14 tablespoons<br>
+		<input type="radio" name="q6" value="b" id="q6b"> 8-10 tablespoons <br>
+		<input type="radio" name="q6" value="c" id="q6c"> 5-7 tablespoons<br>
+		<input type="radio" name="q6" value="d" id="q6d"> 2-4 tablespoons <br>
+	<h3>7. From first period to menopause, how many periods do women and people who menstruate have on average in their lifetime?</h3>
+		<input type="radio" name="q7" value="a" id="q7a"> Around 200<br>
+		<input type="radio" name="q7" value="b" id="q7b"> Around 350<br>
+		<input type="radio" name="q7" value="c" id="q7c"> Around 400<br>
+		<input type="radio" name="q7" value="d" id="q7d"> Around 450<br>
+	<h3>8. The first menstrual flow is called ... </h3>
+		<input type="radio" name="q8" value="a" id="q8a"> Mjolnir<br>
+		<input type="radio" name="q8" value="b" id="q8b"> Menarche<br>
+		<input type="radio" name="q8" value="c" id="q8c"> Menopause<br>
+		<input type="radio" name="q8" value="d" id="q8d"> Menses<br>
+	<h3>9. What layer of the uterus is shredded during menstruation?</h3>
+		<input type="radio" name="q9" value="a" id="q9a"> Perimetrium<br>
+		<input type="radio" name="q9" value="b" id="q9b"> Epimetrium<br>
+		<input type="radio" name="q9" value="c" id="q9c"> Endometrium<br>
+		<input type="radio" name="q9" value="d" id="q9d"> Cervix<br>
+	<h3>10. Is it possible to get pregnant during your period.</h3>
+		<input type="radio" name="q10" value="a" id="q10a"> Yes<br>
+		<input type="radio" name="q10" value="b" id="q10b"> No<br>
+		<input type="radio" name="q10" value="c" id="q10c"> Maybe<br>
+
+<div id="container">
+		<p>Please enter your name to save your score:</p>
+		<input type="name" name = "name" placeholder="Enter your name" required>
+		<br>
+		<br>
+		<input type="submit" value="Submit Answers">
+		<div id="results"></div>
+	
+</div>
+
+<style>
+
+</style>
 
 <script>
-var myQuestions = [
-	{
-		question: "1. Which of the following would be considered an abnormal length of time for a period to last?",
-		answers: {
-			a: '2 days',
-			b: '5 days',
-			c: '6 days'
-		},
-		correctAnswer: 'c'
-	},
-	{
-		question: "2. __________is the time when the woman is most fertile.",
-		answers: {
-			a: 'Ovulation',
-			b: 'Period',
-			c: 'Amenorrhea'
-		},
-		correctAnswer: 'c'
-	},
-  {
-		question: "3. How long is the average menstrual cycle?",
-		answers: {
-			a: '26 days',
-			b: '28 days',
-			c: '30 days'
-		},
-		correctAnswer: 'b'
-	},
-  {
-		question: "4. What is the most environmentally friendly period product?",
-		answers: {
-			a: 'Diva cups',
-			b: 'Tampons',
-			c: 'Pads'
-		},
-		correctAnswer: 'a'
-	},
-  {
-		question: "5. When fully saturated, how much blood can a regular tampon or daytime pad hold?",
-		answers: {
-			a: '2 milliliters',
-			b: '5 milliliters',
-			c: '7 milliliters'
-		},
-		correctAnswer: 'b'
-	},
-  {
-		question: "6. How many tablespoons of blood does the average person lose during a period?",
-		answers: {
-			a: '2-4 tablespoons',
-			b: '5-7 tablespoons',
-			c: '8-10 tablespoons'
-		},
-		correctAnswer: 'a'
-	},
-  {
-		question: "7. From first period to menopause, how many periods do women and people who menstruate have on average in their lifetime?",
-		answers: {
-			a: 'around 200',
-			b: 'around 350',
-			c: 'around 450'
-		},
-		correctAnswer: 'c'
-	},
-  {
-		question: "8. The first menstrual flow is called ... ",
-		answers: {
-			a: 'Mjolnir',
-			b: 'Menarche',
-			c: 'Menopause'
-		},
-		correctAnswer: 'b'
-	},
-  {
-		question: "9. What layer of the uterus is shredded during menstruation? ",
-		answers: {
-			a: 'Perimetrium',
-			b: 'Epimetrium',
-			c: 'Endometrium'
-		},
-		correctAnswer: 'c'
-	},
-  {
-		question: "10. Is it possible to get pregnant during your period.",
-		answers: {
-			a: 'No',
-			b: 'Yes',
-			c: 'I dont know'
-		},
-		correctAnswer: 'b'
-	},
-];
+var name = document.getElementById('name')
 
-var quizContainer = document.getElementById('quiz');
-var resultsContainer = document.getElementById('results');
-var submitButton = document.getElementById('submit');
+var formElement = document.forms['quizForm'];
 
-generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
-
-function generateQuiz(questions, quizContainer, resultsContainer, submitButton){
-
-	function showQuestions(questions, quizContainer){
-		// we'll need a place to store the output and the answer choices
-		var output = [];
-		var answers;
-
-		// for each question...
-		for(var i=0; i<questions.length; i++){
-			
-			// first reset the list of answers
-			answers = [];
-
-			// for each available answer...
-			for(letter in questions[i].answers){
-
-				// ...add an html radio button
-				answers.push(
-					'<label>'
-						+ '<input type="radio" name="question'+i+'" value="'+letter+'">'
-						+ letter + ': '
-						+ questions[i].answers[letter]
-					+ '</label>'
-				);
-			}
-
-			// add this question and its answers to the output
-			output.push(
-				'<div class="question">' + questions[i].question + '</div>'
-				+ '<div class="answers">' + answers.join('') + '</div>'
-			);
-		}
-
-		// finally combine our output list into one string of html and put it on the page
-		quizContainer.innerHTML = output.join('');
-	}
-
-
-	function showResults(questions, quizContainer, resultsContainer){
-		
-		// gather answer containers from our quiz
-		var answerContainers = quizContainer.querySelectorAll('.answers');
-		
-		// keep track of user's answers
-		var userAnswer = '';
-		var numCorrect = 0;
-		
-		// for each question...
-		for(var i=0; i<questions.length; i++){
-
-			// find selected answer
-			userAnswer = (answerContainers[i].querySelector('input[name=question'+i+']:checked')||{}).value;
-			
-			// if answer is correct
-			if(userAnswer===questions[i].correctAnswer){
-				// add to the number of correct answers
-				numCorrect++;
-				
-				// color the answers green
-				answerContainers[i].style.color = 'lightgreen';
-			}
-			// if answer is wrong or blank
-			else{
-				// color the answers red
-				answerContainers[i].style.color = 'red';
-			}
-		}
-
-		// show number of correct answers out of total
-		resultsContainer.innerHTML = numCorrect + ' out of ' + questions.length;
-	}
-
-	// show questions right away
-	showQuestions(questions, quizContainer);
+formElement.onsubmit = function submitAnswers(){
+	var total = 10;
+	var score = 0;
 	
-	// on submit, show results
-	submitButton.onclick = function(){
-		showResults(questions, quizContainer, resultsContainer);
+	// Get User Input
+	var q1 = document.forms["quizForm"]["q1"].value,
+	    q2 = document.forms["quizForm"]["q2"].value,
+	    q3 = document.forms["quizForm"]["q3"].value,
+	    q4 = document.forms["quizForm"]["q4"].value,
+	    q5 = document.forms["quizForm"]["q5"].value;
+		q6 = document.forms["quizForm"]["q6"].value;
+		q7 = document.forms["quizForm"]["q7"].value;
+		q8 = document.forms["quizForm"]["q8"].value;
+		q9 = document.forms["quizForm"]["q9"].value;
+		q10 = document.forms["quizForm"]["q10"].value;
+		name = document.forms["quizForm"]["name"].value;
+	
+	// Validation
+	for(i = 1; i <= total;i++){
+		if(eval('q'+i) === null || eval('q'+i) === ''){
+			// alert('You missed question '+ i);
+			return false;
+		}
 	}
+	
+	// Set Correct Answers
+	var answers = ["d","a","b","a","c","d","d","b","c","a"];
+	
+	// Check Answers
+	for(i = 1; i <= total;i++){
+		if(eval('q'+i) === answers[i - 1]){
+			score++;
+		}
+	}
+	
+	// Display Results
+	var results = document.getElementById('results');
+	results.innerHTML = 'You scored <span>'+score+'</span> out of <span>'+total+'</span></h3>';
+	
+	return false;
 
-
+	console.log(name)
+	console.log(results)
 }
 </script>
 
-<form action="javascript:create_user()">
-    <p><label>
-        Name:
-        <input style="color: black" type="text" name="name" id="name" required>
-    </label></p>
-</form>
-<p>
-	<button>Enter</button>
-</p>
 
 
 
 <table>
   <thead>
   <tr>
-    <th>Score</th>
     <th>Name</th>
+    <th>Score</th>
   </tr>
   </thead>
   <tbody id="result1">
@@ -249,21 +213,6 @@ function generateQuiz(questions, quizContainer, resultsContainer, submitButton){
   </tbody>
 </table>
 
-<p>Enter your score</p>
-
-<form action="javascript:create_user()">
-    <p><label>
-        Score:
-        <input type="text" name="uid" id="uid" required>
-    </label></p>
-    <p><label>
-        Name:
-        <input type="text" name="name" id="name" required>
-    </label></p>
-    <p>
-        <button>Create</button>
-    </p>
-</form>
 
 <script>
   // prepare HTML result container for new output
@@ -367,8 +316,8 @@ function generateQuiz(questions, quizContainer, resultsContainer, submitButton){
 
   function add_row(data) {
     const tr = document.createElement("tr");
-    const uid = document.createElement("td");
     const name = document.createElement("td");
+	const uid = document.createElement("td");
   
 
     // obtain data that is specific to the API
@@ -376,8 +325,8 @@ function generateQuiz(questions, quizContainer, resultsContainer, submitButton){
     name.innerHTML = data.name; 
 
     // add HTML to container
+	tr.appendChild(name);
     tr.appendChild(uid);
-    tr.appendChild(name);
 
     resultContainer.appendChild(tr);
   }

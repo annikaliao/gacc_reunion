@@ -98,6 +98,24 @@ red{
   <script src="code.js"></script>
 
 <p style="font-size: 30px; color: darkred;">Next Ovulation:</p>
+<p style="font-size: 15px; color: darkred;">Make sure you put your info into the cycle tracker!</p>
+<table>
+    <tr>
+      <td>
+        <span id="year1"></span>
+        <span id="month1"></span>
+        <span id="date1"></span>
+      </td>
+      <td>
+        <p style="text-align: center; color: darkred; font-weight:bolder; font-size: 20px;">&#x2964;</p>
+      </td>
+      <td>
+        <span id="year2"></span>
+        <span id="month2"></span>
+        <span id="date2"></span>
+      </td>
+    </tr>
+  </table>
 
 <script>
 function printOvulation() {

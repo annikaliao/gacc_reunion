@@ -1,17 +1,13 @@
 <head>
 <style>
-* {
-  box-sizing: border-box;
-  }
-ul {
-  list-style-type: none;
-  }
 .none {
   display: none;
 }
 span {
-  color: white;
   font-size: 30px;
+}
+h1 .title {
+  color: darkred;
 }
 button {
   padding: 10px;
@@ -25,83 +21,27 @@ input {
   color: black;
 }
 .tracker td {
-  padding: 20px;
+  padding: 60px;
   width: 33.3%;
   text-align: center;
   color: darkred;
   font-size: 20px;
+  border: none;
 }
 .tracker {
   background-color: pink;
+  border: none;
 }
 .date td {
   padding: 20px;
   width: 250px;;
 }
-.month {
-  padding: 60px 25px;
-  width: 100%;
-  background: pink;
-  text-align: center;
-}
-.month ul {
-  margin: 0;
-  padding: 0;
-}
-.month ul li {
-  color: white;
-  font-size: 20px;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-}
-.month .prev {
-  float: left;
-  padding-top: 10px;
-}
-.month .next {
-  float: right;
-  padding-top: 10px;
-}
-.weekdays {
-  margin: 0;
-  padding: 10px 0;
-  background-color: #ddd;
-}
-.weekdays li {
-  display: inline-block;
-  width: 13.6%;
-  color: #d19696;
-  text-align: center;
-}
-.days {
-  padding: 20px 0;
-  background: #eee;
-  margin: 0;
-}
-.days li {
-  list-style-type: none;
-  display: inline-block;
-  width: 13.6%;
-  text-align: center;
-  margin-bottom: 10px;
-  font-size:12px;
-  color: #777;
-}
-.days li .active {
-  padding: 10px;
-  border-radius: 50%;
-  background: darkred;
-  color: white;
-  font-weight: bold;
-}
 .unhealthy {
   display: inline-block;
   font-size: 20px;
-  border-width: 10px;
   border-color: darkred;
   padding: 20px;
   color: darkred;
-  border-radius: 10px;
 }
 a {
   color: black;
@@ -113,11 +53,11 @@ a.hover a.focus {
 </head>
 <body>
 
-<h1>Cycle Tracker</h1>
+<h1 style="color:darkred;" >Cycle Tracker</h1>
 
 <div>
   <form class="tracker">
-    <table align="center">
+    <table align="center" style="border:none;">
       <tr id="q">
         <td>When was the first day of your last period?</td>
         <td>How many days did it last?</td>
@@ -144,17 +84,18 @@ a.hover a.focus {
   <table>
     <tr>
       <td>
-        <span id="year1"></span>
-        <span id="month1"></span>
-        <span id="date1"></span>
+        <span id="nextperiod"></span>
       </td>
       <td>
         <p style="text-align: center; color: darkred; font-weight:bolder; font-size: 20px;">&#x2964;</p>
       </td>
       <td>
-        <span id="year2"></span>
-        <span id="month2"></span>
-        <span id="date2"></span>
+        <span id="nextperiodend"></span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span id="nextperiod2"></span>
       </td>
     </tr>
   </table>
@@ -168,75 +109,135 @@ a.hover a.focus {
     const z = document.getElementById("periodLength").value;
 		var resDate = new Date(x);
 		resDate.setDate(resDate.getDate() + parseInt(y));
-		document.getElementById("year1").innerHTML = resDate.getUTCFullYear() + " /" ;
-		document.getElementById("month1").innerHTML = resDate.getUTCMonth() + 1 + " /";
-    document.getElementById("date1").innerHTML = resDate.getUTCDate();
-    document.getElementById("year2").innerHTML = resDate.getUTCFullYear() + " /" ;
-		document.getElementById("month2").innerHTML = resDate.getUTCMonth()+1 + " /";
-    document.getElementById("date2").innerHTML = resDate.getUTCDate() + parseInt(z);
+		var year = resDate.getUTCFullYear();
+    var month = resDate.getUTCMonth() + 1;
+    var startdate = resDate.getUTCDate();
+    document.getElementById("nextperiod").innerHTML = month + "/" + startdate + "/" + year;
+    var enddate = resDate.getUTCDate() + parseInt(z);
+    document.getElementById("nextperiodend").innerHTML = month + "/" + enddate + "/" + year;
+    //startdate = enddate + parseInt(y);
+    //document.getElementById("nextperiod2").innerHTML = startdate;
     if(parseInt(z) <= 2) {
       document.getElementById("unhealthy").innerHTML = "NOTICE: Your period is abnormally short. This may be a sign of some health concerns.   <a href=\"https://www.everydayhealth.com/pms/short-periods.aspx#:~:text=A%20short%20menstrual%20period%20might,even%20a%20serious%20medical%20problem.\">Learn More</a>" ;
-    } 
+    }
   }
+</script>
+<table>
+  <thead>
+  <tr>
+    <th>Period</th>
+  </tr>
+  </thead>
+  <tbody id="period">
+    <!-- javascript generated data -->
+  </tbody>
+</table>
+<script>
+  // prepare HTML result container for new output
+  const resultContainer = document.getElementById("period");
+  // prepare URL's to allow easy switch from deployment and localhost
+  //const url = "http://localhost:8086/api/users"
+  const url = "http://172.31.22.127:8087/api/periods"
+  const create_fetch = url + '/create';
+  const read_fetch = url + '/';
+  // Load users on page entry
+  read_users();
+  // Display User Table, data is fetched from Backend Database
+  function read_users() {
+    // prepare fetch options
+    const read_options = {
+      method: 'GET', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'omit', // include, *same-origin, omit
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    };
+    // fetch the data from API
+    fetch(read_fetch, read_options)
+      // response is a RESTful "promise" on any successful fetch
+      .then(response => {
+        // check for response errors
+        if (response.status !== 200) {
+            const errorMsg = 'Database read error: ' + response.status;
+            console.log(errorMsg);
+            const tr = document.createElement("tr");
+            const td = document.createElement("td");
+            td.innerHTML = errorMsg;
+            tr.appendChild(td);
+            resultContainer.appendChild(tr);
+            return;
+        }
+        // valid response will have json data
+        response.json().then(data => {
+            console.log(data);
+            for (let row in data) {
+              console.log(data[row]);
+              add_row(data[row]);
+            }
+        })
+    })
+    // catch fetch errors (ie ACCESS to server blocked)
+    .catch(err => {
+      console.error(err);
+      const tr = document.createElement("tr");
+      const td = document.createElement("td");
+      td.innerHTML = err;
+      tr.appendChild(td);
+      resultContainer.appendChild(tr);
+    });
+  }
+  function create_user(){
+    //Validate Password (must be 6-20 characters in len)
+    //verifyPassword("click");
+    const body = {
+        period: document.getElementById("startdate").value,
+    };
+    const requestOptions = {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: {
+            "content-type": "application/json",
+            'Authorization': 'Bearer my-token',
+        },
+    };
+    // URL for Create API
+    // Fetch API call to the database to create a new user
+    fetch(create_fetch, requestOptions)
+      .then(response => {
+        // trap error response from Web API
+        if (response.status !== 200) {
+          const errorMsg = 'Database create error: ' + response.status;
+          console.log(errorMsg);
+          const tr = document.createElement("tr");
+          const td = document.createElement("td");
+          td.innerHTML = errorMsg;
+          tr.appendChild(td);
+          resultContainer.appendChild(tr);
+          return;
+        }
+        // response contains valid result
+        response.json().then(data => {
+            console.log(data);
+            //add a table row for the new/created userid
+            add_row(data);
+        })
+    })
+  }
+  function add_row(data) {
+    const tr = document.createElement("tr");
+    const period = document.createElement("td"); 
+    // obtain data that is specific to the API
+    period.innerHTML = data.period; 
+    // add HTML to container
+    tr.appendChild(period);
+    resultContainer.appendChild(tr);
+  }
+
 </script>
 <br>
   <h1 style="text-align: center; color: darkred;" >&#65086;</h1>
-<br>
-
-<div class="month">      
-  <ul>
-    <li class="prev">&#10094;</li>
-    <li class="next">&#10095;</li>
-    <li style="text-align: center;">
-     January<br>
-      <span style="font-size:18px">2023</span>
-    </li>
-  </ul>
-</div>
-
-<ul class="weekdays">
-  <li>Su</li>
-  <li>Mo</li>
-  <li>Tu</li>
-  <li>We</li>
-  <li>Th</li>
-  <li>Fr</li>
-  <li>Sa</li>
-</ul>
-
-<ul class="days">  
-  <li>1</li>
-  <li>2</li>
-  <li>3</li>
-  <li>4</li>
-  <li>5</li>
-  <li>6</li>
-  <li>7</li>
-  <li>8</li>
-  <li>9</li>
-  <li>10</li>
-  <li>11</li>
-  <li>12</li>
-  <li>13</li>
-  <li>14</li>
-  <li>15</li>
-  <li>16</li>
-  <li>17</li>
-  <li>18</li>
-  <li>19</li>
-  <li>20</li>
-  <li>21</li>
-  <li>22</li>
-  <li>23</li>
-  <li><span class="active">24</span></li>
-  <li><span class="active">25</span></li>
-  <li><span class="active">26</span></li>
-  <li><span class="active">27</span></li>
-  <li><span class="active">28</span></li>
-  <li>29</li>
-  <li>30</li>
-  <li>31</li>
-</ul>
 <br>
 
 {% include login.html %}

@@ -17,6 +17,7 @@ div.container p {
 
 body {
   color: white;
+  font-family: 'Lato', sans-serif;
   font-size: 14px;
 }
 
@@ -71,7 +72,84 @@ input[type="submit"] {
 
 </style>
 
+<div class="container" style="background-color: pink;">
+	<h1>How much do you know about periods?</h1>
+</div>
+
+
+
+<div id="container">
+	<header>
+	</header>
+	<section>
+		<form name="quizForm" >
+	<h3>1. Which of the following would be considered an abnormal length of time for a period to last?</h3>
+		<input type="radio" name="q1" value="a" id="q1a"> 2 days <br>
+		<input type="radio" name="q1" value="b" id="q1b"> 4 days <br>
+		<input type="radio" name="q1" value="c" id="q1c"> 6 days <br>
+		<input type="radio" name="q1" value="d" id="q1d"> 8 days <br>
+	<h3>2. __________is the time when the woman is most fertile.</h3>
+		<input type="radio" name="q2" value="a" id="q2a"> Ovulation<br>
+		<input type="radio" name="q2" value="b" id="q2b"> Period<br>
+		<input type="radio" name="q2" value="c" id="q2c"> Amenorrhea<br>
+		<input type="radio" name="q2" value="d" id="q2d"> Pregnancy <br>
+	<h3>3. How long is the average menstrual cycle?</h3>
+		<input type="radio" name="q3" value="a" id="q3a"> 26 days<br>
+		<input type="radio" name="q3" value="b" id="q3b"> 28 days <br>
+		<input type="radio" name="q3" value="c" id="q3c"> 30 days<br>
+		<input type="radio" name="q3" value="d" id="q3d"> 35 days<br>
+	<h3>4. What is the most environmentally friendly period product?</h3>
+		<input type="radio" name="q4" value="a" id="q4a"> Diva Cups<br>
+		<input type="radio" name="q4" value="b" id="q4b"> Tampon<br>
+		<input type="radio" name="q4" value="c" id="q4c"> Pad<br>
+	<h3>5. When fully saturated, how much blood can a regular tampon or daytime pad hold?",
+		answers</h3>
+		<input type="radio" name="q5" value="a" id="q5a"> 2 milliliters <br>
+		<input type="radio" name="q5" value="b" id="q5b"> 5 milliliters <br>
+		<input type="radio" name="q5" value="c" id="q5c"> 7 milliliters <br>
+		<input type="radio" name="q5" value="d" id="q5d"> 10 milliliters <br>
+	<h3>6. How many tablespoons of blood does the average person lose during a period?</h3>
+		<input type="radio" name="q6" value="a" id="q6a"> 11-14 tablespoons<br>
+		<input type="radio" name="q6" value="b" id="q6b"> 8-10 tablespoons <br>
+		<input type="radio" name="q6" value="c" id="q6c"> 5-7 tablespoons<br>
+		<input type="radio" name="q6" value="d" id="q6d"> 2-4 tablespoons <br>
+	<h3>7. From first period to menopause, how many periods do women and people who menstruate have on average in their lifetime?</h3>
+		<input type="radio" name="q7" value="a" id="q7a"> Around 200<br>
+		<input type="radio" name="q7" value="b" id="q7b"> Around 350<br>
+		<input type="radio" name="q7" value="c" id="q7c"> Around 400<br>
+		<input type="radio" name="q7" value="d" id="q7d"> Around 450<br>
+	<h3>8. The first menstrual flow is called ... </h3>
+		<input type="radio" name="q8" value="a" id="q8a"> Mjolnir<br>
+		<input type="radio" name="q8" value="b" id="q8b"> Menarche<br>
+		<input type="radio" name="q8" value="c" id="q8c"> Menopause<br>
+		<input type="radio" name="q8" value="d" id="q8d"> Menses<br>
+	<h3>9. What layer of the uterus is shredded during menstruation?</h3>
+		<input type="radio" name="q9" value="a" id="q9a"> Perimetrium<br>
+		<input type="radio" name="q9" value="b" id="q9b"> Epimetrium<br>
+		<input type="radio" name="q9" value="c" id="q9c"> Endometrium<br>
+		<input type="radio" name="q9" value="d" id="q9d"> Cervix<br>
+	<h3>10. Is it possible to get pregnant during your period.</h3>
+		<input type="radio" name="q10" value="a" id="q10a"> Yes<br>
+		<input type="radio" name="q10" value="b" id="q10b"> No<br>
+		<input type="radio" name="q10" value="c" id="q10c"> Maybe<br>
+
+<div id="container">
+		<p>Please enter your name to save your score:</p>
+		<input type="name" name = "name" placeholder="Enter your name" required>
+		<br>
+		<br>
+		<input type="submit" value="Submit Answers">
+		<div id="results"></div>
+	
+</div>
+
+<style>
+
+</style>
+
 <script>
+var name = document.getElementById('name')
+
 var formElement = document.forms['quizForm'];
 
 formElement.onsubmit = function submitAnswers(){
@@ -84,12 +162,12 @@ formElement.onsubmit = function submitAnswers(){
 	    q3 = document.forms["quizForm"]["q3"].value,
 	    q4 = document.forms["quizForm"]["q4"].value,
 	    q5 = document.forms["quizForm"]["q5"].value;
-		  q6 = document.forms["quizForm"]["q6"].value;
-		  q7 = document.forms["quizForm"]["q7"].value;
-		  q8 = document.forms["quizForm"]["q8"].value;
-		  q9 = document.forms["quizForm"]["q9"].value;
-		  q10 = document.forms["quizForm"]["q10"].value;
-		  name = document.forms["quizForm"]["name"].value;
+		q6 = document.forms["quizForm"]["q6"].value;
+		q7 = document.forms["quizForm"]["q7"].value;
+		q8 = document.forms["quizForm"]["q8"].value;
+		q9 = document.forms["quizForm"]["q9"].value;
+		q10 = document.forms["quizForm"]["q10"].value;
+		name = document.forms["quizForm"]["name"].value;
 	
 	// Validation
 	for(i = 1; i <= total;i++){
@@ -115,87 +193,13 @@ formElement.onsubmit = function submitAnswers(){
 	
 	return false;
 
+	console.log(name)
+	console.log(results)
 }
 </script>
 
 
-<div class="container" style="background-color: pink;">
-	<h1 >How much do you know about periods?</h1>
-</div>
 
-<div id="container">
-	<header>
-	</header>
-	<section>
-		<form name="quizForm" >
-	<h3 style="color: #8B0000">1. Which of the following would be considered an abnormal length of time for a period to last?</h3>
-		<input type="radio" name="q1" value="a" id="q1a"> 2 days <br>
-		<input type="radio" name="q1" value="b" id="q1b"> 4 days <br>
-		<input type="radio" name="q1" value="c" id="q1c"> 6 days <br>
-		<input type="radio" name="q1" value="d" id="q1d"> 8 days <br>
-	<h3 style="color: #8B0000">2. __________is the time when the woman is most fertile.</h3>
-		<input type="radio" name="q2" value="a" id="q2a"> Ovulation<br>
-		<input type="radio" name="q2" value="b" id="q2b"> Period<br>
-		<input type="radio" name="q2" value="c" id="q2c"> Amenorrhea<br>
-		<input type="radio" name="q2" value="d" id="q2d"> Pregnancy <br>
-	<h3 style="color: #8B0000">3. How long is the average menstrual cycle?</h3>
-		<input type="radio" name="q3" value="a" id="q3a"> 26 days<br>
-		<input type="radio" name="q3" value="b" id="q3b"> 28 days <br>
-		<input type="radio" name="q3" value="c" id="q3c"> 30 days<br>
-		<input type="radio" name="q3" value="d" id="q3d"> 35 days<br>
-	<h3 style="color: #8B0000">4. What is the most environmentally friendly period product?</h3>
-		<input type="radio" name="q4" value="a" id="q4a"> Diva Cups<br>
-		<input type="radio" name="q4" value="b" id="q4b"> Tampon<br>
-		<input type="radio" name="q4" value="c" id="q4c"> Pad<br>
-	<h3 style="color: #8B0000">5. When fully saturated, how much blood can a regular tampon or daytime pad hold?",
-		answers</h3>
-		<input type="radio" name="q5" value="a" id="q5a"> 2 milliliters <br>
-		<input type="radio" name="q5" value="b" id="q5b"> 5 milliliters <br>
-		<input type="radio" name="q5" value="c" id="q5c"> 7 milliliters <br>
-		<input type="radio" name="q5" value="d" id="q5d"> 10 milliliters <br>
-	<h3 style="color: #8B0000">6. How many tablespoons of blood does the average person lose during a period?</h3>
-		<input type="radio" name="q6" value="a" id="q6a"> 11-14 tablespoons<br>
-		<input type="radio" name="q6" value="b" id="q6b"> 8-10 tablespoons <br>
-		<input type="radio" name="q6" value="c" id="q6c"> 5-7 tablespoons<br>
-		<input type="radio" name="q6" value="d" id="q6d"> 2-4 tablespoons <br>
-	<h3 style="color: #8B0000">7. From first period to menopause, how many periods do women and people who menstruate have on average in their lifetime?</h3>
-		<input type="radio" name="q7" value="a" id="q7a"> Around 200<br>
-		<input type="radio" name="q7" value="b" id="q7b"> Around 350<br>
-		<input type="radio" name="q7" value="c" id="q7c"> Around 400<br>
-		<input type="radio" name="q7" value="d" id="q7d"> Around 450<br>
-	<h3 style="color: #8B0000">8. The first menstrual flow is called ... </h3>
-		<input type="radio" name="q8" value="a" id="q8a"> Mjolnir<br>
-		<input type="radio" name="q8" value="b" id="q8b"> Menarche<br>
-		<input type="radio" name="q8" value="c" id="q8c"> Menopause<br>
-		<input type="radio" name="q8" value="d" id="q8d"> Menses<br>
-	<h3 style="color: #8B0000">9. What layer of the uterus is shredded during menstruation?</h3>
-		<input type="radio" name="q9" value="a" id="q9a"> Perimetrium<br>
-		<input type="radio" name="q9" value="b" id="q9b"> Epimetrium<br>
-		<input type="radio" name="q9" value="c" id="q9c"> Endometrium<br>
-		<input type="radio" name="q9" value="d" id="q9d"> Cervix<br>
-	<h3 style="color: #8B0000">10. Is it possible to get pregnant during your period.</h3>
-		<input type="radio" name="q10" value="a" id="q10a"> Yes<br>
-		<input type="radio" name="q10" value="b" id="q10b"> No<br>
-		<input type="radio" name="q10" value="c" id="q10c"> Maybe<br>
-
-
-<input type="submit" value="Submit Answers">
-<div id="results"></div>
-
-<form action="javascript:create_user()">
-  <p><label>
-      Name:
-      <input type="input" name="name" id="name" required>
-  </label></p>
-  <p><label>
-      Score:
-      <input type="input" name="uid" id="uid" required>
-  </label></p>
-  <p>
-      <button>Create</button>
-  </p>
-</form>
-	
 
 <table>
   <thead>
@@ -214,7 +218,6 @@ formElement.onsubmit = function submitAnswers(){
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("result1");
   // prepare URL's to allow easy switch from deployment and localhost
-  // const url = "http://10.8.140.55:8087/api/scores"
   const url = "http://192.168.1.225:8087/api/scores"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
@@ -275,8 +278,8 @@ formElement.onsubmit = function submitAnswers(){
     //Validate Password (must be 6-20 characters in len)
     //verifyPassword("click");
     const body = {
-        name: document.getElementById("name").value,
         uid: document.getElementById("uid").value,
+        name: document.getElementById("name").value,
     };
     const requestOptions = {
         method: 'POST',

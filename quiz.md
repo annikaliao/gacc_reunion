@@ -83,11 +83,11 @@ input[type="submit"] {
 	</header>
 	<section>
 		<form name="quizForm" >
-	<h3>1. Which of the following would be considered an abnormal length of time for a period to last?</h3>
-		<input type="radio" name="q1" value="a" id="q1a"> 2 days <br>
-		<input type="radio" name="q1" value="b" id="q1b"> 4 days <br>
-		<input type="radio" name="q1" value="c" id="q1c"> 6 days <br>
-		<input type="radio" name="q1" value="d" id="q1d"> 8 days <br>
+	<h3>1. What is the average age at which menstruation begins in North America?</h3>
+		<input type="radio" name="q1" value="a" id="q1a"> 8 <br>
+		<input type="radio" name="q1" value="b" id="q1b"> 10 <br>
+		<input type="radio" name="q1" value="c" id="q1c"> 12 <br>
+		<input type="radio" name="q1" value="d" id="q1d"> 14 <br>
 	<h3>2. __________is the time when the woman is most fertile.</h3>
 		<input type="radio" name="q2" value="a" id="q2a"> Ovulation<br>
 		<input type="radio" name="q2" value="b" id="q2b"> Period<br>
@@ -102,8 +102,7 @@ input[type="submit"] {
 		<input type="radio" name="q4" value="a" id="q4a"> Diva Cups<br>
 		<input type="radio" name="q4" value="b" id="q4b"> Tampon<br>
 		<input type="radio" name="q4" value="c" id="q4c"> Pad<br>
-	<h3>5. When fully saturated, how much blood can a regular tampon or daytime pad hold?",
-		answers</h3>
+	<h3>5. When fully saturated, how much blood can a regular tampon or daytime pad hold?</h3>
 		<input type="radio" name="q5" value="a" id="q5a"> 2 milliliters <br>
 		<input type="radio" name="q5" value="b" id="q5b"> 5 milliliters <br>
 		<input type="radio" name="q5" value="c" id="q5c"> 7 milliliters <br>
@@ -135,7 +134,7 @@ input[type="submit"] {
 
 <div id="container">
 		<p>Please enter your name to save your score:</p>
-		<input type="name" name = "name" placeholder="Enter your name" required>
+		<input type="name" name = "name" placeholder="Enter your name">
 		<br>
 		<br>
 		<input type="submit" value="Submit Answers">
@@ -143,14 +142,33 @@ input[type="submit"] {
 	
 </div>
 
-<style>
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Score</th>
+  </tr>
+  </thead>
+  <tbody id="result1">
+    <!-- javascript generated data -->
+  </tbody>
+</table>
 
-</style>
+<form action="javascript:create_user()">
+    <p><label>
+		Name:
+        <input type="text" name="name" id="name" required>
+    </label></p> 
+    Score:
+        <input type="text" name="uid" id="uid" required>
+    <p>
+        <button>Create</button>
+    </p>
+</form>
+
 
 <script>
-var name = document.getElementById('name')
-
-var formElement = document.forms['quizForm'];
+  var formElement = document.forms['quizForm'];
 
 formElement.onsubmit = function submitAnswers(){
 	var total = 10;
@@ -178,7 +196,7 @@ formElement.onsubmit = function submitAnswers(){
 	}
 	
 	// Set Correct Answers
-	var answers = ["d","a","b","a","c","d","d","b","c","a"];
+	var answers = ["c","a","b","a","c","d","d","b","c","a"];
 	
 	// Check Answers
 	for(i = 1; i <= total;i++){
@@ -196,25 +214,7 @@ formElement.onsubmit = function submitAnswers(){
 	console.log(name)
 	console.log(results)
 }
-</script>
-
-
-
-
-<table>
-  <thead>
-  <tr>
-    <th>Name</th>
-    <th>Score</th>
-  </tr>
-  </thead>
-  <tbody id="result1">
-    <!-- javascript generated data -->
-  </tbody>
-</table>
-
-
-<script>
+  
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("result1");
   // prepare URL's to allow easy switch from deployment and localhost
@@ -274,6 +274,7 @@ formElement.onsubmit = function submitAnswers(){
     });
   }
 
+ 
   function create_user(){
     //Validate Password (must be 6-20 characters in len)
     //verifyPassword("click");

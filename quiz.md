@@ -71,11 +71,57 @@ input[type="submit"] {
 
 </style>
 
+<script>
+var formElement = document.forms['quizForm'];
+
+formElement.onsubmit = function submitAnswers(){
+	var total = 10;
+	var score = 0;
+	
+	// Get User Input
+	var q1 = document.forms["quizForm"]["q1"].value,
+	    q2 = document.forms["quizForm"]["q2"].value,
+	    q3 = document.forms["quizForm"]["q3"].value,
+	    q4 = document.forms["quizForm"]["q4"].value,
+	    q5 = document.forms["quizForm"]["q5"].value;
+		  q6 = document.forms["quizForm"]["q6"].value;
+		  q7 = document.forms["quizForm"]["q7"].value;
+		  q8 = document.forms["quizForm"]["q8"].value;
+		  q9 = document.forms["quizForm"]["q9"].value;
+		  q10 = document.forms["quizForm"]["q10"].value;
+		  name = document.forms["quizForm"]["name"].value;
+	
+	// Validation
+	for(i = 1; i <= total;i++){
+		if(eval('q'+i) === null || eval('q'+i) === ''){
+			// alert('You missed question '+ i);
+			return false;
+		}
+	}
+	
+	// Set Correct Answers
+	var answers = ["d","a","b","a","c","d","d","b","c","a"];
+	
+	// Check Answers
+	for(i = 1; i <= total;i++){
+		if(eval('q'+i) === answers[i - 1]){
+			score++;
+		}
+	}
+	
+	// Display Results
+	var results = document.getElementById('results');
+	results.innerHTML = 'You scored <span>'+score+'</span> out of <span>'+total+'</span></h3>';
+	
+	return false;
+
+}
+</script>
+
+
 <div class="container" style="background-color: pink;">
 	<h1>How much do you know about periods?</h1>
 </div>
-
-
 
 <div id="container">
 	<header>
@@ -132,73 +178,24 @@ input[type="submit"] {
 		<input type="radio" name="q10" value="b" id="q10b"> No<br>
 		<input type="radio" name="q10" value="c" id="q10c"> Maybe<br>
 
-<div id="container">
-		<p>Please enter your name to save your score:</p>
-    <form action="javascript:create_user()">
-		  <input type="name" name = "name" placeholder="Enter your name" required>
-    </form>
-		<br>
-		<br>
-		<input type="submit" value="Submit Answers">
-		<div id="results"></div>
+
+<input type="submit" value="Submit Answers">
+<div id="results"></div>
+
+<form action="javascript:create_user()">
+  <p><label>
+      Name:
+      <input type="input" name="name" id="name" required>
+  </label></p>
+  <p><label>
+      Score:
+      <input type="input" name="uid" id="uid" required>
+  </label></p>
+  <p>
+      <button>Create</button>
+  </p>
+</form>
 	
-</div>
-
-<style>
-
-</style>
-
-<script>
-var name = document.getElementById('name')
-
-var formElement = document.forms['quizForm'];
-
-formElement.onsubmit = function submitAnswers(){
-	var total = 10;
-	var score = 0;
-	
-	// Get User Input
-	var q1 = document.forms["quizForm"]["q1"].value,
-	    q2 = document.forms["quizForm"]["q2"].value,
-	    q3 = document.forms["quizForm"]["q3"].value,
-	    q4 = document.forms["quizForm"]["q4"].value,
-	    q5 = document.forms["quizForm"]["q5"].value;
-		q6 = document.forms["quizForm"]["q6"].value;
-		q7 = document.forms["quizForm"]["q7"].value;
-		q8 = document.forms["quizForm"]["q8"].value;
-		q9 = document.forms["quizForm"]["q9"].value;
-		q10 = document.forms["quizForm"]["q10"].value;
-		name = document.forms["quizForm"]["name"].value;
-	
-	// Validation
-	for(i = 1; i <= total;i++){
-		if(eval('q'+i) === null || eval('q'+i) === ''){
-			// alert('You missed question '+ i);
-			return false;
-		}
-	}
-	
-	// Set Correct Answers
-	var answers = ["d","a","b","a","c","d","d","b","c","a"];
-	
-	// Check Answers
-	for(i = 1; i <= total;i++){
-		if(eval('q'+i) === answers[i - 1]){
-			score++;
-		}
-	}
-	
-	// Display Results
-	var results = document.getElementById('results');
-	results.innerHTML = 'You scored <span>'+score+'</span> out of <span>'+total+'</span></h3>';
-	
-	return false;
-
-}
-</script>
-
-
-
 
 <table>
   <thead>
@@ -217,7 +214,8 @@ formElement.onsubmit = function submitAnswers(){
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("result1");
   // prepare URL's to allow easy switch from deployment and localhost
-  const url = "http://192.168.1.225:8087/api/scores"
+  // const url = "http://10.8.140.55:8087/api/scores"
+  const url = "http://192.168.1.225:8087/api/scores/"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
 
@@ -277,8 +275,8 @@ formElement.onsubmit = function submitAnswers(){
     //Validate Password (must be 6-20 characters in len)
     //verifyPassword("click");
     const body = {
-        uid: document.getElementById("results").value,
         name: document.getElementById("name").value,
+        uid: document.getElementById("uid").value,
     };
     const requestOptions = {
         method: 'POST',

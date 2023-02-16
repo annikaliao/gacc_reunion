@@ -17,13 +17,16 @@
   display: table;
   clear: both;
 }
+
+h2 {
+  color: black;
+}
 </style>
 
 <body>
 <img src="https://cdn.discordapp.com/attachments/908884737135874048/1075326522489045013/logo.gif">
 
-<a href="https://www.womenshealth.gov/menstrual-cycle/your-menstrual-cycle#:~:text=Menstruation%20is%20a%20woman's%20monthly,your%20body%20through%20your%20vagina." class="button">Educate yourself about periods!</a>
-
+<h2 class="center" style="color: dark red">Learn about periods!</h2>
 
 <div class="row">
   <div class="column" style="background-color:#FFB6C1;">

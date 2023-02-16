@@ -4,6 +4,10 @@
   display: none;
 }
 span {
+<<<<<<< HEAD
+=======
+  color: dark red;
+>>>>>>> 3f160589d10c4b0ecb1b99750d2fb637819db077
   font-size: 30px;
 }
 h1 .title {

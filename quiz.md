@@ -17,6 +17,7 @@ div.container p {
 
 body {
   color: white;
+  font-family: 'Lato', sans-serif;
   font-size: 14px;
 }
 
@@ -134,9 +135,7 @@ input[type="submit"] {
 
 <div id="container">
 		<p>Please enter your name to save your score:</p>
-    <form action="javascript:create_user()">
-		  <input type="name" name = "name" placeholder="Enter your name" required>
-    </form>
+		<input type="name" name = "name" placeholder="Enter your name" required>
 		<br>
 		<br>
 		<input type="submit" value="Submit Answers">
@@ -194,6 +193,8 @@ formElement.onsubmit = function submitAnswers(){
 	
 	return false;
 
+	console.log(name)
+	console.log(results)
 }
 </script>
 
@@ -277,7 +278,7 @@ formElement.onsubmit = function submitAnswers(){
     //Validate Password (must be 6-20 characters in len)
     //verifyPassword("click");
     const body = {
-        uid: document.getElementById("results").value,
+        uid: document.getElementById("uid").value,
         name: document.getElementById("name").value,
     };
     const requestOptions = {

@@ -1,10 +1,6 @@
 <p> Ovulation is the process in which a mature egg is released from the ovary. After it's released, the egg moves down the fallopian tube and stays there for 12 to 24 hours, where it can be fertilized. This period of time usually occurs 12-14 days before your next period and typically lasts 6 days. </p>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comment Box</title>
     <link rel="stylesheet" href="style.css">
 <style>
 * {box-sizing: border-box;}
@@ -92,22 +88,34 @@ red{
 }
 </style>
 
-<button action="javascript:" onclick="openComment()" id="comment">
-  <p style="color: darkred;">Leave a Comment!</p>
-</button>
-
 </head>
 <br>
 <body>
-    <input type="text" id="comment-box" placeholder="Enter comment">
-    <button id="post">Enter</button>
     <ul id="unordered">
        
    </ul>
    
   <script src="code.js"></script>
 
-<p> You will be ovulated from: </p>
+<p style="font-size: 30px; color: darkred;">Next Ovulation:</p>
+<p style="font-size: 15px; color: darkred;">Make sure you put your info into the cycle tracker!</p>
+<table>
+    <tr>
+      <td>
+        <span id="year1"></span>
+        <span id="month1"></span>
+        <span id="date1"></span>
+      </td>
+      <td>
+        <p style="text-align: center; color: darkred; font-weight:bolder; font-size: 20px;">&#x2964;</p>
+      </td>
+      <td>
+        <span id="year2"></span>
+        <span id="month2"></span>
+        <span id="date2"></span>
+      </td>
+    </tr>
+  </table>
 
 <script>
 function printOvulation() {
@@ -124,61 +132,6 @@ function printOvulation() {
     document.getElementById("date2").innerHTML = resDate.getUTCDate() + z - 7;
     }
 </script>
-
-<div class="month">      
-  <ul>
-    <li class="prev">&#10094;</li>
-    <li class="next">&#10095;</li>
-    <li>
-     February<br>
-      <span style="font-size:18px">2023</span>
-    </li>
-  </ul>
-</div>
-
-<ul class="weekdays">
-  <li>Su</li>
-  <li>Mo</li>
-  <li>Tu</li>
-  <li>We</li>
-  <li>Th</li>
-  <li>Fr</li>
-  <li>Sa</li>
-</ul>
-
-<ul class="days">  
-  <li>1</li>
-  <li>2</li>
-  <li>3</li>
-  <li>4</li>
-  <li>5</li>
-  <li style="color:red">6</li>
-  <li>7</li>
-  <li>8</li>
-  <li>9</li>
-  <li>10</li>
-  <li>11</li>
-  <li>12</li>
-  <li>13</li>
-  <li>14</li>
-  <li>15</li>
-  <li>16</li>
-  <li>17</li>
-  <li>18</li>
-  <li>19</li>
-  <li>20</li>
-  <li>21</li>
-  <li>22</li>
-  <li><span class="active">23</span></li>
-  <li><span class="active">24</span></li>
-  <li><span class="active">25</span></li>
-  <li><span class="active">26</span></li>
-  <li><span class="active">27</span></li>
-  <li><span class="active">28</span></li>
-  <li>29</li>
-  <li>30</li>
-  <li>31</li>
-</ul>
 
 <script>
   var post= document.getElementById("post");

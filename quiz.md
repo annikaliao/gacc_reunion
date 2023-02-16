@@ -215,7 +215,7 @@ formElement.onsubmit = function submitAnswers(){
   const resultContainer = document.getElementById("result1");
   // prepare URL's to allow easy switch from deployment and localhost
   // const url = "http://10.8.140.55:8087/api/scores"
-  const url = "http://192.168.1.225:8087/api/scores/"
+  const url = "http://192.168.1.225:8087/api/scores"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
 

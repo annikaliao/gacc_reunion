@@ -29,6 +29,7 @@
   padding: 10px;
   height: 300px; 
 }
+
 .row:after {
   content: "";
   display: table;
@@ -40,6 +41,7 @@
     border: none;
     border-radius: 5px;
 }
+
 body {
   color: darkred;
 }
@@ -75,6 +77,17 @@ img {
 <p id="unordered"></p>
 <script src="code.js"></script>
 <form>
+<table>
+  <thead>
+  <tr>
+    <th>Symptom</th>
+    <th>Comment</th>
+  </tr>
+  </thead>
+  <tbody id="comment">
+    <!-- javascript generated data -->
+  </tbody>
+</table>
 <hr>
 <p>What are your symptoms:</p>
 
@@ -506,22 +519,12 @@ function topFunction() {
   </div>
 </div>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<table>
-  <thead>
-  <tr>
-    <th>Symptom</th>
-    <th>Comment</th>
-  </tr>
-  </thead>
-  <tbody id="comment">
-    <!-- javascript generated data -->
-  </tbody>
-</table>
+
 <script>
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("comment");
   // prepare URL's to allow easy switch from deployment and localhost
-  const url = "http://http://172.28.236.193:8087/api/symptom"
+  const url = "http://172.28.236.193:8087/api/symptom/"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
   // Load users on page entry

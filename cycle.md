@@ -10,7 +10,7 @@ ul {
   display: none;
 }
 span {
-  color: white;
+  color: dark red;
   font-size: 30px;
 }
 button {

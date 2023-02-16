@@ -29,6 +29,7 @@
   padding: 10px;
   height: 300px; 
 }
+
 .row:after {
   content: "";
   display: table;
@@ -40,6 +41,7 @@
     border: none;
     border-radius: 5px;
 }
+
 body {
   color: darkred;
 }

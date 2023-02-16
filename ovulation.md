@@ -148,7 +148,7 @@ function printOvulation() {
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("ovulation");
   // prepare URL's to allow easy switch from deployment and localhost
-  const url = "http://192.168.68.110:8087/api/periods/"
+  const url = "http://flowhealth.duckdns.org/api/periods/ov"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
 
@@ -205,8 +205,6 @@ function printOvulation() {
   }
 
   function create_user(){
-    //Validate Password (must be 6-20 characters in len)
-    //verifyPassword("click");
     const body = {
         ovulation: document.getElementById("nextovulation").value,
     };
@@ -223,7 +221,6 @@ function printOvulation() {
     // Fetch API call to the database to create a new user
     fetch(create_fetch, requestOptions)
       .then(response => {
-        // trap error response from Web API
         if (response.status !== 200) {
           const errorMsg = 'Database create error: ' + response.status;
           console.log(errorMsg);
@@ -237,7 +234,6 @@ function printOvulation() {
         // response contains valid result
         response.json().then(data => {
             console.log(data);
-            //add a table row for the new/created userid
             add_row(data);
         })
     })
@@ -245,16 +241,14 @@ function printOvulation() {
 
   function add_row(data) {
     const tr = document.createElement("tr");
-    const name = document.createElement("td");
-	const uid = document.createElement("td");
+    const ovulation = document.createElement("td");
   
 
     // obtain data that is specific to the API
     ovulation.innerHTML = data.ovulation;  
 
     // add HTML to container
-	tr.appendChild(name);
-    tr.appendChild(uid);
+	tr.appendChild(ovulation);
 
     resultContainer.appendChild(tr);
   }

@@ -150,7 +150,7 @@ function printOvulation() {
   // prepare URL's to allow easy switch from deployment and localhost
   const url = "http://flowhealth.duckdns.org/api/periods/ov"
   const create_fetch = url + '/create';
-  const read_fetch = url + '/';
+  const read_fetch = url;
 
   // Load users on page entry
   read_users();
@@ -233,8 +233,8 @@ function printOvulation() {
         }
         // response contains valid result
         response.json().then(data => {
-            console.log(data);
-            add_row(data);
+            console.log(data[row]);
+            add_row(data[row]);
         })
     })
   }
@@ -245,10 +245,11 @@ function printOvulation() {
   
 
     // obtain data that is specific to the API
-    ovulation.innerHTML = data.ovulation;  
+    ovulation.innerHTML = data;  
+    console.log(data)
 
     // add HTML to container
-	tr.appendChild(ovulation);
+	  tr.appendChild(ovulation);
 
     resultContainer.appendChild(tr);
   }

@@ -128,16 +128,24 @@ input[type='radio'] {
       <input type="radio" name="q10" value="a" id="q10a"> Yes<br>
       <input type="radio" name="q10" value="b" id="q10b"> No<br>
       <input type="radio" name="q10" value="c" id="q10c"> Maybe<br>
-  </form>
-  </section>
-
-  <div id="container">
-      <p>Please enter your name to save your score:</p>
-      <input type="name" name = "name" placeholder="Enter your name">
-      <br>
+    <div id="container">
       <input type="submit" value="Submit Answers">
       <div id="results"></div>
   </div>
+  </form>
+  </section>
+
+  <form action="javascript:create_user()">
+      <p><label>
+          Name:
+          <input type="text" name="name" id="name" required>
+      </label></p> 
+          Score:
+          <input type="text" name="uid" id="uid" required>
+      <p>
+          <button>Create</button>
+      </p>
+  </form>
 
   <table>
     <thead>
@@ -151,17 +159,6 @@ input[type='radio'] {
     </tbody>
   </table>
 
-  <form action="javascript:create_user()">
-      <p><label>
-          Name:
-          <input type="text" name="name" id="name" required>
-      </label></p> 
-          Score:
-          <input type="text" name="uid" id="uid" required>
-      <p>
-          <button>Create</button>
-      </p>
-  </form>
 </div>
 
 
@@ -212,7 +209,7 @@ input[type='radio'] {
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("result1");
   // prepare URL's to allow easy switch from deployment and localhost
-  const url = "http://localhost:8087/api/scores"
+  const url = "http://flowhealth.duckdns.org/api/scores"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
 

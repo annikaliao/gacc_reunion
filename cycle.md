@@ -33,7 +33,7 @@ input {
   border: none;
 }
 .tracker {
-  background-color: pink;
+  background-color:	#ffe1e8;
   border: none;
 }
 .date td {
@@ -141,9 +141,9 @@ a.hover a.focus {
   const resultContainer = document.getElementById("period");
   // prepare URL's to allow easy switch from deployment and localhost
   //const url = "http://localhost:8086/api/users"
-  const url = "http://172.31.22.127:8087/api/periods"
+  const url = "http://flowhealth.duckdns.org/api/periods/"
   const create_fetch = url + '/create';
-  const read_fetch = url + '/';
+  const read_fetch = url;
   // Load users on page entry
   read_users();
   // Display User Table, data is fetched from Backend Database
@@ -193,10 +193,8 @@ a.hover a.focus {
     });
   }
   function create_user(){
-    //Validate Password (must be 6-20 characters in len)
-    //verifyPassword("click");
     const body = {
-        period: document.getElementById("startdate").value,
+        period: document.getElementById("nextperiod").value,
     };
     const requestOptions = {
         method: 'POST',
@@ -224,7 +222,6 @@ a.hover a.focus {
         // response contains valid result
         response.json().then(data => {
             console.log(data);
-            //add a table row for the new/created userid
             add_row(data);
         })
     })
@@ -233,7 +230,8 @@ a.hover a.focus {
     const tr = document.createElement("tr");
     const period = document.createElement("td"); 
     // obtain data that is specific to the API
-    period.innerHTML = data.period; 
+    period.innerHTML = data.nextperiod; 
+    console.log(data)
     // add HTML to container
     tr.appendChild(period);
     resultContainer.appendChild(tr);

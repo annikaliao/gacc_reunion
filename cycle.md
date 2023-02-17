@@ -129,16 +129,18 @@ a.hover a.focus {
 <table>
   <thead>
   <tr>
-    <th>Period</th>
+    <th>Your Periods</th>
+    <th>Period Length</th>
+    <th>Cycle Length</th>
   </tr>
   </thead>
-  <tbody id="period">
+  <tbody id="periodresult">
     <!-- javascript generated data -->
   </tbody>
 </table>
 <script>
   // prepare HTML result container for new output
-  const resultContainer = document.getElementById("period");
+  const resultContainer = document.getElementById("periodresult");
   // prepare URL's to allow easy switch from deployment and localhost
   //const url = "http://localhost:8086/api/users"
   const url = "http://flowhealth.duckdns.org/api/periods/"
@@ -229,11 +231,17 @@ a.hover a.focus {
   function add_row(data) {
     const tr = document.createElement("tr");
     const period = document.createElement("td"); 
+    const periodL = document.createElement("td");
+    const cycleL = document.createElement("td");
     // obtain data that is specific to the API
     period.innerHTML = data.nextperiod; 
+    periodL.innerHTML = data.periodlength; 
+    cycleL.innerHTML = data.cyclelength; 
     console.log(data)
     // add HTML to container
     tr.appendChild(period);
+    tr.appendChild(periodL);
+    tr.appendChild(cycleL);
     resultContainer.appendChild(tr);
   }
 

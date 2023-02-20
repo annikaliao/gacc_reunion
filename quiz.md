@@ -142,7 +142,7 @@ input[type='radio'] {
           <input type="text" name="name" id="name" required>
       </label></p> 
           Score:
-          <input type="text" name="uid" id="uid" required>
+          <input type="text" name="score" id="score" required>
       <p>
           <button>Create</button>
       </p>
@@ -210,7 +210,8 @@ input[type='radio'] {
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("result1");
   // prepare URL's to allow easy switch from deployment and localhost
-  const url = "http://flowhealth.duckdns.org/api/scores"
+  // const url = "http://flowhealth.duckdns.org/api/scores"
+  const url = "http://192.168.1.225:8087/api/scores"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
 
@@ -270,7 +271,7 @@ input[type='radio'] {
     //Validate Password (must be 6-20 characters in len)
     //verifyPassword("click");
     const body = {
-        uid: document.getElementById("uid").value,
+        score: document.getElementById("score").value,
         name: document.getElementById("name").value,
     };
     const requestOptions = {
@@ -309,16 +310,16 @@ input[type='radio'] {
   function add_row(data) {
     const tr = document.createElement("tr");
     const name = document.createElement("td");
-	  const uid = document.createElement("td");
+	  const score = document.createElement("td");
   
 
     // obtain data that is specific to the API
-    uid.innerHTML = data.uid; 
+    score.innerHTML = data.score; 
     name.innerHTML = data.name; 
 
     // add HTML to container
 	  tr.appendChild(name);
-    tr.appendChild(uid);
+    tr.appendChild(score);
 
     resultContainer.appendChild(tr);
   }

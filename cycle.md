@@ -4,10 +4,7 @@
   display: none;
 }
 span {
-<<<<<<< HEAD
-=======
   color: dark red;
->>>>>>> 3f160589d10c4b0ecb1b99750d2fb637819db077
   font-size: 30px;
 }
 h1 .title {
@@ -85,6 +82,7 @@ a.hover a.focus {
     </table>
   </form>
 </div>
+<br>
 <div class="date">
   <p style="font-size: 30px; color: darkred;">Next Period:</p>
   <table>
@@ -97,11 +95,6 @@ a.hover a.focus {
       </td>
       <td>
         <span id="nextperiodend"></span>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <span id="nextperiod2"></span>
       </td>
     </tr>
   </table>
@@ -146,8 +139,8 @@ a.hover a.focus {
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("periodresult");
   // prepare URL's to allow easy switch from deployment and localhost
-  // const url = "http://localhost:8087/api/periods"
-  const url = "http://flowhealth.duckdns.org/api/periods"
+  const url = "http://localhost:8087/api/periods"
+  // const url = "http://flowhealth.duckdns.org/api/periods"
   const create_fetch = url + '/create';
   const read_fetch = url + "/";
   // Load users on page entry
@@ -205,8 +198,7 @@ a.hover a.focus {
         // cyclelength: document.getElementById("cyclelength").value,
         nextperiod: nextP,
         periodlength: periodL,
-        cyclelength: cycleL,
-        nextovulation: "ov"
+        cyclelength: cycleL
     };
     //alert(body.toString());
     const requestOptions = {

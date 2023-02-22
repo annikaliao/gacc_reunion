@@ -136,7 +136,8 @@ function printOvulation() {
 <table>
   <thead>
   <tr>
-    <th>Ovulation</th>
+    <th>Start Ovulation Month</th>
+    <th>Start Ovulation Day</th>
   </tr>
   </thead>
   <tbody id="ovulation">

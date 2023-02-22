@@ -1,4 +1,5 @@
 <style>
+
 div.container h1 {
 	padding: 20px;
 	font-size: 50px;
@@ -16,7 +17,6 @@ div.container p {
 
 
 body {
-  color: white;
   font-family: 'Lato', sans-serif;
   font-size: 14px;
 }
@@ -128,16 +128,24 @@ input[type='radio'] {
       <input type="radio" name="q10" value="a" id="q10a"> Yes<br>
       <input type="radio" name="q10" value="b" id="q10b"> No<br>
       <input type="radio" name="q10" value="c" id="q10c"> Maybe<br>
-  </form>
-  </section>
-
-  <div id="container">
-      <p>Please enter your name to save your score:</p>
-      <input type="name" name = "name" placeholder="Enter your name">
-      <br>
+    <div id="container">
       <input type="submit" value="Submit Answers">
       <div id="results"></div>
   </div>
+  </form>
+  </section>
+
+  <form action="javascript:create_user()">
+      <p><label>
+          Name:
+          <input type="text" name="name" id="name" required>
+      </label></p> 
+          Score:
+          <input type="text" name="score" id="score" required>
+      <p>
+          <button>Create</button>
+      </p>
+  </form>
 
   <table>
     <thead>
@@ -151,17 +159,6 @@ input[type='radio'] {
     </tbody>
   </table>
 
-  <form action="javascript:create_user()">
-      <p><label>
-          Name:
-          <input type="text" name="name" id="name" required>
-      </label></p> 
-          Score:
-          <input type="text" name="uid" id="uid" required>
-      <p>
-          <button>Create</button>
-      </p>
-  </form>
 </div>
 
 
@@ -212,7 +209,8 @@ input[type='radio'] {
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("result1");
   // prepare URL's to allow easy switch from deployment and localhost
-  const url = "http://localhost:8087/api/scores"
+  // const url = "http://flowhealth.duckdns.org/api/scores"
+  const url = "http://192.168.1.225:8087/api/scores"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
 
@@ -272,7 +270,7 @@ input[type='radio'] {
     //Validate Password (must be 6-20 characters in len)
     //verifyPassword("click");
     const body = {
-        uid: document.getElementById("uid").value,
+        score: document.getElementById("score").value,
         name: document.getElementById("name").value,
     };
     const requestOptions = {
@@ -311,18 +309,32 @@ input[type='radio'] {
   function add_row(data) {
     const tr = document.createElement("tr");
     const name = document.createElement("td");
-	  const uid = document.createElement("td");
+	  const score = document.createElement("td");
   
 
     // obtain data that is specific to the API
-    uid.innerHTML = data.uid; 
+    score.innerHTML = data.score; 
     name.innerHTML = data.name; 
 
     // add HTML to container
 	  tr.appendChild(name);
-    tr.appendChild(uid);
+    tr.appendChild(score);
 
     resultContainer.appendChild(tr);
   }
 
+function delete_record() {
+  var name = document.getElementById("delete").value  
+  return fetch('http://192.168.1.225:8087/api/scores' + name, {
+    method: 'DELETE',
+  })
+  .then(response=>response.json())
+}
+  
 </script>
+
+<div>
+<form action="javascript:delete_record()">
+  <input type="text" name="delete" id="delete" required><button>Delete Record</button>
+</form>
+<div>

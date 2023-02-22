@@ -17,7 +17,6 @@ div.container p {
 
 
 body {
-  color: white;
   font-family: 'Lato', sans-serif;
   font-size: 14px;
 }
@@ -324,4 +323,18 @@ input[type='radio'] {
     resultContainer.appendChild(tr);
   }
 
+function delete_record() {
+  var name = document.getElementById("delete").value  
+  return fetch('http://192.168.1.225:8087/api/scores' + name, {
+    method: 'DELETE',
+  })
+  .then(response=>response.json())
+}
+  
 </script>
+
+<div>
+<form action="javascript:delete_record()">
+  <input type="text" name="delete" id="delete" required><button>Delete Record</button>
+</form>
+<div>

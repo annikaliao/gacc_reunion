@@ -33,7 +33,7 @@ input {
   border: none;
 }
 .tracker {
-  background-color:	#ffe1e8;
+  background-color: #ffe1e8;
   border: none;
 }
 .date td {
@@ -57,7 +57,9 @@ a.hover a.focus {
 </head>
 <body>
 
+
 <h1 style="color:darkred;" >Cycle Tracker</h1>
+
 
 <div>
   <form class="tracker">
@@ -68,14 +70,14 @@ a.hover a.focus {
         <td>How long is your usual menstrual cycle?</td>
       </tr>
       <tr id="input">
-        <td><input type="date" id="lastPeriod" required></td>
-        <td><input type="number" id="periodLength" step="1" min="1" max="10" placeholder="1-10" required/></td>
-        <td><input type="number" id="cycleLength" step="1" min="10" max="50" placeholder="10-50" required/></td>
+        <td><input type="date" id="lastperiod" required></td>
+        <td><input type="number" id="periodlength" step="1" min="1" max="10" placeholder="1-10" required/></td>
+        <td><input type="number" id="cyclelength" step="1" min="10" max="50" placeholder="10-50" required/></td>
       </tr>
       <tr>
         <td></td>
         <td>
-          <button class="track" type="button" onclick="printDate()">
+          <button class="track" type="button" onclick="printDate(); addData()">
             TRACK
           </button>
         </td>
@@ -107,18 +109,20 @@ a.hover a.focus {
   <span class="unhealthy" id="unhealthy"></span>
 </div>
 <script>
-	function printDate() {
-	  const x = document.getElementById("lastPeriod").value;
-		var y = document.getElementById("cycleLength").value;
-    const z = document.getElementById("periodLength").value;
-		var resDate = new Date(x);
-		resDate.setDate(resDate.getDate() + parseInt(y));
-		var year = resDate.getUTCFullYear();
+  function printDate() {
+    const x = document.getElementById("lastperiod").value;
+    var y = document.getElementById("cyclelength").value;
+    const z = document.getElementById("periodlength").value;
+    var resDate = new Date(x);
+    resDate.setDate(resDate.getDate() + parseInt(y));
+    var year = resDate.getUTCFullYear();
     var month = resDate.getUTCMonth() + 1;
     var startdate = resDate.getUTCDate();
-    document.getElementById("nextperiod").innerHTML = month + "/" + startdate + "/" + year;
+    const periodstart = `${month}/${startdate}/${year}`;
+    document.getElementById("nextperiod").innerHTML = periodstart
     var enddate = resDate.getUTCDate() + parseInt(z);
-    document.getElementById("nextperiodend").innerHTML = month + "/" + enddate + "/" + year;
+    const periodend = `${month}/${enddate}/${year}`
+    document.getElementById("nextperiodend").innerHTML = periodend
     //startdate = enddate + parseInt(y);
     //document.getElementById("nextperiod2").innerHTML = startdate;
     if(parseInt(z) <= 2) {
@@ -142,10 +146,10 @@ a.hover a.focus {
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("periodresult");
   // prepare URL's to allow easy switch from deployment and localhost
-  //const url = "http://localhost:8086/api/users"
-  const url = "http://flowhealth.duckdns.org/api/periods/"
+  // const url = "http://localhost:8087/api/periods"
+  const url = "http://flowhealth.duckdns.org/api/periods"
   const create_fetch = url + '/create';
-  const read_fetch = url;
+  const read_fetch = url + "/";
   // Load users on page entry
   read_users();
   // Display User Table, data is fetched from Backend Database
@@ -194,10 +198,17 @@ a.hover a.focus {
       resultContainer.appendChild(tr);
     });
   }
-  function create_user(){
+  function create_user(nextP, periodL, cycleL){
     const body = {
-        period: document.getElementById("nextperiod").value,
+        // nextperiod: document.getElementById("lastperiod").value,
+        // periodlength: document.getElementById("periodlength").value,
+        // cyclelength: document.getElementById("cyclelength").value,
+        nextperiod: nextP,
+        periodlength: periodL,
+        cyclelength: cycleL,
+        nextovulation: "ov"
     };
+    //alert(body.toString());
     const requestOptions = {
         method: 'POST',
         body: JSON.stringify(body),
@@ -224,36 +235,51 @@ a.hover a.focus {
         // response contains valid result
         response.json().then(data => {
             console.log(data);
-            add_row(data);
+            // add_row(data);
         })
     })
   }
   function add_row(data) {
     const tr = document.createElement("tr");
-    const period = document.createElement("td"); 
-    const periodL = document.createElement("td");
-    const cycleL = document.createElement("td");
+    const nextperiod = document.createElement("td");
+    const periodlength = document.createElement("td");
+    const cyclelength = document.createElement("td");
     // obtain data that is specific to the API
-    period.innerHTML = data.nextperiod; 
-    periodL.innerHTML = data.periodlength; 
-    cycleL.innerHTML = data.cyclelength; 
+    nextperiod.innerHTML = data.nextperiod;
+    periodlength.innerHTML = data.periodlength;
+    cyclelength.innerHTML = data.cyclelength;
     console.log(data)
     // add HTML to container
-    tr.appendChild(period);
-    tr.appendChild(periodL);
-    tr.appendChild(cycleL);
-    resultContainer.appendChild(tr);
+    tr.appendChild(nextperiod);
+    tr.appendChild(periodlength);
+    tr.appendChild(cyclelength);
+    resultContainer.appendChild(tr); 
   }
+  function addData(){
+    if(document.getElementById("lastperiod").value&&document.getElementById("periodlength").value&&document.getElementById("cyclelength").value)
+      myData = {"nextperiod": document.getElementById("lastperiod").value, "periodlength": document.getElementById("periodlength").value, "cyclelength": document.getElementById("cyclelength").value};
+    add_row(myData);
+    alert("before post");
+    create_user(myData.nextperiod, myData.periodlength, myData.cyclelength);
+    alert("after post");
+    }
+
 
 </script>
 <br>
   <h1 style="text-align: center; color: darkred;" >&#65086;</h1>
 <br>
 
+
 {% include login.html %}
+
 
 <button action="javascript:" onclick="openForm()">
   <p style="color: darkred;">Get reminders through phone or email!</p>
 </button>
 
+
 </body>
+
+
+

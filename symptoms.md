@@ -67,21 +67,21 @@ img {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<p>Add A Comment! What has Worked For You?</p>
+<p><b>Add A Comment! What has Worked For You?</b></p>
 <p>What Symptom Are You Addressing?</p>
 <input type="text" id="symptoms" placeholder="symptom">
-<button id="symptom">Enter</button>
+<!-- button id="symptom">Enter</button-->
 <p>What Remedies Work For You? What Other Remedies or Products do you Recommend?</p>
 <input type="text" id="comment-box" placeholder="your comment">
-<button id="post">Post</button>
+<button id="post" onclick="addData();">Post</button>
 <p id="unordered"></p>
 <script src="code.js"></script>
 <form>
 <table>
   <thead>
   <tr>
-    <th>Symptom</th>
-    <th>Comment</th>
+    <th style="width:20%">Symptom</th>
+    <th style="width:80%">Comment</th>
   </tr>
   </thead>
   <tbody id="comment">
@@ -89,7 +89,7 @@ img {
   </tbody>
 </table>
 <hr>
-<p>What are your symptoms:</p>
+<p id = "whatSymptoms"><b>What are your symptoms:</b></p>
 
 <input type="checkbox" id = "chk1" name="symptoms" value="trouble_sleeping"><font color="#990000"> Trouble Sleeping</font>
 <br>
@@ -524,11 +524,12 @@ function topFunction() {
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("comment");
   // prepare URL's to allow easy switch from deployment and localhost
-  const url = "http://172.28.236.193:8087/api/symptom/"
+  const url = "http://flowhealth.duckdns.org/api/symptom"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
   // Load users on page entry
   read_users();
+  //alert(create_fetch);
   // Display User Table, data is fetched from Backend Database
   function read_users() {
     // prepare fetch options
@@ -539,8 +540,8 @@ function topFunction() {
       credentials: 'omit', // include, *same-origin, omit
       headers: {
         'Content-Type': 'application/json'
-      },
-    };
+      }
+    }
     // fetch the data from API
     fetch(read_fetch, read_options)
       // response is a RESTful "promise" on any successful fetch
@@ -554,6 +555,7 @@ function topFunction() {
             td.innerHTML = errorMsg;
             tr.appendChild(td);
             resultContainer.appendChild(tr);
+
             return;
         }
         // valid response will have json data
@@ -575,12 +577,14 @@ function topFunction() {
       resultContainer.appendChild(tr);
     });
   }
-  function create_user(){
+  function create_user(sym,com){
     //Validate Password (must be 6-20 characters in len)
     //verifyPassword("click");
     const body = {
-        symptom: document.getElementById("symptoms").value,
-        comment: document.getElementById("comment-box").value,
+        //symptom: document.getElementById("symptoms").value,
+        //comment: document.getElementById("comment-box").value,
+        symptom: sym,
+        comment: com,
     };
     const requestOptions = {
         method: 'POST',
@@ -609,14 +613,15 @@ function topFunction() {
         response.json().then(data => {
             console.log(data);
             //add a table row for the new/created userid
-            add_row(data);
+            //add_row(data);
         })
     })
   }
   function add_row(data) {
+    //alert(data.symptom);
     const tr = document.createElement("tr");
     const symptom = document.createElement("td");
-	const comment = document.createElement("td");
+	  const comment = document.createElement("td");
     // obtain data that is specific to the API
     symptom.innerHTML = data.symptom; 
     comment.innerHTML = data.comment; 
@@ -624,5 +629,26 @@ function topFunction() {
 	tr.appendChild(symptom);
     tr.appendChild(comment);
     resultContainer.appendChild(tr);
+    //alert("before post");
+    // save database
+    create_user(data.symptom,data.comment);
+    //alert("after post");
   }
+
+
+
+  function addData(){
+    //alert("hell0");
+    if(document.getElementById("symptoms").value&&document.getElementById("comment-box").value){
+      myObj = { "symptom":document.getElementById("symptoms").value, "comment":document.getElementById("comment-box").value};
+      //alert(document.getElementById("symptoms").value);
+      //alert(document.getElementById("comment-box").value);
+
+      add_row(myObj);
+      //alert("do something!");
+    }
+
+  }
+
   </script>
+

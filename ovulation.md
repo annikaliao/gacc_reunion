@@ -73,71 +73,84 @@ red{
   color: #8B0000;
 }
 
-/* Add media queries for smaller screens */
-@media screen and (max-width:720px) {
-  .weekdays li, .days li {width: 13.1%;}
+.tracker td {
+  padding: 60px;
+  width: 33.3%;
+  text-align: center;
+  color: darkred;
+  font-size: 20px;
+  border: none;
 }
-
-@media screen and (max-width: 420px) {
-  .weekdays li, .days li {width: 12.5%;}
-  .days li .active {padding: 2px;}
-}
-
-@media screen and (max-width: 290px) {
-  .weekdays li, .days li {width: 12.2%;}
+.tracker {
+  background-color: #ffe1e8;
+  border: none;
 }
 </style>
 
 </head>
+<div>
+  <form class="tracker">
+    <table align="center" style="border:none;">
+      <tr id="q">
+        <td>Once you get your next period date from the period tracker, enter the date here:</td>
+        <td>How many days does your period usually last?</td>
+        <td>How long is your usual menstrual cycle?</td>
+      </tr>
+      <tr id="input">
+        <td><input type="date" id="lastperiods" required></td>
+        <td><input type="number" id="periodlengths" required/></td>
+        <td><input type="number" id="cyclelengths" required/></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <button class="track" type="button" onclick="printDate(); addData()">
+            TRACK
+          </button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
 <br>
-<body>
-    <ul id="unordered">
-       
-   </ul>
-   
-  <script src="code.js"></script>
 
-<p style="font-size: 30px; color: darkred;">Next Ovulation:</p>
-<p style="font-size: 15px; color: darkred;">Make sure you put your info into the cycle tracker!</p>
-<table>
+<p style="font-size: 25px; color: darkred;">Next Ovulation:</p>
+  <table>
     <tr>
       <td>
-        <span id="year1"></span>
-        <span id="month1"></span>
-        <span id="date1"></span>
+        <span id="nextovulation"></span>
       </td>
       <td>
         <p style="text-align: center; color: darkred; font-weight:bolder; font-size: 20px;">&#x2964;</p>
       </td>
       <td>
-        <span id="year2"></span>
-        <span id="month2"></span>
-        <span id="date2"></span>
+        <span id="nextovulationend"></span>
       </td>
     </tr>
-  </table>
+    <tr>
 
 <script>
-function printOvulation() {
-	  const x = document.getElementById("lastPeriod").value;
-		var y = document.getElementById("cycleLength").value;
-    const z = document.getElementById("periodLength").value;
-		var resDate = new Date();
-		resDate.setDate(resDate.getDate()+parseInt(y));
-		document.getElementById("year1").innerHTML = resDate.getUTCFullYear() + " /" ;
-		document.getElementById("month1").innerHTML = resDate.getUTCMonth()+1 + " /";
-    document.getElementById("year2").innerHTML = resDate.getUTCFullYear() + " /" ;
-		document.getElementById("month2").innerHTML = resDate.getUTCMonth()+1 + " /";
-		document.getElementById("date1").innerHTML = resDate.getUTCDate() + z - 13;
-    document.getElementById("date2").innerHTML = resDate.getUTCDate() + z - 7;
-    }
+  function printDate() {
+    const x = document.getElementById("lastperiods").value;
+    var y = document.getElementById("cyclelengths").value;
+    const z = document.getElementById("periodlengths").value;
+    var resDate = new Date(x);
+    resDate.setDate(resDate.getDate() + parseInt(y));
+    var year = resDate.getUTCFullYear();
+    var month = resDate.getUTCMonth() + 1;
+    var startdate = resDate.getUTCDate() - 13;
+    const ovulationstart = `${month}/${startdate}/${year}`;
+    document.getElementById("nextovulation").innerHTML = ovulationstart
+    var enddate = resDate.getUTCDate() - 7;
+    const ovulationend = `${month}/${enddate}/${year}`
+    document.getElementById("nextovulationend").innerHTML = ovulationend
+  }
 </script>
 
 <table>
   <thead>
   <tr>
-    <th>Start Ovulation Month</th>
-    <th>Start Ovulation Day</th>
+    <th>Ovulation Date</th>
   </tr>
   </thead>
   <tbody id="ovulation">
@@ -149,7 +162,7 @@ function printOvulation() {
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("ovulation");
   // prepare URL's to allow easy switch from deployment and localhost
-  const url = "http://flowhealth.duckdns.org/api/periods/ov"
+  const url = "http://127.0.0.1:8087/api/ovulation"
   const create_fetch = url + '/create';
   const read_fetch = url;
 

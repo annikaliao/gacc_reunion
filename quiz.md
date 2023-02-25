@@ -137,7 +137,7 @@ input[type='radio'] {
   </form>
   </section>
 
-  <form action="javascript:create_user()">
+  <form>
       <p><label>
           Name:
           <input type="text" name="name" id="name" required>
@@ -336,7 +336,7 @@ input[type='radio'] {
 function validate(){
   var userInput = document.getElementById('score').value;
   if(!isNaN(userInput)){
-    alert("Is a number");
+    create_user();
   }else{
     alert("Is a not a number");
   }

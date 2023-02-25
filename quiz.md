@@ -143,7 +143,7 @@ input[type='radio'] {
           <input type="text" name="name" id="name" required>
       </label></p> 
           Score:
-          <input type="text" name="score" id="score" required>
+          <input type="text" name="score" id="score" onchange="validate()" required>
       <p>
           <button>Create</button>
       </p>
@@ -211,8 +211,8 @@ input[type='radio'] {
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("result1");
   // prepare URL's to allow easy switch from deployment and localhost
-  const url = "http://flowhealth.duckdns.org/api/scores"
-  // const url = "http://192.168.1.225:8087/api/scores"
+  // const url = "http://flowhealth.duckdns.org/api/scores"
+  const url = "http://192.168.1.225:8087/api/scores"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
 
@@ -325,14 +325,24 @@ input[type='radio'] {
     resultContainer.appendChild(tr);
   }
 
-function delete_record() {
-  var name = document.getElementById("delete").value  
-  return fetch('http://192.168.1.225:8087/api/scores' + name, {
-    method: 'DELETE',
-  })
-  .then(response=>response.json())
-}
+// function delete_record() {
+//   var name = document.getElementById("delete").value  
+//   return fetch('http://192.168.1.225:8087/api/scores' + name, {
+//     method: 'DELETE',
+//   })
+//   .then(response=>response.json())
+// }
   
+function validate(){
+  var userInput = document.getElementById('score').value;
+  if(!isNaN(userInput)){
+    alert("Is a number");
+  }else{
+    alert("Is a not a number");
+  }
+}
+
+
 </script>
 
 <div>

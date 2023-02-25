@@ -1,7 +1,7 @@
 <p> Ovulation is the process in which a mature egg is released from the ovary. After it's released, the egg moves down the fallopian tube and stays there for 12 to 24 hours, where it can be fertilized. This period of time usually occurs 12-14 days before your next period and typically lasts 6 days. </p>
 
 <head>
-    <link rel="stylesheet" href="style.css">
+    <!--<link rel="stylesheet" href="style.css">-->
 <style>
 * {box-sizing: border-box;}
 ul {list-style-type: none;}
@@ -88,6 +88,7 @@ red{
 </style>
 
 </head>
+
 <div>
   <form class="tracker">
     <table align="center" style="border:none;">
@@ -97,9 +98,9 @@ red{
         <td>How long is your usual menstrual cycle?</td>
       </tr>
       <tr id="input">
-        <td><input type="date" id="lastperiods" required></td>
-        <td><input type="number" id="periodlengths" required/></td>
-        <td><input type="number" id="cyclelengths" required/></td>
+        <td><input type="date" id="perioddate" required></td>
+        <td><input type="number" id="periodcycle" required/></td>
+        <td><input type="number" id="menscycle" required/></td>
       </tr>
       <tr>
         <td></td>
@@ -131,9 +132,9 @@ red{
 
 <script>
   function printDate() {
-    const x = document.getElementById("lastperiods").value;
-    var y = document.getElementById("cyclelengths").value;
-    const z = document.getElementById("periodlengths").value;
+    const x = document.getElementById("perioddate").value;
+    var y = document.getElementById("periodcycle").value;
+    const z = document.getElementById("menscycle").value;
     var resDate = new Date(x);
     resDate.setDate(resDate.getDate() + parseInt(y));
     var year = resDate.getUTCFullYear();
@@ -150,21 +151,23 @@ red{
 <table>
   <thead>
   <tr>
-    <th>Ovulation Date</th>
+    <th>Period Date</th>
+    <th>Period Length</th>
+    <th>Menstrual Cycle</th>
   </tr>
   </thead>
-  <tbody id="ovulation">
+  <tbody id="ovulationresult">
     <!-- javascript generated data -->
   </tbody>
 </table>
 
 <script>
   // prepare HTML result container for new output
-  const resultContainer = document.getElementById("ovulation");
+  const resultContainer = document.getElementById("ovulationresult");
   // prepare URL's to allow easy switch from deployment and localhost
-  const url = "http://127.0.0.1:8087/api/ovulation"
+  const url = "http://localhost:8087/api/ovulation"
   const create_fetch = url + '/create';
-  const read_fetch = url;
+  const read_fetch = url + "/";
 
   // Load users on page entry
   read_users();
@@ -218,9 +221,11 @@ red{
     });
   }
 
-  function create_user(){
+  function create_user(periodD, periodC, mensC){
     const body = {
-        ovulation: document.getElementById("nextovulation").value,
+        perioddate: periodD,
+        periodcycle: periodC,
+        menscycle: mensC
     };
     const requestOptions = {
         method: 'POST',
@@ -247,7 +252,7 @@ red{
         }
         // response contains valid result
         response.json().then(data => {
-            console.log(data[row]);
+            console.log(data);
             add_row(data[row]);
         })
     })
@@ -255,17 +260,29 @@ red{
 
   function add_row(data) {
     const tr = document.createElement("tr");
-    const ovulation = document.createElement("td");
-  
-
+    const perioddate = document.createElement("td");
+    const periodcycle = document.createElement("td");
+    const menscycle = document.createElement("td");
     // obtain data that is specific to the API
-    ovulation.innerHTML = data;  
+    perioddate.innerHTML = data.perioddate;
+    periodcycle.innerHTML = data.periodcycle;
+    menscycle.innerHTML = data.menscycle;   
     console.log(data)
-
     // add HTML to container
-	  tr.appendChild(ovulation);
+	  tr.appendChild(perioddate);
+    tr.appendChild(periodcycle);
+    tr.appendChild(menscycle);
 
     resultContainer.appendChild(tr);
   }
+
+  function addData(){
+    if(document.getElementById("perioddate").value&&document.getElementById("periodcycle").value&&document.getElementById("menscycle").value)
+      myData = {"perioddate": document.getElementById("perioddate").value, "periodcycle": document.getElementById("periodcycle").value, "menscycle": document.getElementById("menscycle").value};
+    add_row(myData);
+    //alert("before post");
+    create_user(myData.perioddate, myData.periodcycle, myData.menscycle);
+    //alert("after post");
+    }
 
 </script>

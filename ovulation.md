@@ -128,7 +128,9 @@ red{
         <span id="nextovulationend"></span>
       </td>
     </tr>
-    <tr>
+  </table>
+
+<br>
 
 <script>
   function printDate() {

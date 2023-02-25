@@ -334,11 +334,12 @@ input[type='radio'] {
 // }
   
 function validate(){
-  var userInput = document.getElementById('score').value;
-  if(!isNaN(userInput)){
-    create_user();
+  var userScore = document.getElementById('score').value;
+  var userName = document.getElementById('name').value;
+  if(isNaN(userScore) || userScore > 11 || userScore < 0 || !isNaN(userName)){
+    alert("Please enter a valid score or name 👹");
   }else{
-    alert("Is a not a number");
+    create_user();
   }
 }
 

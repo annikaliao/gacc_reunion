@@ -66,6 +66,7 @@ a.hover a.focus {
         <td>How many days did it last?</td>
         <td>How long is your usual menstrual cycle?</td>
       </tr>
+      <!--collect user input-->
       <tr id="input">
         <td><input type="date" id="lastperiod" required></td>
         <td><input type="number" id="periodlength" step="1" min="1" max="10" placeholder="1-10" required/></td>
@@ -101,28 +102,34 @@ a.hover a.focus {
   <br>
   <span class="unhealthy" id="unhealthy"></span>
 </div>
+  <h1 style="text-align: center; color: darkred;" >&#65086;</h1>
+<br>
 <script>
+  // print date of next period
   function printDate() {
+    // get user inputs
     const x = document.getElementById("lastperiod").value;
     var y = document.getElementById("cyclelength").value;
     const z = document.getElementById("periodlength").value;
+    // calculate date
     var resDate = new Date(x);
     resDate.setDate(resDate.getDate() + parseInt(y));
     var year = resDate.getUTCFullYear();
     var month = resDate.getUTCMonth() + 1;
     var startdate = resDate.getUTCDate();
+    // print dates onto site
     const periodstart = `${month}/${startdate}/${year}`;
     document.getElementById("nextperiod").innerHTML = periodstart
     var enddate = resDate.getUTCDate() + parseInt(z);
     const periodend = `${month}/${enddate}/${year}`
     document.getElementById("nextperiodend").innerHTML = periodend
-    //startdate = enddate + parseInt(y);
-    //document.getElementById("nextperiod2").innerHTML = startdate;
+    // conditional for if period has unhealthy schedule
     if(parseInt(z) <= 2) {
       document.getElementById("unhealthy").innerHTML = "NOTICE: Your period is abnormally short. This may be a sign of some health concerns.   <a href=\"https://www.everydayhealth.com/pms/short-periods.aspx#:~:text=A%20short%20menstrual%20period%20might,even%20a%20serious%20medical%20problem.\">Learn More</a>" ;
     }
   }
 </script>
+<!--table displaying data from database-->
 <table>
   <thead>
   <tr>
@@ -135,12 +142,13 @@ a.hover a.focus {
     <!-- javascript generated data -->
   </tbody>
 </table>
+<br><br>
 <script>
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("periodresult");
   // prepare URL's to allow easy switch from deployment and localhost
   const url = "http://localhost:8087/api/periods"
-  // const url = "http://flowhealth.duckdns.org/api/periods"
+  // const url = "https://flowhealth.duckdns.org/api/periods"
   const create_fetch = url + '/create';
   const read_fetch = url + "/";
   // Load users on page entry
@@ -251,24 +259,13 @@ a.hover a.focus {
     if(document.getElementById("lastperiod").value&&document.getElementById("periodlength").value&&document.getElementById("cyclelength").value)
       myData = {"nextperiod": document.getElementById("lastperiod").value, "periodlength": document.getElementById("periodlength").value, "cyclelength": document.getElementById("cyclelength").value};
     add_row(myData);
-    alert("before post");
     create_user(myData.nextperiod, myData.periodlength, myData.cyclelength);
-    alert("after post");
     }
-
+ 
 
 </script>
-<br>
-  <h1 style="text-align: center; color: darkred;" >&#65086;</h1>
-<br>
-
 
 {% include login.html %}
-
-
-<button action="javascript:" onclick="openForm()">
-  <p style="color: darkred;">Get reminders through phone or email!</p>
-</button>
 
 
 </body>

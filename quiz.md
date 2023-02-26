@@ -73,8 +73,6 @@ input[type='radio'] {
 
 </style>
 
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-
 <div class="container" style="background-color: pink;">
 	<h1>How much do you know about periods?</h1>
 </div>
@@ -137,13 +135,13 @@ input[type='radio'] {
   </form>
   </section>
 
-  <form action="javascript:create_user()">
+  <form>
       <p><label>
           Name:
           <input type="text" name="name" id="name" required>
       </label></p> 
           Score:
-          <input type="text" name="score" id="score" required>
+          <input type="text" name="score" id="score" onchange="validate()" required>
       <p>
           <button>Create</button>
       </p>
@@ -211,7 +209,7 @@ input[type='radio'] {
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("result1");
   // prepare URL's to allow easy switch from deployment and localhost
-  const url = "http://flowhealth.duckdns.org/api/scores"
+  const url = "https://flowhealth.duckdns.org/api/scores"
   // const url = "http://192.168.1.225:8087/api/scores"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
@@ -325,14 +323,25 @@ input[type='radio'] {
     resultContainer.appendChild(tr);
   }
 
-function delete_record() {
-  var name = document.getElementById("delete").value  
-  return fetch('http://192.168.1.225:8087/api/scores' + name, {
-    method: 'DELETE',
-  })
-  .then(response=>response.json())
-}
+// function delete_record() {
+//   var name = document.getElementById("delete").value  
+//   return fetch('http://192.168.1.225:8087/api/scores' + name, {
+//     method: 'DELETE',
+//   })
+//   .then(response=>response.json())
+// }
   
+function validate(){
+  var userScore = document.getElementById('score').value;
+  var userName = document.getElementById('name').value;
+  if(isNaN(userScore) || userScore > 11 || userScore < 0 || !isNaN(userName)){
+    alert("Please enter a valid score or name 👹");
+  }else{
+    create_user();
+  }
+}
+
+
 </script>
 
 <div>

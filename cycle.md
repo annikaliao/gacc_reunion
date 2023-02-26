@@ -139,7 +139,7 @@ a.hover a.focus {
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("periodresult");
   // prepare URL's to allow easy switch from deployment and localhost
-  const url = "http://localhost:8087/api/periods"
+  const url = "https://localhost:8087/api/periods"
   // const url = "http://flowhealth.duckdns.org/api/periods"
   const create_fetch = url + '/create';
   const read_fetch = url + "/";

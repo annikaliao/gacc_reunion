@@ -73,8 +73,6 @@ input[type='radio'] {
 
 </style>
 
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-
 <div class="container" style="background-color: pink;">
 	<h1>How much do you know about periods?</h1>
 </div>

@@ -524,7 +524,7 @@ function topFunction() {
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("comment");
   // prepare URL's to allow easy switch from deployment and localhost
-  const url = "http://flowhealth.duckdns.org/api/symptom"
+  const url = "https://flowhealth.duckdns.org/api/symptom"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
   // Load users on page entry

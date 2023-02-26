@@ -80,8 +80,10 @@ img {
 <table>
   <thead>
   <tr>
-    <th style="width:20%">Symptom</th>
-    <th style="width:80%">Comment</th>
+    <th style="width:40%">Symptom</th>
+    <th style="width:50%">Comment</th>
+    <th style="width:10%">Delete</th>
+    
   </tr>
   </thead>
   <tbody id="comment">
@@ -129,55 +131,6 @@ img {
 <br><a id = "s11" href="#Diarrhea_or_Constipation">Diarrhea or Constipation</a>
 <hr>
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-<script>
-var post= document.getElementById("symptom");
-post.addEventListener("click", function(){
-    var symptomsValue= document.getElementById("symptoms").value;
-    var li = document.createElement("span");
-    var text = document.createTextNode(symptomsValue);
-    li.appendChild(text);
-    document.getElementById("unordered").appendChild(li); 
-});
-var post= document.getElementById("post");
-post.addEventListener("click", function(){
-    var commentBoxValue= document.getElementById("comment-box").value;
-    var li = document.createElement("li");
-    var text = document.createTextNode(commentBoxValue);
-    li.appendChild(text);
-    document.getElementById("unordered").appendChild(li); 
-});
-fHide();
-    function fHide()
-   {
-    for (var i =1; i <12;i++){
-      document.getElementById("s"+ i).style.visibility = "hidden";
-      }
-   } 
-   function fDisplay()
-   {
-    for (var i =1; i <12;i++)
-      if (document.getElementById("chk"+ i).checked==true){
-        document.getElementById("s"+ i).style.visibility = "";
-      }
-    else{
-        document.getElementById("s"+ i).style.visibility = "hidden";
-      }
-   }
-let mybutton = document.getElementById("myBtn");
-window.onscroll = function() {scrollFunction()};
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
-}
-function topFunction() {
-  document.body.scrollTop = 0; 
-  document.documentElement.scrollTop = 0; 
-}
-</script>
-
 <div class="row">
   <div class="column">
     <h2><a id="Trouble_Sleeping">Trouble Sleeping</a></h2>
@@ -521,13 +474,33 @@ function topFunction() {
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 <script>
+  fHide();
+    function fHide()
+   {
+    for (var i =1; i <12;i++){
+      document.getElementById("s"+ i).style.visibility = "hidden";
+      }
+   } 
+   function fDisplay()
+   {
+    for (var i =1; i <12;i++)
+      if (document.getElementById("chk"+ i).checked==true){
+        document.getElementById("s"+ i).style.visibility = "";
+      }
+    else{
+        document.getElementById("s"+ i).style.visibility = "hidden";
+      }
+   }
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("comment");
   // prepare URL's to allow easy switch from deployment and localhost
-  const url = "https://flowhealth.duckdns.org/api/symptom"
+  const url = "https://flowhealth.duckdns.org/api/symptom/"
+  //const url = "http://172.20.198.186:8087/api/symptom/"
   const create_fetch = url + '/create';
+  const delete_fetch = url + '/delete';
   const read_fetch = url + '/';
   // Load users on page entry
+  //alert("read");
   read_users();
   //alert(create_fetch);
   // Display User Table, data is fetched from Backend Database
@@ -557,9 +530,10 @@ function topFunction() {
             resultContainer.appendChild(tr);
 
             return;
-        }
+        }        
+
         // valid response will have json data
-        response.json().then(data => {
+        response.json().then(data => {          
             console.log(data);
             for (let row in data) {
               console.log(data[row]);
@@ -622,12 +596,16 @@ function topFunction() {
     const tr = document.createElement("tr");
     const symptom = document.createElement("td");
 	  const comment = document.createElement("td");
+    const td_delete = document.createElement("td");
     // obtain data that is specific to the API
+
     symptom.innerHTML = data.symptom; 
-    comment.innerHTML = data.comment; 
+    comment.innerHTML = data.comment;
+    td_delete.innerHTML="<button onclick='delSym("+data.id+");'>X</button>";
     // add HTML to container
 	tr.appendChild(symptom);
     tr.appendChild(comment);
+    tr.appendChild(td_delete);
     resultContainer.appendChild(tr);
     //alert("before post");
     // save database
@@ -648,6 +626,50 @@ function topFunction() {
       //alert("do something!");
     }
 
+  }
+
+
+  function delSym(sid){
+    //Validate Password (must be 6-20 characters in len)
+    //verifyPassword("click");
+    //alert(sid);
+    const body = {
+        //symptom: document.getElementById("symptoms").value,
+        //comment: document.getElementById("comment-box").value,
+        sid: sid,
+        
+    };
+    const requestOptions = {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: {
+            "content-type": "application/json",
+            'Authorization': 'Bearer my-token',
+        },
+    };
+    // URL for Create API
+    // Fetch API call to the database to create a new user
+    fetch(delete_fetch, requestOptions)
+      .then(response => {
+        // trap error response from Web API
+        if (response.status !== 200) {
+          const errorMsg = 'Database create error: ' + response.status;
+          console.log(errorMsg);
+          const tr = document.createElement("tr");
+          const td = document.createElement("td");
+          td.innerHTML = errorMsg;
+          tr.appendChild(td);
+          resultContainer.appendChild(tr);
+          return;
+        }
+        // response contains valid result
+        response.json().then(data => {
+            //alert(data);
+            console.log(data);
+            //add a table row for the new/created userid
+            //add_row(data);
+        })
+    })
   }
 
   </script>

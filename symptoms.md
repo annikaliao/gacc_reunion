@@ -46,6 +46,11 @@ input {
 img {
   border-radius: 5px 5px 0 0;
 }
+#comment_section {
+  border:1px solid darkred;
+  border-radius: 5px 5px 0 0;
+  background-color: #fadadd  
+}
 </style>
 <body>
 <!-- comment section -->
@@ -58,19 +63,8 @@ img {
 <button id="post" onclick="addData();">Post</button>
 <form>
 <!-- table of comments -->
-
-<table>
-  <thead>
-  <tr>
-    <th style="width:40%">Symptom</th>
-    <th style="width:50%">Comment</th>
-    <th style="width:10%">Delete</th>
-    
-  </tr>
-  </thead>
-  <tbody id="comment">
-  </tbody>
-</table>
+<br>
+<a id = "comment_section" href="#divTable">See All Comments</a>
 <hr>
 <!-- symptoms checklist -->
 
@@ -416,11 +410,25 @@ img {
   </div>
 </div>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
+<h2><a id="divTable">Comments</a></h2>
+<div id="divTable">
+<table id="comment_table">
+  <thead>
+  <tr>
+    <th style="width:40%">Symptom</th>
+    <th style="width:50%">Comment</th>
+    <th style="width:10%">Delete</th>
+    
+  </tr>
+  </thead>
+  <tbody id="comment">
+  </tbody>
+</table>
+</div>
 <script>
-// this function hides all the links at first
+  // this function hides all the links at first
   fHide();
-    function fHide()
+  function fHide()
    {
     for (var i =1; i <12;i++){
       document.getElementById("s"+ i).style.visibility = "hidden";
@@ -474,10 +482,8 @@ img {
             td.innerHTML = errorMsg;
             tr.appendChild(td);
             resultContainer.appendChild(tr);
-
             return;
         }        
-
         // valid response will have json data
         response.json().then(data => {          
             console.log(data);
@@ -543,7 +549,6 @@ img {
 	  const comment = document.createElement("td");
     const td_delete = document.createElement("td");
     // obtain data that is specific to the API
-
     symptom.innerHTML = data.symptom; 
     comment.innerHTML = data.comment;
     td_delete.innerHTML="<button id=x onclick='delSym("+data.id+");'>X</button>";
@@ -557,8 +562,6 @@ img {
     create_user(data.symptom,data.comment);
     //alert("after post");
   }
-
-
 //this function adds the comment to the table
   function addData(){
     //alert("hell0");
@@ -566,20 +569,16 @@ img {
       myObj = { "symptom":document.getElementById("symptoms").value, "comment":document.getElementById("comment-box").value};
       //alert(document.getElementById("symptoms").value);
       //alert(document.getElementById("comment-box").value);
-
       add_row(myObj);
       //alert("do something!");
     }
-
   }
-
   function delSym(sid){
     //Validate comment (must be 2+ characters in len)
     const body = {
         //symptom: document.getElementById("symptoms").value,
         //comment: document.getElementById("comment-box").value,
-        sid: sid,
-        
+        sid: sid, 
     };
     const requestOptions = {
         method: 'POST',

@@ -67,15 +67,15 @@ a.hover a.focus {
         <td>How long is your usual menstrual cycle?</td>
       </tr>
       <!--collect user input-->
-      <tr id="input">
-        <td><input type="date" id="lastperiod" required></td>
-        <td><input type="number" id="periodlength" step="1" min="1" max="10" placeholder="1-10" required/></td>
-        <td><input type="number" id="cyclelength" step="1" min="10" max="50" placeholder="10-50" required/></td>
-      </tr>
+        <tr id="input">
+          <td><input type="date" id="lastperiod" required></td>
+          <td><input type="number" id="periodlength" step="1" min="1" max="10" placeholder="1-10" required/></td>
+          <td><input type="number" id="cyclelength" step="1" min="10" max="50" placeholder="10-50" required/></td>
+        </tr>
       <tr>
         <td></td>
         <td>
-          <button class="track" type="button" onclick="printDate(); addData()">
+          <button class="track" type="button" onclick="printDate(document.getElementById('lastperiod').value, parseInt(document.getElementById('cyclelength').value), parseInt(document.getElementById('periodlength').value))">
             TRACK
           </button>
         </td>
@@ -85,17 +85,39 @@ a.hover a.focus {
 </div>
 <br>
 <div class="date">
-  <p style="font-size: 30px; color: darkred;">Next Period:</p>
+  <p style="font-size: 30px; color: darkred;">Next 3 Periods:</p>
   <table>
     <tr>
       <td>
-        <span id="nextperiod"></span>
+        <span id="period1start"></span>
       </td>
       <td>
         <p style="text-align: center; color: darkred; font-weight:bolder; font-size: 20px;">&#x2964;</p>
       </td>
       <td>
-        <span id="nextperiodend"></span>
+        <span id="period1end"></span>
+      </td>
+    </tr>
+    <tr> 
+      <td>
+        <span id="period2start"></span>
+      </td>
+      <td>
+        <p style="text-align: center; color: darkred; font-weight:bolder; font-size: 20px;">&#x2964;</p>
+      </td>
+      <td>
+        <span id="period2end"></span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span id="period3start"></span>
+      </td>
+      <td>
+        <p style="text-align: center; color: darkred; font-weight:bolder; font-size: 20px;">&#x2964;</p>
+      </td>
+      <td>
+        <span id="period3end"></span>
       </td>
     </tr>
   </table>
@@ -104,28 +126,48 @@ a.hover a.focus {
 </div>
   <h1 style="text-align: center; color: darkred;" >&#65086;</h1>
 <br>
+<!--table displaying data from database-->
+<table>
+  <thead>
+  <tr>
+    <th>Your Periods</th>
+    <th>Period Length</th>
+    <th>Cycle Length</th>
+  </tr>
+  </thead>
+  <tbody id="periodresult">
+    <!-- javascript generated data -->
+  </tbody>
+</table>
+<br><br>
+
 <script>
   // print date of next period
-  function printDate() {
+  function printDate(lastperiod, cyclelength, periodlength) {
     // get user inputs
-    const x = document.getElementById("lastperiod").value;
-    var y = document.getElementById("cyclelength").value;
-    const z = document.getElementById("periodlength").value;
+    //var lastperiod = document.getElementById("lastperiod").value;
+    //var cyclelength = parseInt(document.getElementById("cyclelength").value);
+    //var periodlength = parseInt(document.getElementById("periodlength").value);
     // calculate date
-    var resDate = new Date(x);
-    resDate.setDate(resDate.getDate() + parseInt(y));
-    var year = resDate.getUTCFullYear();
-    var month = resDate.getUTCMonth() + 1;
-    var startdate = resDate.getUTCDate();
-    // print dates onto site
-    const periodstart = `${month}/${startdate}/${year}`;
-    document.getElementById("nextperiod").innerHTML = periodstart
-    var enddate = resDate.getUTCDate() + parseInt(z);
-    const periodend = `${month}/${enddate}/${year}`
-    document.getElementById("nextperiodend").innerHTML = periodend
-    // conditional for if period has unhealthy schedule
-    if(parseInt(z) <= 2) {
-      document.getElementById("unhealthy").innerHTML = "NOTICE: Your period is abnormally short. This may be a sign of some health concerns.   <a href=\"https://www.everydayhealth.com/pms/short-periods.aspx#:~:text=A%20short%20menstrual%20period%20might,even%20a%20serious%20medical%20problem.\">Learn More</a>" ;
+    var resDate = new Date(lastperiod);
+    for (let i = 1; i <= 3; i++) {
+      resDate.setDate(resDate.getDate() + cyclelength);
+      var year = resDate.getUTCFullYear();
+      var month = resDate.getUTCMonth() + 1;
+      var startdate = resDate.getUTCDate();
+      // print dates onto site
+      var periodstart = `${month}/${startdate}/${year}`;
+      document.getElementById(`period${i}start`).innerHTML = periodstart;
+      var enddate = resDate.getUTCDate() + periodlength - 1;
+      var periodend = `${month}/${enddate}/${year}`
+      document.getElementById(`period${i}end`).innerHTML = periodend
+      resDate = new Date(periodstart)
+      // conditional for if period has unhealthy schedule
+      if(parseInt(periodlength) <= 2) {
+        document.getElementById("unhealthy").innerHTML = "NOTICE: Your period is abnormally short. This may be a sign of some health concerns. <a href=\"https://www.everydayhealth.com/pms/short-periods.aspx#:~:text=A%20short%20menstrual%20period%20might,even%20a%20serious%20medical%20problem.\">Learn More</a>"
+        } else {
+        document.getElementById('unhealthy').innerHTML = "";
+      } 
     }
   }
 </script>
@@ -147,10 +189,11 @@ a.hover a.focus {
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("periodresult");
   // prepare URL's to allow easy switch from deployment and localhost
-  const url = "http://localhost:8087/api/periods"
-  // const url = "https://flowhealth.duckdns.org/api/periods"
+  //const url = "http://localhost:8087/api/periods"
+  const url = "https://flowhealth.duckdns.org/api/periods"
   const create_fetch = url + '/create';
   const read_fetch = url + "/";
+  const delete_fetch = url + "/delete";
   // Load users on page entry
   read_users();
   // Display User Table, data is fetched from Backend Database
@@ -199,14 +242,14 @@ a.hover a.focus {
       resultContainer.appendChild(tr);
     });
   }
-  function create_user(nextP, periodL, cycleL){
+  function create_user(){
     const body = {
-        // nextperiod: document.getElementById("lastperiod").value,
-        // periodlength: document.getElementById("periodlength").value,
-        // cyclelength: document.getElementById("cyclelength").value,
-        nextperiod: nextP,
-        periodlength: periodL,
-        cyclelength: cycleL
+        nextperiod: document.getElementById("lastperiod").value,
+        periodlength: document.getElementById("periodlength").value,
+        cyclelength: document.getElementById("cyclelength").value,
+        //nextperiod: nextP,
+        //periodlength: periodL,
+        //cyclelength: cycleL
     };
     //alert(body.toString());
     const requestOptions = {
@@ -218,7 +261,8 @@ a.hover a.focus {
         },
     };
     // URL for Create API
-    // Fetch API call to the database to create a new user
+    // Fetch API call to the database to create a new user\
+    //alert(requestOptions);
     fetch(create_fetch, requestOptions)
       .then(response => {
         // trap error response from Web API
@@ -235,7 +279,7 @@ a.hover a.focus {
         // response contains valid result
         response.json().then(data => {
             console.log(data);
-            // add_row(data);
+            //add_row(data);
         })
     })
   }
@@ -258,15 +302,107 @@ a.hover a.focus {
   function addData(){
     if(document.getElementById("lastperiod").value&&document.getElementById("periodlength").value&&document.getElementById("cyclelength").value)
       myData = {"nextperiod": document.getElementById("lastperiod").value, "periodlength": document.getElementById("periodlength").value, "cyclelength": document.getElementById("cyclelength").value};
+    //alert("create");
+    create_user(document.getElementById("lastperiod").value, document.getElementById("periodlength").value, document.getElementById("cyclelength").value);
     add_row(myData);
-    create_user(myData.nextperiod, myData.periodlength, myData.cyclelength);
     }
- 
+  function validate(){
+    var enterPeriod = document.getElementById('lastperiod').value
+    var periodLength = document.getElementById('periodlength').value;
+    var cycleLength = document.getElementById('cyclelength').value;
+    if(isNaN(periodLength) || isNaN(cycleLength)||periodLength < 0 || cycleLength < 10){
+      alert("Please enter valid values");
+    } else{
+      addData();
+    }
+  }
+  function delete_user() {
+  const deleteOptions = {
+        method: 'DELETE',
+        headers: {
+            "content-type": "application/json",
+            'Authorization': 'Bearer my-token',
+        },
+    };
+    fetch(delete_fetch, deleteOptions)
+      .then(response => {
+        // trap error response from Web API
+        if (response.status !== 200) {
+          window.location.reload();
+          return;
+        }
+        // response contains valid result
+        response.json().then(data => {
+            console.log(data);
+        })
+    })
+  }
+  /*function delete_user(){
+    const body = {
+        nextperiod: document.getElementById('lastperiod').value,
+        periodlength: document.getElementById('periodlength').value,
+        cyclelength: document.getElementById('cyclelength').value,
+    };
+    const requestOptions = {
+        method: 'DELETE',
+        body: JSON.stringify(body),
+        headers: {
+            "content-type": "application/json",
+            'Authorization': 'Bearer my-token',
+        },
+        mode: 'cors',
+        cache: 'default',
+        credentials: 'omit'
+    };
+    fetch(delete_fetch, requestOptions)
+      .then(response => {
+        // trap error response from Web API
+        if (response.status !== 200) {
+          const errorMsg = 'Database delete error: ' + response.status;
+          console.log(errorMsg);
+          const tr = document.createElement("tr");
+          const td = document.createElement("td");
+          td.innerHTML = errorMsg;
+          tr.removeChild(td);
+          resultContainer.removeChild(tr);
+          return;
+        }
+        // response contains valid result
+        response.json().then(data => {
+            console.log(data);
+            //add a table row for the new/created userid
+            delete_row(data);
+        })
+      })
+        .catch(err => {
+        console.error(err);
+        const tr = document.createElement("tr");
+        const td = document.createElement("td");
+        td.innerHTML = err;
+        tr.appendChild(td);
+        resultContainer.appendChild(tr);
+      });
+    }
+  function delete_row(data){
+    const tr = document.createElement("tr");
+    const nextperiod = document.createElement("td");
+    const periodlength = document.createElement("td");
+    const cyclelength = document.createElement("td");
+    // obtain data that is specific to the API
+    nextperiod.innerHTML = data.nextperiod;
+    periodlength.innerHTML = data.periodlength;
+    cyclelength.innerHTML = data.cyclelength;
+    console.log(data)
+    // add HTML to container
+    tr.appendChild(nextperiod);
+    tr.appendChild(periodlength);
+    tr.appendChild(cyclelength);
+    resultContainer.removeChild(tr);
+  } */
 
 </script>
 
 {% include login.html %}
-
 
 </body>
 

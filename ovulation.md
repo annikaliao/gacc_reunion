@@ -316,10 +316,9 @@ red{
 
 
 function validate(){
-  var userperiodd = document.getElementById('perioddate').value;
   var userperiodl = document.getElementById('periodcycle').value;
   var usermensc = document.getElementById('menscycle').value;
-  if(isNaN(userperiodd) || isNaN(userperiodl) || isNaN(usermensc)){
+  if(isNaN(userperiodl) || isNaN(usermensc)){
     alert("Make sure you are entering a number");
   }else{
     create_user();

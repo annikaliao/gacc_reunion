@@ -325,8 +325,9 @@ function validate(){
     create_user();
   }
 }
-</script>
 
 <form action="javascript:delete_record()">
   <button>Delete Records</button>
 </form>
+
+</script>

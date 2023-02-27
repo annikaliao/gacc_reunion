@@ -281,14 +281,14 @@ red{
     resultContainer.appendChild(tr);
   }
 
-  function addData(){
-    if(document.getElementById("perioddate").value&&document.getElementById("periodcycle").value&&document.getElementById("menscycle").value)
-      myData = {"perioddate": document.getElementById("perioddate").value, "periodcycle": document.getElementById("periodcycle").value, "menscycle": document.getElementById("menscycle").value};
-    add_row(myData);
+  //function addData(){
+    //if(document.getElementById("perioddate").value&&document.getElementById("periodcycle").value&&document.getElementById("menscycle").value)
+      //myData = {"perioddate": document.getElementById("perioddate").value, "periodcycle": document.getElementById("periodcycle").value, "menscycle": document.getElementById("menscycle").value};
+    //add_row(myData);
     //alert("before post");
-    create_user(myData.perioddate, myData.periodcycle, myData.menscycle);
+    //create_user(myData.perioddate, myData.periodcycle, myData.menscycle);
     //alert("after post");
-    }
+    //}
 
   //function delete_record() {
     //const delOptions = {

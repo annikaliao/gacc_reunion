@@ -209,16 +209,16 @@ input[type='radio'] {
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("result1");
   // prepare URL's to allow easy switch from deployment and localhost
-  // const url = "https://flowhealth.duckdns.org/api/scores"
-  const url = "http://192.168.1.225:8087/api/scores"
+  const url = "https://flowhealth.duckdns.org/api/scores"
+  // const url = "http://192.168.1.225:8087/api/scores"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
   const del_fetch = url + '/delete';
 
-  // Load users on page entry
+  // Load score on page entry
   read_users();
 
-  // Display User Table, data is fetched from Backend Database
+  // Display Score Table, data is fetched from Backend Database
   function read_users() {
     // prepare fetch options
     const read_options = {
@@ -268,8 +268,7 @@ input[type='radio'] {
 
  
   function create_user(){
-    //Validate Password (must be 6-20 characters in len)
-    //verifyPassword("click");
+    //Creates user with inputted score
     const body = {
         score: document.getElementById("score").value,
         name: document.getElementById("name").value,
@@ -301,7 +300,7 @@ input[type='radio'] {
         // response contains valid result
         response.json().then(data => {
             console.log(data);
-            //add a table row for the new/created userid
+            //add a table row for the new/created score
             add_row(data);
         })
     })
@@ -351,6 +350,7 @@ function delete_record() {
   }
   
 function validate(){
+// Checks if input score is a number and withint 0-10
   var userScore = document.getElementById('score').value;
   var userName = document.getElementById('name').value;
   if(isNaN(userScore) || userScore > 11 || userScore < 0 || !isNaN(userName)){
@@ -359,8 +359,6 @@ function validate(){
     create_user();
   }
 }
-
-
 </script>
 
 <div>

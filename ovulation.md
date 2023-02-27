@@ -259,7 +259,7 @@ red{
           for (let row in data) {
             console.log(data);
             add_row(data[row]);
-        })
+        }
     })
   }
 

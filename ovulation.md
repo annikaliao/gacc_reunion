@@ -256,6 +256,7 @@ red{
         }
         // response contains valid result
         response.json().then(data => {
+          for (let row in data) {
             console.log(data);
             add_row(data[row]);
         })

@@ -242,6 +242,7 @@ red{
 
     // URL for Create API
     // Fetch API call to the database to create a new user
+    console.log(create_fetch)
     fetch(create_fetch, requestOptions)
       .then(response => {
         if (response.status !== 200) {

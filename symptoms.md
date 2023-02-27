@@ -561,11 +561,11 @@ img {
 
 //this function adds the comment to the table
   function addData(){
-    alert("hell0");
+    //alert("hell0");
     if(document.getElementById("symptoms").value&&document.getElementById("comment-box").value){
       myObj = { "symptom":document.getElementById("symptoms").value, "comment":document.getElementById("comment-box").value};
-      alert(document.getElementById("symptoms").value);
-      alert(document.getElementById("comment-box").value);
+      //alert(document.getElementById("symptoms").value);
+      //alert(document.getElementById("comment-box").value);
 
       add_row(myObj);
       //alert("do something!");
@@ -613,6 +613,15 @@ img {
         })
     })
   }
-
+function validate(){
+// Checks if input score is a number and withint 0-10
+  var userSymptom = document.getElementById('symptom').value;
+  var userComment = document.getElementById('comment').value;
+  if(isNaN(userComment) || userComment > 11 || userComment < 0 || !isNaN(userSymptom)){
+    alert("Please enter a valid comment or symptom");
+  }else{
+    create_user();
+  }
+}
   </script>
 

@@ -225,11 +225,11 @@ red{
     });
   }
 
-  function create_user(periodD, periodC, mensC){
+  function create_user(){
     const body = {
-        perioddate: periodD,
-        periodcycle: periodC,
-        menscycle: mensC
+        perioddate: document.getElementById("perioddate").value,
+        periodcycle: document.getElementById("periodcycle").value,
+        menscycle: document.getElementById("menscycle").value,
     };
     const requestOptions = {
         method: 'POST',
@@ -257,7 +257,7 @@ red{
         // response contains valid result
         response.json().then(data => { 
             console.log(data);
-            //add_row(data);
+            add_row(data);
         })
     })
   }

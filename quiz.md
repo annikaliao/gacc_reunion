@@ -213,6 +213,7 @@ input[type='radio'] {
   const url = "http://192.168.1.225:8087/api/scores"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
+  const del_fetch = url + '/delete';
 
   // Load users on page entry
   read_users();
@@ -323,13 +324,31 @@ input[type='radio'] {
     resultContainer.appendChild(tr);
   }
 
-// function delete_record() {
-//   var name = document.getElementById("delete").value  
-//   return fetch('http://192.168.1.225:8087/api/scores' + name, {
-//     method: 'DELETE',
-//   })
-//   .then(response=>response.json())
-// }
+
+function delete_record() {
+  const delOptions = {
+        method: 'DELETE',
+        headers: {
+            "content-type": "application/json",
+            'Authorization': 'Bearer my-token',
+        },
+    };
+
+    // URL for DELETE API
+    // Fetch API call to the database to create a new user
+    fetch(del_fetch, delOptions)
+      .then(response => {
+        // trap error response from Web API
+        if (response.status !== 200) {
+          window.location.reload();
+          return;
+        }
+        // response contains valid result
+        response.json().then(data => {
+            console.log(data);
+        })
+    })
+  }
   
 function validate(){
   var userScore = document.getElementById('score').value;
@@ -346,6 +365,6 @@ function validate(){
 
 <div>
 <form action="javascript:delete_record()">
-  <input type="text" name="delete" id="delete" required><button>Delete Record</button>
+  <button>Delete Records</button>
 </form>
 <div>

@@ -1,28 +1,5 @@
 <style>
-#myBtn {
-  display: none; 
-  position: fixed; 
-  bottom: 20px; 
-  right: 30px; 
-  z-index: 99; 
-  border: none; 
-  outline: none; 
-  background-color: white; 
-  color: DarkRed; 
-  cursor: pointer; 
-  padding: 15px; 
-  border-radius: 10px; 
-  font-size: 18px; 
-}
-
-#myBtn:hover {
-  background-color: #555; 
-}
-
-* {
-  box-sizing: border-box;
-}
-
+/* remedies */
 .column {
   float: left;
   width: 100%;
@@ -35,48 +12,53 @@
   display: table;
   clear: both;
 }
-
-<!-- commentbox -->
-#comment-box, #post {
+/* comment box */
+#comment-box, #symptoms, #post {
     border: none;
-    border-radius: 5px;
+    border-radius: 5px 5px 0 0;
+    background-color: #fadadd  
 }
-
+/* delete */
+#x {
+  border: none;
+  border-radius: 5px 5px 0 0;
+  background-color: white  
+}
+/* remedies */
+#rem {
+  border: none;
+  border-radius: 5px 5px 0 0;
+  background-color: #fadadd  
+}
+/* font color */
 body {
   color: darkred;
 }
 input {
   color: darkred;
 }  
+/* products */
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  border-radius: 5px; /* 5px rounded corners */
+  border-radius: 5px;
 }
-
-/* Add rounded corners to the top left and the top right corner of the image */
 img {
   border-radius: 5px 5px 0 0;
 }
 </style>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comment Box</title>
-    <link rel="stylesheet" href="style.css">
-</head>
 <body>
+<!-- comment section -->
 <p><b>Add A Comment! What has Worked For You?</b></p>
 <p>What Symptom Are You Addressing?</p>
 <input type="text" id="symptoms" placeholder="symptom">
-<!-- button id="symptom">Enter</button-->
 <p>What Remedies Work For You? What Other Remedies or Products do you Recommend?</p>
 <input type="text" id="comment-box" placeholder="your comment">
+<!-- this button calls the addData function which adds the comment to the database and saves is-->
 <button id="post" onclick="addData();">Post</button>
-<p id="unordered"></p>
-<script src="code.js"></script>
 <form>
+<!-- table of comments -->
+
 <table>
   <thead>
   <tr>
@@ -87,10 +69,11 @@ img {
   </tr>
   </thead>
   <tbody id="comment">
-    <!-- javascript generated data -->
   </tbody>
 </table>
 <hr>
+<!-- symptoms checklist -->
+
 <p id = "whatSymptoms"><b>What are your symptoms:</b></p>
 
 <input type="checkbox" id = "chk1" name="symptoms" value="trouble_sleeping"><font color="#990000"> Trouble Sleeping</font>
@@ -115,9 +98,10 @@ img {
 <br>
 <input type="checkbox" id = "chk11" name="symptoms" value="diarrhea_or_constipation" style="color: white"><font color="#990000"> Diarrhea or Constipation</font> 
 </form>
-
-<button type="button" onclick ="fDisplay()" style = "color: white"><font color="#000000"> See Remedies To:</font></button>
+<!-- this button calls the fDisplay function which displays the links to the the remedies of the symptoms that are checked off-->
+<button type="button" id=rem onclick ="fDisplay()" style = "color: white"><font color="darkred"> See Remedies To:</font></button>
 <hr>
+<!--list of links -->
 <br><a id = "s1" href="#Trouble_Sleeping">Trouble Sleeping</a>
 <br><a id = "s2" href="#Acne">Acne</a>
 <br><a id = "s3" href="#Joint_Pain">Joint Pain</a>
@@ -130,7 +114,7 @@ img {
 <br><a id = "s10" href="#Muscle_Aches">Muscle Aches</a>
 <br><a id = "s11" href="#Diarrhea_or_Constipation">Diarrhea or Constipation</a>
 <hr>
-<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+<!-- list of remedies -->
 <div class="row">
   <div class="column">
     <h2><a id="Trouble_Sleeping">Trouble Sleeping</a></h2>
@@ -286,19 +270,7 @@ img {
 </div>
   </div>
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <div class="row">
   <div class="column">
     <h2><a id="Bloating">Bloating</a></h2>
@@ -315,19 +287,7 @@ img {
     </ul>
   </div>
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <div class="row">
   <div class="column">
     <h2><a id="Abdominal_Cramps">Abdominal Cramps</a></h2>
@@ -416,19 +376,7 @@ img {
 </div>
   </div>
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <div class="row">
   <div class="column">
     <h2><a id="Muscle_Aches">Muscle Aches</a></h2>
@@ -446,11 +394,7 @@ img {
     </ul>
   </div>
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
+<br><br><br><br><br><br>
 <div class="row">
   <div class="column">
     <h2><a id="Diarrhea_or_Constipation">Diarrhea or Constipation</a></h2>
@@ -474,6 +418,7 @@ img {
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 <script>
+// this function hides all the links at first
   fHide();
     function fHide()
    {
@@ -481,6 +426,7 @@ img {
       document.getElementById("s"+ i).style.visibility = "hidden";
       }
    } 
+// when this function is called, it will display the remedies to the symptoms that have been checked
    function fDisplay()
    {
     for (var i =1; i <12;i++)
@@ -552,8 +498,7 @@ img {
     });
   }
   function create_user(sym,com){
-    //Validate Password (must be 6-20 characters in len)
-    //verifyPassword("click");
+    //Validate Password (must be 2+ characters in len)
     const body = {
         //symptom: document.getElementById("symptoms").value,
         //comment: document.getElementById("comment-box").value,
@@ -601,7 +546,7 @@ img {
 
     symptom.innerHTML = data.symptom; 
     comment.innerHTML = data.comment;
-    td_delete.innerHTML="<button onclick='delSym("+data.id+");'>X</button>";
+    td_delete.innerHTML="<button id=x onclick='delSym("+data.id+");'>X</button>";
     // add HTML to container
 	tr.appendChild(symptom);
     tr.appendChild(comment);
@@ -614,13 +559,13 @@ img {
   }
 
 
-
+//this function adds the comment to the table
   function addData(){
-    //alert("hell0");
+    alert("hell0");
     if(document.getElementById("symptoms").value&&document.getElementById("comment-box").value){
       myObj = { "symptom":document.getElementById("symptoms").value, "comment":document.getElementById("comment-box").value};
-      //alert(document.getElementById("symptoms").value);
-      //alert(document.getElementById("comment-box").value);
+      alert(document.getElementById("symptoms").value);
+      alert(document.getElementById("comment-box").value);
 
       add_row(myObj);
       //alert("do something!");
@@ -628,11 +573,8 @@ img {
 
   }
 
-
   function delSym(sid){
-    //Validate Password (must be 6-20 characters in len)
-    //verifyPassword("click");
-    //alert(sid);
+    //Validate comment (must be 2+ characters in len)
     const body = {
         //symptom: document.getElementById("symptoms").value,
         //comment: document.getElementById("comment-box").value,
@@ -648,7 +590,7 @@ img {
         },
     };
     // URL for Create API
-    // Fetch API call to the database to create a new user
+    // Fetch API call to the database to create a new comment
     fetch(delete_fetch, requestOptions)
       .then(response => {
         // trap error response from Web API
@@ -666,7 +608,7 @@ img {
         response.json().then(data => {
             //alert(data);
             console.log(data);
-            //add a table row for the new/created userid
+            //add a table row for the new/created comment
             //add_row(data);
         })
     })

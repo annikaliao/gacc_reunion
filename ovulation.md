@@ -105,7 +105,7 @@ red{
       <tr>
         <td></td>
         <td>
-          <button class="track" type="button" onclick="printDate(); addData()">
+          <button class="track" type="button" onclick="printDate()">
             TRACK
           </button>
         </td>

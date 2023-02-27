@@ -167,11 +167,11 @@ red{
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("ovulationresult");
   // prepare URL's to allow easy switch from deployment and localhost
-  //const url = "http://localhost:8087/api/ovulation"
-  const url = "https://flowhealth.duckdns.org/api/ovulation"
+  const url = "http://localhost:8087/api/ovulation"
+  //const url = "https://flowhealth.duckdns.org/api/ovulation"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
-  //const del_fetch = url + '/delete';
+  const del_fetch = url + '/delete';
 
   // Load users on page entry
   read_users();
@@ -290,30 +290,30 @@ red{
     //alert("after post");
     //}
 
-  //function delete_record() {
-    //const delOptions = {
-        //method: 'DELETE',
-        //headers: {
-            //"content-type": "application/json",
-            //'Authorization': 'Bearer my-token',
-        //},
-    //};
+  function delete_record() {
+    const delOptions = {
+        method: 'DELETE',
+        headers: {
+            "content-type": "application/json",
+            'Authorization': 'Bearer my-token',
+        },
+    };
 
     // URL for DELETE API
     // Fetch API call to the database to create a new user
-    //fetch(del_fetch, delOptions)
-      //.then(response => {
+    fetch(del_fetch, delOptions)
+      .then(response => {
         // trap error response from Web API
-        //if (response.status !== 200) {
-          //window.location.reload();
-          //return;
-        //}
+        if (response.status !== 200) {
+          window.location.reload();
+          return;
+        }
         // response contains valid result
-        //response.json().then(data => {
-            //console.log(data);
-        //})
-    //})
-  //}
+        response.json().then(data => {
+            console.log(data);
+        })
+    })
+  }
 
 
 function validate(){

@@ -261,7 +261,7 @@ red{
             add_row(data[row]);
         }
     })
-  }
+  })
 
   function add_row(data) {
     const tr = document.createElement("tr");

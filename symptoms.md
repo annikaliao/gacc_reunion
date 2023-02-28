@@ -428,14 +428,14 @@ img {
 <script>
   // this function hides all the links at first
   fHide();
-  function fHide(i)
+  function fHide()
    {
     for (var i =1; i <12;i++){
       document.getElementById("s"+ i).style.visibility = "hidden";
       }
    } 
 // when this function is called, it will display the remedies to the symptoms that have been checked
-   function fDisplay(i)
+   function fDisplay()
    {
     for (var i =1; i <12;i++)
       if (document.getElementById("chk"+ i).checked==true){
@@ -614,13 +614,12 @@ img {
   }
 function validate(){
 // Checks if input score is a number and withint 0-10
-  var userSymptom = document.getElementById('symptoms').value;
-  var userComment = document.getElementById('comment-box').value;
-  if(isNaN(userSymptom) || isNaN(userComment)||len(userSymptom) < 2 || len(userComment) < 2){
+  var userSymptom = document.getElementById('symptom').value;
+  var userComment = document.getElementById('comment').value;
+  if(isNaN(userComment) || userComment > 11 || userComment < 0 || !isNaN(userSymptom)){
     alert("Please enter a valid comment or symptom");
   }else{
     create_user();
   }
 }
   </script>
-

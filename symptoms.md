@@ -60,7 +60,7 @@ img {
 <p>What Remedies Work For You? What Other Remedies or Products do you Recommend?</p>
 <input type="text" id="comment-box" placeholder="your comment">
 <!-- this button calls the addData function which adds the comment to the database and saves is-->
-<button id="post" onclick="addData(); validate()">Post</button>
+<button id="post" onclick="addData();">Post</button>
 <form>
 <!-- table of comments -->
 <br>

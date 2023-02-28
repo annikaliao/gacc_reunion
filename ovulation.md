@@ -99,8 +99,8 @@ red{
       </tr>
       <tr id="input">
         <td><input type="date" id="perioddate" required></td>
-        <td><input type="number" id="periodcycle"/></td>
-        <td><input type="number" id="menscycle" required onchange="validate()"/></td>
+        <td><input type="text" id="periodcycle" required></td>
+        <td><input type="text" id="menscycle" onchange="validate()" required></td>
       </tr>
       <tr>
         <td></td>
@@ -167,8 +167,8 @@ red{
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("ovulationresult");
   // prepare URL's to allow easy switch from deployment and localhost
-  //const url = "http://localhost:8087/api/ovulation"
-  const url = "https://flowhealth.duckdns.org/api/ovulation"
+ const url = "http://localhost:8087/api/ovulation"
+ // const url = "https://flowhealth.duckdns.org/api/ovulation"
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
   const del_fetch = url + '/delete';

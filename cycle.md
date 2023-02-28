@@ -219,7 +219,8 @@ a.hover a.focus {
         },
     };
     // URL for Create API
-    // Fetch API call to the database to create a new user
+    // Fetch API call to the database to create a new user\
+    //alert(requestOptions);
     fetch(create_fetch, requestOptions)
       .then(response => {
         // trap error response from Web API
@@ -236,7 +237,7 @@ a.hover a.focus {
         // response contains valid result
         response.json().then(data => {
             console.log(data);
-            // add_row(data);
+            //add_row(data);
         })
     })
   }
@@ -255,11 +256,12 @@ a.hover a.focus {
     tr.appendChild(periodlength);
     tr.appendChild(cyclelength);
     resultContainer.appendChild(tr); 
-    create_user(data.nextperiod, data.periodlength, data.cyclelength)
   }
   function addData(){
     if(document.getElementById("lastperiod").value&&document.getElementById("periodlength").value&&document.getElementById("cyclelength").value)
       myData = {"nextperiod": document.getElementById("lastperiod").value, "periodlength": document.getElementById("periodlength").value, "cyclelength": document.getElementById("cyclelength").value};
+    //alert("create");
+    create_user(document.getElementById("lastperiod").value, document.getElementById("periodlength").value, document.getElementById("cyclelength").value);
     add_row(myData);
     }
   function validate(){

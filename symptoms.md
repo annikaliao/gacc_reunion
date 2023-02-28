@@ -616,7 +616,7 @@ function validate(){
 // Checks if input score is a number and withint 0-10
   var userSymptom = document.getElementById('symptoms').value;
   var userComment = document.getElementById('comment-box').value;
-  if(isNaN(userComment) || userComment < 2 || userComment < 0 || !isNaN(userSymptom)){
+  if(isNaN(userSymptom) || isNaN(userComment)||len(userSymptom) < 2 || len(userComment) < 2){
     alert("Please enter a valid comment or symptom");
   }else{
     create_user();

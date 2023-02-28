@@ -60,7 +60,7 @@ img {
 <p>What Remedies Work For You? What Other Remedies or Products do you Recommend?</p>
 <input type="text" id="comment-box" placeholder="your comment">
 <!-- this button calls the addData function which adds the comment to the database and saves is-->
-<button id="post" onclick="addData();">Post</button>
+<button id="post" onclick="addData(); validate()">Post</button>
 <form>
 <!-- table of comments -->
 <br>
@@ -428,14 +428,14 @@ img {
 <script>
   // this function hides all the links at first
   fHide();
-  function fHide()
+  function fHide(i)
    {
     for (var i =1; i <12;i++){
       document.getElementById("s"+ i).style.visibility = "hidden";
       }
    } 
 // when this function is called, it will display the remedies to the symptoms that have been checked
-   function fDisplay()
+   function fDisplay(i)
    {
     for (var i =1; i <12;i++)
       if (document.getElementById("chk"+ i).checked==true){
@@ -614,9 +614,9 @@ img {
   }
 function validate(){
 // Checks if input score is a number and withint 0-10
-  var userSymptom = document.getElementById('symptom').value;
-  var userComment = document.getElementById('comment').value;
-  if(isNaN(userComment) || userComment > 11 || userComment < 0 || !isNaN(userSymptom)){
+  var userSymptom = document.getElementById('symptoms').value;
+  var userComment = document.getElementById('comment-box').value;
+  if(isNaN(userComment) || userComment < 2 || userComment < 0 || !isNaN(userSymptom)){
     alert("Please enter a valid comment or symptom");
   }else{
     create_user();

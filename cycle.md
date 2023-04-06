@@ -75,7 +75,7 @@ a.hover a.focus {
       <tr>
         <td></td>
         <td>
-          <button class="track" type="button" onclick="printDate(); validate()">
+          <button class="track" type="button" onclick="printDate(document.getElementById('lastperiod').value, parseInt(document.getElementById('cyclelength').value), parseInt(document.getElementById('periodlength').value))">
             TRACK
           </button>
         </td>
@@ -85,17 +85,39 @@ a.hover a.focus {
 </div>
 <br>
 <div class="date">
-  <p style="font-size: 30px; color: darkred;">Next Period:</p>
+  <p style="font-size: 30px; color: darkred;">Next 3 Periods:</p>
   <table>
     <tr>
       <td>
-        <span id="nextperiod"></span>
+        <span id="period1start"></span>
       </td>
       <td>
         <p style="text-align: center; color: darkred; font-weight:bolder; font-size: 20px;">&#x2964;</p>
       </td>
       <td>
-        <span id="nextperiodend"></span>
+        <span id="period1end"></span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span id="period2start"></span>
+      </td>
+      <td>
+        <p style="text-align: center; color: darkred; font-weight:bolder; font-size: 20px;">&#x2964;</p>
+      </td>
+      <td>
+        <span id="period2end"></span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span id="period3start"></span>
+      </td>
+      <td>
+        <p style="text-align: center; color: darkred; font-weight:bolder; font-size: 20px;">&#x2964;</p>
+      </td>
+      <td>
+        <span id="period3end"></span>
       </td>
     </tr>
   </table>
@@ -121,28 +143,49 @@ a.hover a.focus {
 
 <script>
   // print date of next period
-  function printDate() {
+  function printDate(lastperiod, cyclelength, periodlength) {
     // get user inputs
-    const x = document.getElementById("lastperiod").value;
-    var y = document.getElementById("cyclelength").value;
-    const z = document.getElementById("periodlength").value;
+    //var lastperiod = document.getElementById("lastperiod").value;
+    //var cyclelength = parseInt(document.getElementById("cyclelength").value);
+    //var periodlength = parseInt(document.getElementById("periodlength").value);
     // calculate date
-    var resDate = new Date(x);
-    resDate.setDate(resDate.getDate() + parseInt(y));
-    var year = resDate.getUTCFullYear();
-    var month = resDate.getUTCMonth() + 1;
-    var startdate = resDate.getUTCDate();
-    // print dates onto site
-    const periodstart = `${month}/${startdate}/${year}`;
-    document.getElementById("nextperiod").innerHTML = periodstart
-    var enddate = resDate.getUTCDate() + parseInt(z);
-    const periodend = `${month}/${enddate}/${year}`
-    document.getElementById("nextperiodend").innerHTML = periodend
-    // conditional for if period has unhealthy schedule
-    if(parseInt(z) <= 2) {
-      document.getElementById("unhealthy").innerHTML = "NOTICE: Your period is abnormally short. This may be a sign of some health concerns.   <a href=\"https://www.everydayhealth.com/pms/short-periods.aspx#:~:text=A%20short%20menstrual%20period%20might,even%20a%20serious%20medical%20problem.\">Learn More</a>" ;
+    var resDate = new Date(lastperiod);
+    for (let i = 1; i <= 3; i++) {
+      resDate.setDate(resDate.getDate() + cyclelength);
+      var year = resDate.getUTCFullYear();
+      var month = resDate.getUTCMonth() + 1;
+      var startdate = resDate.getUTCDate();
+      // print dates onto site
+      var periodstart = `${month}/${startdate}/${year}`;
+      document.getElementById(`period${i}start`).innerHTML = periodstart;
+      var enddate = resDate.getUTCDate() + periodlength - 1;
+      var periodend = `${month}/${enddate}/${year}`
+      document.getElementById(`period${i}end`).innerHTML = periodend
+      resDate = new Date(periodstart)
+      // conditional for if period has unhealthy schedule
+      if(parseInt(periodlength) <= 2) {
+        document.getElementById("unhealthy").innerHTML = "NOTICE: Your period is abnormally short. This may be a sign of some health concerns. <a href=\"https://www.everydayhealth.com/pms/short-periods.aspx#:~:text=A%20short%20menstrual%20period%20might,even%20a%20serious%20medical%20problem.\">Learn More</a>"
+        } else {
+        document.getElementById('unhealthy').innerHTML = "";
+      } 
     }
   }
+</script>
+<!--table displaying data from database-->
+<table>
+  <thead>
+  <tr>
+    <th>Your Periods</th>
+    <th>Period Length</th>
+    <th>Cycle Length</th>
+  </tr>
+  </thead>
+  <tbody id="periodresult">
+    <!-- javascript generated data -->
+  </tbody>
+</table>
+<br><br>
+<script>
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("periodresult");
   // prepare URL's to allow easy switch from deployment and localhost
@@ -360,9 +403,6 @@ a.hover a.focus {
 </script>
 
 {% include login.html %}
-<div>
-<button onclick="delete_user()">Delete All Period Records</button>
-</div>
 
 </body>
 

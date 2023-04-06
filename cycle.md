@@ -66,7 +66,6 @@ a.hover a.focus {
         <td>How many days did it last?</td>
         <td>How long is your usual menstrual cycle?</td>
       </tr>
-      <!--collect user input-->
       <tr id="input">
         <td><input type="date" id="lastperiod" required></td>
         <td><input type="number" id="periodlength" step="1" min="1" max="10" placeholder="1-10" required/></td>
@@ -83,9 +82,8 @@ a.hover a.focus {
     </table>
   </form>
 </div>
-<br>
 <div class="date">
-  <p style="font-size: 30px; color: darkred;">Next 3 Periods:</p>
+  <p style="font-size: 30px; color: darkred;">Next Period:</p>
   <table>
     <tr>
       <td>
@@ -95,57 +93,37 @@ a.hover a.focus {
         <p style="text-align: center; color: darkred; font-weight:bolder; font-size: 20px;">&#x2964;</p>
       </td>
       <td>
-        <span id="period3end"></span>
+        <span id="nextperiodend"></span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span id="nextperiod2"></span>
       </td>
     </tr>
   </table>
   <br>
   <span class="unhealthy" id="unhealthy"></span>
 </div>
-  <h1 style="text-align: center; color: darkred;" >&#65086;</h1>
-<br>
-<!--table displaying data from database-->
-<table>
-  <thead>
-  <tr>
-    <th>Your Periods</th>
-    <th>Period Length</th>
-    <th>Cycle Length</th>
-  </tr>
-  </thead>
-  <tbody id="periodresult">
-    <!-- javascript generated data -->
-  </tbody>
-</table>
-<br><br>
-
 <script>
-  // print date of next period
-  function printDate(lastperiod, cyclelength, periodlength) {
-    // get user inputs
-    //var lastperiod = document.getElementById("lastperiod").value;
-    //var cyclelength = parseInt(document.getElementById("cyclelength").value);
-    //var periodlength = parseInt(document.getElementById("periodlength").value);
-    // calculate date
-    var resDate = new Date(lastperiod);
-    for (let i = 1; i <= 3; i++) {
-      resDate.setDate(resDate.getDate() + cyclelength);
-      var year = resDate.getUTCFullYear();
-      var month = resDate.getUTCMonth() + 1;
-      var startdate = resDate.getUTCDate();
-      // print dates onto site
-      var periodstart = `${month}/${startdate}/${year}`;
-      document.getElementById(`period${i}start`).innerHTML = periodstart;
-      var enddate = resDate.getUTCDate() + periodlength - 1;
-      var periodend = `${month}/${enddate}/${year}`
-      document.getElementById(`period${i}end`).innerHTML = periodend
-      resDate = new Date(periodstart)
-      // conditional for if period has unhealthy schedule
-      if(parseInt(periodlength) <= 2) {
-        document.getElementById("unhealthy").innerHTML = "NOTICE: Your period is abnormally short. This may be a sign of some health concerns. <a href=\"https://www.everydayhealth.com/pms/short-periods.aspx#:~:text=A%20short%20menstrual%20period%20might,even%20a%20serious%20medical%20problem.\">Learn More</a>"
-        } else {
-        document.getElementById('unhealthy').innerHTML = "";
-      } 
+  function printDate() {
+    const x = document.getElementById("lastperiod").value;
+    var y = document.getElementById("cyclelength").value;
+    const z = document.getElementById("periodlength").value;
+    var resDate = new Date(x);
+    resDate.setDate(resDate.getDate() + parseInt(y));
+    var year = resDate.getUTCFullYear();
+    var month = resDate.getUTCMonth() + 1;
+    var startdate = resDate.getUTCDate();
+    const periodstart = `${month}/${startdate}/${year}`;
+    document.getElementById("nextperiod").innerHTML = periodstart
+    var enddate = resDate.getUTCDate() + parseInt(z);
+    const periodend = `${month}/${enddate}/${year}`
+    document.getElementById("nextperiodend").innerHTML = periodend
+    //startdate = enddate + parseInt(y);
+    //document.getElementById("nextperiod2").innerHTML = startdate;
+    if(parseInt(z) <= 2) {
+      document.getElementById("unhealthy").innerHTML = "NOTICE: Your period is abnormally short. This may be a sign of some health concerns.   <a href=\"https://www.everydayhealth.com/pms/short-periods.aspx#:~:text=A%20short%20menstrual%20period%20might,even%20a%20serious%20medical%20problem.\">Learn More</a>" ;
     }
   }
 </script>

@@ -104,6 +104,21 @@ a.hover a.focus {
 </div>
   <h1 style="text-align: center; color: darkred;" >&#65086;</h1>
 <br>
+<!--table displaying data from database-->
+<table>
+  <thead>
+  <tr>
+    <th>Your Periods</th>
+    <th>Period Length</th>
+    <th>Cycle Length</th>
+  </tr>
+  </thead>
+  <tbody id="periodresult">
+    <!-- javascript generated data -->
+  </tbody>
+</table>
+<br><br>
+
 <script>
   // print date of next period
   function printDate() {
@@ -128,22 +143,6 @@ a.hover a.focus {
       document.getElementById("unhealthy").innerHTML = "NOTICE: Your period is abnormally short. This may be a sign of some health concerns.   <a href=\"https://www.everydayhealth.com/pms/short-periods.aspx#:~:text=A%20short%20menstrual%20period%20might,even%20a%20serious%20medical%20problem.\">Learn More</a>" ;
     }
   }
-</script>
-<!--table displaying data from database-->
-<table>
-  <thead>
-  <tr>
-    <th>Your Periods</th>
-    <th>Period Length</th>
-    <th>Cycle Length</th>
-  </tr>
-  </thead>
-  <tbody id="periodresult">
-    <!-- javascript generated data -->
-  </tbody>
-</table>
-<br><br>
-<script>
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("periodresult");
   // prepare URL's to allow easy switch from deployment and localhost

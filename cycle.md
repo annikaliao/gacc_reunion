@@ -67,15 +67,15 @@ a.hover a.focus {
         <td>How long is your usual menstrual cycle?</td>
       </tr>
       <!--collect user input-->
-        <tr id="input">
-          <td><input type="date" id="lastperiod" required></td>
-          <td><input type="number" id="periodlength" step="1" min="1" max="10" placeholder="1-10" required/></td>
-          <td><input type="number" id="cyclelength" step="1" min="10" max="50" placeholder="10-50" required/></td>
-        </tr>
+      <tr id="input">
+        <td><input type="date" id="lastperiod" required></td>
+        <td><input type="number" id="periodlength" step="1" min="1" max="10" placeholder="1-10" required/></td>
+        <td><input type="number" id="cyclelength" step="1" min="10" max="50" placeholder="10-50" required/></td>
+      </tr>
       <tr>
         <td></td>
         <td>
-          <button class="track" type="button" onclick="printDate(document.getElementById('lastperiod').value, parseInt(document.getElementById('cyclelength').value), parseInt(document.getElementById('periodlength').value))">
+          <button class="track" type="button" onclick="printDate(); addData()">
             TRACK
           </button>
         </td>
@@ -89,29 +89,7 @@ a.hover a.focus {
   <table>
     <tr>
       <td>
-        <span id="period1start"></span>
-      </td>
-      <td>
-        <p style="text-align: center; color: darkred; font-weight:bolder; font-size: 20px;">&#x2964;</p>
-      </td>
-      <td>
-        <span id="period1end"></span>
-      </td>
-    </tr>
-    <tr> 
-      <td>
-        <span id="period2start"></span>
-      </td>
-      <td>
-        <p style="text-align: center; color: darkred; font-weight:bolder; font-size: 20px;">&#x2964;</p>
-      </td>
-      <td>
-        <span id="period2end"></span>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <span id="period3start"></span>
+        <span id="nextperiod"></span>
       </td>
       <td>
         <p style="text-align: center; color: darkred; font-weight:bolder; font-size: 20px;">&#x2964;</p>

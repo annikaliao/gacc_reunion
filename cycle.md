@@ -132,7 +132,7 @@ a.hover a.focus {
 <!--table displaying data from database-->
 <table>
   <thead>
-  <tr>
+  <tr> 
     <th>Your Periods</th>
     <th>Period Length</th>
     <th>Cycle Length</th>

@@ -51,9 +51,13 @@ img {
   border-radius: 5px 5px 0 0;
   background-color: #fadadd  
 }
+p1 {
+  font-size: 50px;
+}
 </style>
 <body>
 <!-- comment section -->
+<p1>Find Remedies for Your Period Symptoms</p1>
 <p><b>Add A Comment! What has Worked For You?</b></p>
 <p>What Symptom Are You Addressing?</p>
 <input type="text" id="symptoms" placeholder="symptom">
@@ -448,8 +452,8 @@ img {
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("comment");
   // prepare URL's to allow easy switch from deployment and localhost
-  const url = "https://flowhealth.duckdns.org/api/symptom/"
-  //const url = "http://172.20.198.186:8087/api/symptom/"
+  //const url = "https://flowhealth.duckdns.org/api/symptom/"
+  const url = "http://172.20.198.186:8087/api/symptom/"
   const create_fetch = url + '/create';
   const delete_fetch = url + '/delete';
   const read_fetch = url + '/';
@@ -564,13 +568,9 @@ img {
   }
 //this function adds the comment to the table
   function addData(){
-    //alert("hell0");
     if(document.getElementById("symptoms").value&&document.getElementById("comment-box").value){
       myObj = { "symptom":document.getElementById("symptoms").value, "comment":document.getElementById("comment-box").value};
-      //alert(document.getElementById("symptoms").value);
-      //alert(document.getElementById("comment-box").value);
       add_row(myObj);
-      //alert("do something!");
     }
   }
   function delSym(sid){

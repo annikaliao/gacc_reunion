@@ -258,13 +258,6 @@ p1 {
 </table>
 </div>
 <script>
-  // this function hides all the links at first
-  fHide();
-  function fHide(count = 11) {
-    for (var i = 1; i <= count; i++) {
-      document.getElementById("rm" + i).style.visibility = "hidden";
-    }
-  }
 // when this function is called, it will display the remedies to the symptoms that have been checked
   function fDisplay(count = 11){
     document.getElementById("remedies").innerHTML="";

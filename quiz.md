@@ -1,5 +1,4 @@
 <style>
-
 div.container h1 {
 	padding: 20px;
 	font-size: 50px;
@@ -14,7 +13,6 @@ div.container h1 {
 div.container p {
 	text-align: center;
 	}
-
 
 body {
   font-family: 'Lato', sans-serif;
@@ -70,7 +68,6 @@ input[type="submit"] {
 input[type='radio'] { 
   transform: scale(1.5);
 }
-
 </style>
 
 <div class="container" style="background-color: pink;">
@@ -199,7 +196,7 @@ input[type='radio'] {
 		}
 	}
 	
-	// Display Results
+	// Prints user's results
 	var results = document.getElementById('results');
 	results.innerHTML = 'You scored <span>'+score+'</span> out of <span>'+total+'</span></h3>';
 	
@@ -208,24 +205,22 @@ input[type='radio'] {
   
   // prepare HTML result container for new output
   const resultContainer = document.getElementById("result1");
-  // prepare URL's to allow easy switch from deployment and localhost
   const url = "https://flowhealth.duckdns.org/api/scores"
-  // const url = "http://192.168.1.225:8087/api/scores"
+  // Accessed CRUD methods with RESTapi endpoints
   const create_fetch = url + '/create';
   const read_fetch = url + '/';
   const del_fetch = url + '/delete';
 
-  // Load score on page entry
   read_users();
 
-  // Display Score Table, data is fetched from Backend Database
+  // Display Score Table, data is fetched from Backend Database (scores table)
   function read_users() {
     // prepare fetch options
     const read_options = {
-      method: 'GET', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, *cors, same-origin
-      cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: 'omit', // include, *same-origin, omit
+      method: 'GET', // GET method
+      mode: 'cors', 
+      cache: 'default', 
+      credentials: 'omit', 
       headers: {
         'Content-Type': 'application/json'
       },
@@ -233,9 +228,8 @@ input[type='radio'] {
 
     // fetch the data from API
     fetch(read_fetch, read_options)
-      // response is a RESTful "promise" on any successful fetch
       .then(response => {
-        // check for response errors
+        // checks for errors in response
         if (response.status !== 200) {
             const errorMsg = 'Database read error: ' + response.status;
             console.log(errorMsg);
@@ -246,7 +240,7 @@ input[type='radio'] {
             resultContainer.appendChild(tr);
             return;
         }
-        // valid response will have json data
+        // if no error, json data is printed
         response.json().then(data => {
             console.log(data);
             for (let row in data) {
@@ -255,7 +249,7 @@ input[type='radio'] {
             }
         })
     })
-    // catch fetch errors (ie ACCESS to server blocked)
+    // catch fetch errors, if API data can not be fetched
     .catch(err => {
       console.error(err);
       const tr = document.createElement("tr");
@@ -282,11 +276,9 @@ input[type='radio'] {
         },
     };
 
-    // URL for Create API
     // Fetch API call to the database to create a new user
     fetch(create_fetch, requestOptions)
       .then(response => {
-        // trap error response from Web API
         if (response.status !== 200) {
           const errorMsg = 'Database create error: ' + response.status;
           console.log(errorMsg);
@@ -300,31 +292,12 @@ input[type='radio'] {
         // response contains valid result
         response.json().then(data => {
             console.log(data);
-            //add a table row for the new/created score
             add_row(data);
         })
     })
   }
 
-  function add_row(data) {
-    const tr = document.createElement("tr");
-    const name = document.createElement("td");
-	  const score = document.createElement("td");
-  
-
-    // obtain data that is specific to the API
-    score.innerHTML = data.score; 
-    name.innerHTML = data.name; 
-
-    // add HTML to container
-	  tr.appendChild(name);
-    tr.appendChild(score);
-
-    resultContainer.appendChild(tr);
-  }
-
-
-function delete_record() {
+  function delete_record() {
   const delOptions = {
         method: 'DELETE',
         headers: {
@@ -348,9 +321,26 @@ function delete_record() {
         })
     })
   }
+
+  function add_row(data) {
+    const tr = document.createElement("tr");
+    const name = document.createElement("td");
+	  const score = document.createElement("td");
+  
+
+    // obtain data that is specific to the API
+    score.innerHTML = data.score; 
+    name.innerHTML = data.name; 
+
+    // add HTML to container
+	  tr.appendChild(name);
+    tr.appendChild(score);
+
+    resultContainer.appendChild(tr);
+  }
   
 function validate(){
-// Checks if input score is a number and withint 0-10
+// Checks if input score is a number and within 0-10
   var userScore = document.getElementById('score').value;
   var userName = document.getElementById('name').value;
   if(isNaN(userScore) || userScore > 11 || userScore < 0 || !isNaN(userName)){

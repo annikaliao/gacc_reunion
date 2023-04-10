@@ -359,16 +359,13 @@ p1 {
     const tr = document.createElement("tr");
     const symptom = document.createElement("td");
 	  const comment = document.createElement("td");
-    const td_delete = document.createElement("td");
-    // obtain data that is specific to the API
+    // getting the data for the table
     symptom.innerHTML = data.symptom; 
     comment.innerHTML = data.comment;
-    // add HTML to container
+    // adding HTML to table
 	tr.appendChild(symptom);
     tr.appendChild(comment);
     resultContainer.appendChild(tr);
-    // save database
-    create_user(data.symptom,data.comment);
   }
 //this function adds the comment to the table
   function addData(){

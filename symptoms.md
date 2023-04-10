@@ -240,7 +240,7 @@ p1 {
 <p>What Remedies Work For You? What Other Remedies or Products do you Recommend?</p>
 <input type="text" id="comment-box" placeholder="your comment">
 <!-- this button calls the addData function which adds the comment to the database and saves is-->
-<button id="post" onclick="addData();">Post</button>
+<button id="post" onclick="addData()">Post</button>
 <form>
 <!-- table of comments -->
 <hr>
@@ -249,8 +249,8 @@ p1 {
 <table id="comment_table">
   <thead>
   <tr>
-    <th style="width:500px">Symptom</th>
-    <th style="width:500px">Remedy</th>    
+    <th style="width: 500px;">Symptom</th>
+    <th style="width: 500px;">Comment</th>
   </tr>
   </thead>
   <tbody id="comment">
@@ -274,20 +274,108 @@ p1 {
       }
     }
   }
+// prepare HTML result container for new output
+  const resultContainer = document.getElementById("comment");
+  const url = "https://flowhealth.duckdns.org/api/symptom/"
+  const create_fetch = url + '/create';
+  const read_fetch = url + '/';
+  // Load users on page entry
+  read_users();
+  // Display User Table, data is fetched from Backend Database
+  function read_users() {
+    // prepare fetch options
+    const read_options = {
+      method: 'GET', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'omit', // include, *same-origin, omit
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    // fetch the data from API
+    fetch(read_fetch, read_options)
+      // response is a RESTful "promise" on any successful fetch
+      .then(response => {
+        // check for response errors
+        if (response.status !== 200) {
+            const errorMsg = 'Database read error: ' + response.status;
+            console.log(errorMsg);
+            const tr = document.createElement("tr");
+            const td = document.createElement("td");
+            td.innerHTML = errorMsg;
+            tr.appendChild(td);
+            resultContainer.appendChild(tr);
+            return;
+        }        
+        // valid response will have json data
+        response.json().then(data => {          
+            console.log(data);
+            for (let row in data) {
+              console.log(data[row]);
+              add_row(data[row]);
+            }
+        })
+    })
+    // catch fetch errors (ie ACCESS to server blocked)
+    .catch(err => {
+      console.error(err);
+      const tr = document.createElement("tr");
+      const td = document.createElement("td");
+      td.innerHTML = err;
+      tr.appendChild(td);
+      resultContainer.appendChild(tr);
+    });
+  }
+  function create_user(sym,com){
+    //Validate Password (must be 2+ characters in len)
+    const body = {
+        symptom: sym,
+        comment: com,
+    };
+    const requestOptions = {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: {
+            "content-type": "application/json",
+            'Authorization': 'Bearer my-token',
+        },
+    };
+    // URL for Create API
+    // Fetch API call to the database to create a new user
+    fetch(create_fetch, requestOptions)
+      .then(response => {
+        // trap error response from Web API
+        if (response.status !== 200) {
+          const errorMsg = 'Database create error: ' + response.status;
+          console.log(errorMsg);
+          const tr = document.createElement("tr");
+          const td = document.createElement("td");
+          td.innerHTML = errorMsg;
+          tr.appendChild(td);
+          resultContainer.appendChild(tr);
+          return;
+        }
+        // response contains valid result
+        response.json().then(data => {
+            console.log(data);
+        })
+    })
+  }
   function add_row(data) {
-    //alert(data.symptom);
     const tr = document.createElement("tr");
     const symptom = document.createElement("td");
 	  const comment = document.createElement("td");
+    const td_delete = document.createElement("td");
     // obtain data that is specific to the API
     symptom.innerHTML = data.symptom; 
     comment.innerHTML = data.comment;
     // add HTML to container
-	  tr.appendChild(symptom);
+	tr.appendChild(symptom);
     tr.appendChild(comment);
     resultContainer.appendChild(tr);
     // save database
-    //create_user(data.symptom,data.comment);
+    create_user(data.symptom,data.comment);
   }
 //this function adds the comment to the table
   function addData(){
